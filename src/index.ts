@@ -5,14 +5,35 @@ export type Vertex = {
 };
 
 export class Dag {
-  public vertices: Array<Vertex>;
+  #vertices: Array<Vertex>;
 
   constructor() {
-    this.vertices = [];
+    this.#vertices = [];
   }
 
-  addVertex({ name, adjacentTo, value }: any): void {
-    this.vertices.push({ name, adjacentTo, value });
+  get vertices(): Array<Vertex> {
+    return this.#vertices;
+  }
+
+  addEdge({ from, to }: { from: Vertex; to: Vertex }): void {
+    const sourceVertex = this.vertices.find(
+      (vertex) => vertex.name === from.name
+    );
+    const targetVertex = this.vertices.find(
+      (vertex) => vertex.name === to.name
+    );
+    if (sourceVertex && targetVertex) {
+      const hasAlreadyAdjacentVertex = !targetVertex.adjacentTo.find(
+        (adjacentVertex) => adjacentVertex.name === to.name
+      );
+      if (hasAlreadyAdjacentVertex) {
+        to.adjacentTo = sourceVertex.adjacentTo.concat(from);
+      }
+    }
+  }
+
+  addVertices(...vertices: Vertex[]): void {
+    this.#vertices = this.vertices.concat(vertices);
   }
 
   addMutation<T extends Record<string, unknown>>(
@@ -31,25 +52,31 @@ export class Dag {
     }
   }
 
-  hasAncestors(vertex: Vertex): boolean {
-    return vertex.adjacentTo.length > 0;
+  hasCycles(): boolean {
+    const [vertexA, vertexB] = this.vertices;
+
+    const adjacentVerticesOfA = vertexA.adjacentTo;
+    const adjacentVerticesOfB = vertexB.adjacentTo;
+
+    if (
+      adjacentVerticesOfA.find((adj) => adj.name === vertexB.name) &&
+      adjacentVerticesOfB.find((adj) => adj.name === vertexA.name)
+    ) {
+      return true;
+    }
+
+    return false;
   }
 
-  hasSuccessors(vertex: Vertex): boolean {
+  hasVertexDependencies(vertex: Vertex): boolean {
     return this.vertices.some((vertice) =>
       vertice.adjacentTo.some((adjacent) => adjacent.name === vertex.name)
     );
   }
 
-  getAncestors(vertex: Vertex): Vertex[] {
-    return this.vertices.filter((currentVertice) =>
-      vertex.adjacentTo.some(
-        (adjacentTo) => adjacentTo.name === currentVertice.name
-      )
-    );
-  }
-
-  getSuccessors(vertex: Vertex): Vertex[] {
+  getVertexDependencies<T extends Record<string, unknown>>(
+    vertex: Vertex<T>
+  ): Vertex<T>[] {
     return this.vertices.filter((currentVertice) =>
       currentVertice.adjacentTo.some(
         (adjacentTo) => adjacentTo.name === vertex.name

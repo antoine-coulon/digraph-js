@@ -1,13 +1,49 @@
+/* eslint-disable no-inline-comments */
+/* eslint-disable line-comment-position */
 /* eslint-disable max-nested-callbacks */
 import { expect } from "chai";
 
 import { Dag, Vertex } from "./index.js";
 
 describe("DAG Implementation", () => {
-  describe("When traversing the DAG", () => {
-    it("should find ancestors and successors for any given vertices", () => {
-      const dag = new Dag();
+  describe("When adding and removing vertices or edges in the DAG", () => {
+    xit("should allow only unique name for vertices");
 
+    it("should only add edges between vertices already added in the graph", () => {
+      const dag = new Dag();
+      const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
+      const vertexB: Vertex = { name: "b", adjacentTo: [], value: {} };
+
+      dag.addVertices(vertexA);
+      dag.addEdge({ from: vertexA, to: vertexB });
+      expect(dag.vertices[0].adjacentTo).deep.equal([]);
+    });
+
+    it("should add edges between vertices", () => {
+      const dag = new Dag();
+      const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
+      const vertexB: Vertex = { name: "b", adjacentTo: [], value: {} };
+
+      dag.addVertices(vertexA, vertexB);
+      dag.addEdge({ from: vertexB, to: vertexA });
+      expect(dag.vertices[0].adjacentTo).deep.equal([vertexB]);
+    });
+
+    it("should not add duplicate edges", () => {
+      const dag = new Dag();
+      const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
+      const vertexB: Vertex = { name: "b", adjacentTo: [], value: {} };
+
+      dag.addVertices(vertexA, vertexB);
+      dag.addEdge({ from: vertexB, to: vertexA });
+      dag.addEdge({ from: vertexB, to: vertexA });
+      expect(dag.vertices[0].adjacentTo).deep.equal([vertexB]);
+    });
+  });
+
+  describe("When traversing the DAG", () => {
+    it("should find vertex's direct dependencies", () => {
+      const dag = new Dag();
       const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
       const vertexB: Vertex = { name: "b", adjacentTo: [vertexA], value: {} };
       const vertexC: Vertex = { name: "c", adjacentTo: [], value: {} };
@@ -18,17 +54,50 @@ describe("DAG Implementation", () => {
       };
       const vertexE: Vertex = { name: "e", adjacentTo: [], value: {} };
 
-      dag.addVertex(vertexA);
-      dag.addVertex(vertexB);
-      dag.addVertex(vertexC);
-      dag.addVertex(vertexD);
-      dag.addVertex(vertexE);
+      dag.addVertices(vertexA, vertexB, vertexC, vertexD, vertexE);
 
-      expect(dag.hasAncestors(vertexB)).equal(true);
-      expect(dag.hasSuccessors(vertexB)).equal(false);
+      expect(dag.hasVertexDependencies(vertexB)).equal(false);
+      expect(dag.getVertexDependencies(vertexA)).deep.equal([vertexB, vertexD]);
+    });
 
-      expect(dag.getAncestors(vertexB)).deep.equal([vertexA]);
-      expect(dag.getSuccessors(vertexA)).deep.equal([vertexB, vertexD]);
+    it("should find a cycle between vertices with edges towards each other", () => {
+      const dag = new Dag();
+
+      const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
+      const vertexB: Vertex = { name: "b", adjacentTo: [], value: {} };
+
+      dag.addVertices(vertexA, vertexB);
+      dag.addEdge({ from: vertexA, to: vertexB }); // A ----> B
+
+      expect(dag.hasCycles()).to.equal(false);
+
+      dag.addEdge({ from: vertexB, to: vertexA }); // B ----> A => cycle between A and B
+
+      expect(dag.hasCycles()).to.equal(true);
+    });
+
+    xit("should find a cycle between vertices with edges towards each other", () => {
+      const dag = new Dag();
+
+      const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
+      const vertexB: Vertex = { name: "b", adjacentTo: [], value: {} };
+      const vertexC: Vertex = { name: "c", adjacentTo: [], value: {} };
+      const vertexD: Vertex = {
+        name: "d",
+        adjacentTo: [],
+        value: {}
+      };
+
+      dag.addVertices(vertexA, vertexB, vertexC, vertexD);
+      dag.addEdge({ from: vertexA, to: vertexB }); // A ----> B
+      dag.addEdge({ from: vertexB, to: vertexC }); // B ----> C
+      dag.addEdge({ from: vertexC, to: vertexD }); // C ----> D
+
+      expect(dag.hasCycles()).to.equal(false);
+
+      dag.addEdge({ from: vertexD, to: vertexA }); // D ----> A => cycle between A and D traversing B, C
+
+      expect(dag.hasCycles()).to.equal(true);
     });
   });
 
@@ -36,14 +105,11 @@ describe("DAG Implementation", () => {
     describe("With no adjacent vertices (no dependencies)", () => {
       it("should only update one vertex with no dependencies", () => {
         const dag = new Dag();
-
         const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
         const vertexE: Vertex = { name: "e", adjacentTo: [vertexA], value: {} };
         const vertexB: Vertex = { name: "b", adjacentTo: [], value: {} };
 
-        dag.addVertex(vertexA);
-        dag.addVertex(vertexB);
-        dag.addVertex(vertexE);
+        dag.addVertices(vertexA, vertexB, vertexE);
 
         dag.addMutation(vertexA, { newValue: [] });
         expect(dag.vertices[0].value).to.deep.equal({ newValue: [] });
@@ -54,16 +120,19 @@ describe("DAG Implementation", () => {
 
     it("should update one vertex and propagate updates to its ancestors", () => {
       const dag = new Dag();
-
       const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
       const vertexB: Vertex = { name: "b", adjacentTo: [vertexA], value: {} };
       const vertexD: Vertex = { name: "d", adjacentTo: [vertexB], value: {} };
       const vertexC: Vertex = { name: "c", adjacentTo: [vertexD], value: {} };
 
-      dag.addVertex(vertexA);
-      dag.addVertex(vertexB);
-      dag.addVertex(vertexC);
-      dag.addVertex(vertexD);
+      const _example = `
+          A
+          |
+          v
+          B ------> D -----> C
+      `;
+
+      dag.addVertices(vertexA, vertexB, vertexC, vertexD);
 
       dag.addMutation(vertexD, { newValue: [] });
       // eslint-disable-next-line id-length

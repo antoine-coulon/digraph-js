@@ -27,7 +27,7 @@ export class Dag {
         (adjacentVertex) => adjacentVertex.name === to.name
       );
       if (hasAlreadyAdjacentVertex) {
-        to.adjacentTo = sourceVertex.adjacentTo.concat(from);
+        to.adjacentTo = [{ ...from }];
       }
     }
   }
@@ -52,20 +52,46 @@ export class Dag {
     }
   }
 
-  hasCycles(): boolean {
-    const [vertexA, vertexB] = this.vertices;
+  private asTree(): Record<string, Array<Vertex>> {
+    const flattenedVertices: Record<string, Array<Vertex>> = {};
 
-    const adjacentVerticesOfA = vertexA.adjacentTo;
-    const adjacentVerticesOfB = vertexB.adjacentTo;
-
-    if (
-      adjacentVerticesOfA.find((adj) => adj.name === vertexB.name) &&
-      adjacentVerticesOfB.find((adj) => adj.name === vertexA.name)
-    ) {
-      return true;
+    for (const vertex of this.vertices) {
+      flattenedVertices[vertex.name] = vertex.adjacentTo;
     }
 
-    return false;
+    return flattenedVertices;
+  }
+
+  private *flattenAdjacentVerticesNames(vertex: Vertex): Generator<string> {
+    yield vertex.name;
+    for (const adjacentVertex of vertex.adjacentTo) {
+      yield* this.flattenAdjacentVerticesNames(adjacentVertex);
+    }
+  }
+
+  hasCycles(): boolean {
+    let hasCycles = false;
+    /**
+     * Using the flattened structure of vertices (from Array to Record),
+     * Vertex's name is used to detect cycle dependencies by comparing
+     * each children vertex's name with the root vertex name.
+     * If any children vertex's name has the name of the root vertex, we
+     * consider it as the same Vertex in the DAG hence forming a cycle.
+     */
+    for (const [rootVertexName, adjacentVertices] of Object.entries(
+      this.asTree()
+    )) {
+      for (const adjacentVertex of adjacentVertices) {
+        const adjacentVertexNames = [
+          ...this.flattenAdjacentVerticesNames(adjacentVertex)
+        ];
+        if (adjacentVertexNames.includes(rootVertexName)) {
+          hasCycles = true;
+        }
+      }
+    }
+
+    return hasCycles;
   }
 
   hasVertexDependencies(vertex: Vertex): boolean {

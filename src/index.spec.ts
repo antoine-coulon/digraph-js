@@ -67,16 +67,16 @@ describe("DAG Implementation", () => {
       const vertexB: Vertex = { name: "b", adjacentTo: [], value: {} };
 
       dag.addVertices(vertexA, vertexB);
-      dag.addEdge({ from: vertexA, to: vertexB }); // A ----> B
+      dag.addEdge({ from: vertexA, to: vertexB }); // A --> B
 
       expect(dag.hasCycles()).to.equal(false);
 
-      dag.addEdge({ from: vertexB, to: vertexA }); // B ----> A => cycle between A and B
+      dag.addEdge({ from: vertexB, to: vertexA }); // B --> A => cycle between A and B
 
       expect(dag.hasCycles()).to.equal(true);
     });
 
-    xit("should find a cycle between vertices with edges towards each other", () => {
+    it("should find a cycle between vertices with edges towards each other", () => {
       const dag = new Dag();
 
       const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
@@ -125,15 +125,7 @@ describe("DAG Implementation", () => {
       const vertexD: Vertex = { name: "d", adjacentTo: [vertexB], value: {} };
       const vertexC: Vertex = { name: "c", adjacentTo: [vertexD], value: {} };
 
-      const _example = `
-          A
-          |
-          v
-          B ------> D -----> C
-      `;
-
       dag.addVertices(vertexA, vertexB, vertexC, vertexD);
-
       dag.addMutation(vertexD, { newValue: [] });
       // eslint-disable-next-line id-length
       const [A, B, C, D] = dag.vertices;

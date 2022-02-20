@@ -53,3 +53,8 @@ See more here: https://monorepo.tools/#detecting-affected-projects-packages
 See a very basic implementation of this concept in `index.js`. Be sure to 
 build the `/dist` folder using the `build` script.
 
+```bash
+$ npm run build
+$ node examples/affected-builds/index.js
+```
+

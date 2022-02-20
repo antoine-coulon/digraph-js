@@ -39,19 +39,22 @@
   "devDependencies": {
     "@nodesecure/eslint-config": "^1.3.0",
     "@types/chai": "^4.3.0",
+    "@types/lodash.uniqby": "^4.7.6",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.11.12",
     "chai": "^4.3.4",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
     "mocha": "^9.1.4",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.2",
-    "eslint-plugin-import": "^2.25.4"
+    "typescript": "^4.5.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash.uniqby": "^4.7.0"
+  }
 }

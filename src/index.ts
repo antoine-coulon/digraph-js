@@ -1,3 +1,5 @@
+import uniqBy from "lodash.uniqby";
+
 export type Vertex = {
   name: string;
   adjacentTo: Vertex[];
@@ -13,6 +15,16 @@ export class Dag {
 
   get vertices(): Array<Vertex> {
     return this.#vertices;
+  }
+
+  get asTree(): Record<string, Array<Vertex>> {
+    const flattenedVertices: Record<string, Array<Vertex>> = {};
+
+    for (const vertex of this.vertices) {
+      flattenedVertices[vertex.name] = vertex.adjacentTo;
+    }
+
+    return flattenedVertices;
   }
 
   addEdge({ from, to }: { from: Vertex; to: Vertex }): void {
@@ -33,7 +45,13 @@ export class Dag {
   }
 
   addVertices(...vertices: Vertex[]): void {
-    this.#vertices = this.vertices.concat(vertices);
+    const verticesWithUniqueName = uniqBy(vertices, "name");
+    const graphVerticesNames = this.vertices.map((vertex) => vertex.name);
+    const newUniqueVertices = verticesWithUniqueName.filter(
+      (vertex) => !graphVerticesNames.includes(vertex.name)
+    );
+
+    this.#vertices = this.vertices.concat(newUniqueVertices);
   }
 
   addMutation<T extends Record<string, unknown>>(
@@ -50,16 +68,6 @@ export class Dag {
         this.addMutation(adjacentVertex, value)
       );
     }
-  }
-
-  private asTree(): Record<string, Array<Vertex>> {
-    const flattenedVertices: Record<string, Array<Vertex>> = {};
-
-    for (const vertex of this.vertices) {
-      flattenedVertices[vertex.name] = vertex.adjacentTo;
-    }
-
-    return flattenedVertices;
   }
 
   private *flattenAdjacentVerticesNames(vertex: Vertex): Generator<string> {
@@ -79,7 +87,7 @@ export class Dag {
      * consider it as the same Vertex in the DAG hence forming a cycle.
      */
     for (const [rootVertexName, adjacentVertices] of Object.entries(
-      this.asTree()
+      this.asTree
     )) {
       for (const adjacentVertex of adjacentVertices) {
         const adjacentVertexNames = [

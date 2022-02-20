@@ -7,7 +7,24 @@ import { Dag, Vertex } from "./index.js";
 
 describe("DAG Implementation", () => {
   describe("When adding and removing vertices or edges in the DAG", () => {
-    xit("should allow only unique name for vertices");
+    it("should avoid duplicates by adding only vertices with unique name", () => {
+      const dag = new Dag();
+
+      const vertexA: Vertex = { name: "a", adjacentTo: [], value: {} };
+      const vertexB: Vertex = { name: "b", adjacentTo: [], value: {} };
+      const vertexC: Vertex = { name: "a", adjacentTo: [], value: {} };
+
+      dag.addVertices(vertexA, vertexB, vertexC);
+      expect(dag.vertices.length).to.equal(2);
+
+      const duplicatedVertexB: Vertex = {
+        name: "b",
+        adjacentTo: [],
+        value: {}
+      };
+      dag.addVertices(duplicatedVertexB);
+      expect(dag.vertices.length).to.equal(2);
+    });
 
     it("should only add edges between vertices already added in the graph", () => {
       const dag = new Dag();

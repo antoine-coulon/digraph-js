@@ -28,6 +28,7 @@
     "indent": "off",
     "brace-style": "off",
     "no-empty": ["error", { "allowEmptyCatch": true }],
+    "id-length": "off",
     "import/order": [
       "error",
       {

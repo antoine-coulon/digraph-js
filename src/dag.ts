@@ -55,9 +55,60 @@ export class Dag<Vertex extends VertexDefinition<VertexPayload>> {
     }
   }
 
-  private *flattenAdjacentVerticesDependencies(
+  /**
+   * Allow top-to-bottom traversal by finding all direct dependencies of a given
+   * vertex.
+   * @example
+   * // given A ---> B (i.e: A depends on B)
+   * getAdjacentVerticesTo(A) === [ B ]
+   */
+  getAdjacentVerticesTo(rootVertex: Vertex): Vertex[] {
+    return [...this.#vertices.values()].filter((vertex) =>
+      rootVertex.adjacentTo.includes(vertex.id)
+    );
+  }
+
+  /**
+   * In order to allow bottom-to-top traversals, we provide this method allowing
+   * us to know all vertices depending on the provided root vertex.
+   * @example
+   * // given A ---> B (i.e: A depends on B)
+   * getAdjacentVerticesTo(B) === [ A ]
+   */
+  getAdjacentVerticesFrom(rootVertex: Vertex): Vertex[] {
+    return [...this.#vertices.values()].filter((vertex) =>
+      vertex.adjacentTo.includes(rootVertex.id)
+    );
+  }
+
+  private *limitCycleDetectionDepth(
+    dependenciesWalker: Generator<string>,
+    maxDepth: number
+  ) {
+    /**
+     * At this point, we already traversed 2 levels of depth dependencies by:
+     * - accessing the root's node adjacency list (depth === 1)
+     * - then we continue by accessing the adjacent's node adjacency list (depth === 2)
+     * Consequently we start recursing using the limit only at depth 2 already
+     */
+    const TRAVERSAL_STEPS_ALREADY_DONE = 2;
+    for (
+      let depth = 0;
+      depth <= maxDepth - TRAVERSAL_STEPS_ALREADY_DONE;
+      depth++
+    ) {
+      const { done, value } = dependenciesWalker.next();
+      if (done) {
+        return;
+      }
+      yield value;
+    }
+  }
+
+  private *findDeepAdjacentVerticesDependencies(
     rootVertex: Vertex,
-    traversedVertex: Vertex
+    traversedVertex: Vertex,
+    depthLimit: number
   ): Generator<string> {
     yield traversedVertex.id;
 
@@ -69,17 +120,37 @@ export class Dag<Vertex extends VertexDefinition<VertexPayload>> {
     for (const adjacentVertexId of traversedVertex.adjacentTo) {
       const adjacentVertex = this.#vertices.get(adjacentVertexId);
       if (adjacentVertex) {
-        yield* this.flattenAdjacentVerticesDependencies(
-          rootVertex,
-          adjacentVertex
+        yield* this.limitCycleDetectionDepth(
+          this.findDeepAdjacentVerticesDependencies(
+            rootVertex,
+            adjacentVertex,
+            depthLimit
+          ),
+          depthLimit
         );
       }
     }
   }
 
-  findCycles(): { hasCycles: boolean; cycles: string[][] } {
+  get isAcyclic(): boolean {
+    return !this.findCycles().hasCycles;
+  }
+
+  findCycles(
+    { maxDepth }: { maxDepth: number } = { maxDepth: Number.POSITIVE_INFINITY }
+  ): {
+    hasCycles: boolean;
+    cycles: VertexId[][];
+  } {
     let hasCycles = false;
-    const cycles: string[][] = [];
+    const cycles: VertexId[][] = [];
+
+    if (maxDepth && maxDepth === 0) {
+      return {
+        hasCycles,
+        cycles
+      };
+    }
     /**
      * Vertex's id is used to detect cycle dependencies by comparing
      * each children vertex's id with the root vertex id.
@@ -89,33 +160,29 @@ export class Dag<Vertex extends VertexDefinition<VertexPayload>> {
     for (const [rootVertexId, rootVertexValue] of this.#vertices.entries()) {
       for (const adjacentVertexId of rootVertexValue.adjacentTo) {
         const adjacentVertex = this.#vertices.get(adjacentVertexId);
-        const adjacentVerticesIds: string[] = [];
+        const adjacentVerticesIds: VertexId[] = [];
 
         if (adjacentVertex) {
           adjacentVerticesIds.push(
-            ...this.flattenAdjacentVerticesDependencies(
+            ...this.findDeepAdjacentVerticesDependencies(
               rootVertexValue,
-              adjacentVertex
+              adjacentVertex,
+              maxDepth
             )
           );
         }
 
         const vertexHasCycleDependency =
           adjacentVerticesIds.includes(rootVertexId);
+
         if (vertexHasCycleDependency) {
           hasCycles = true;
-          const uniqueAdjacentVerticesIds = [...new Set(adjacentVerticesIds)];
           const isCycleAlreadyAdded = cycles.some(
-            (cycle) => difference(cycle, uniqueAdjacentVerticesIds).length === 0
+            (cycle) => difference(cycle, adjacentVerticesIds).length === 0
           );
 
           if (!isCycleAlreadyAdded) {
-            /**
-             * We wan't to reverse so the cycle is in a logic order, otherwise
-             * all edges would seem inverted because of the implemented
-             * Graph structure.
-             */
-            cycles.push(uniqueAdjacentVerticesIds.reverse());
+            cycles.push(adjacentVerticesIds);
           }
         }
       }
@@ -125,21 +192,5 @@ export class Dag<Vertex extends VertexDefinition<VertexPayload>> {
       hasCycles,
       cycles
     };
-  }
-
-  getAdjacentVerticesTo(rootVertex: Vertex): Vertex[] {
-    return [...this.#vertices.values()].filter((vertex) =>
-      rootVertex.adjacentTo.includes(vertex.id)
-    );
-  }
-
-  /**
-   * In order to allow bottom-to-top traversals, we provide this method allowing
-   * us to know all vertices depending on the provided rootVertex.
-   */
-  getAdjacentVerticesFrom(rootVertex: Vertex): Vertex[] {
-    return [...this.#vertices.values()].filter((vertex) =>
-      vertex.adjacentTo.includes(rootVertex.id)
-    );
   }
 }

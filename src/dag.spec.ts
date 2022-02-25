@@ -8,7 +8,7 @@ import { VertexDefinition } from "./vertex.js";
 
 type Vertex = VertexDefinition<any>;
 
-describe("Directed Acyclic Graph Implementation", () => {
+describe("Directed Graph Implementation", () => {
   describe("When adding vertices to the graph", () => {
     it("should avoid duplicates by adding only vertices with unique ids", () => {
       const dag = new Dag();
@@ -100,7 +100,7 @@ describe("Directed Acyclic Graph Implementation", () => {
     });
   });
 
-  describe("When traversing the DAG", () => {
+  describe("When traversing the graph", () => {
     it("should find all adjacent vertices OF a given vertex", () => {
       const dag = new Dag();
       const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
@@ -137,131 +137,145 @@ describe("Directed Acyclic Graph Implementation", () => {
     });
   });
 
-  describe("When searching for cycles", () => {
-    it("should not find a cycle between vertices with no edges pointing to each other", () => {
-      const dag = new Dag();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-      const vertexC: Vertex = { id: "b", adjacentTo: [], payload: {} };
+  describe("When detecting cycles between edges paths", () => {
+    describe("When using infinite depth limit for detection", () => {
+      it("should not detect a cycle between vertices with no edges pointing to each other", () => {
+        const dag = new Dag();
+        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+        const vertexC: Vertex = { id: "b", adjacentTo: [], payload: {} };
 
-      dag.addVertices(vertexA, vertexB, vertexC);
+        dag.addVertices(vertexA, vertexB, vertexC);
 
-      dag.addEdge({ from: vertexA, to: vertexB });
-      expect(dag.findCycles().hasCycles).to.equal(false);
+        dag.addEdge({ from: vertexA, to: vertexB });
+        expect(dag.findCycles().hasCycles).to.equal(false);
 
-      dag.addEdge({ from: vertexB, to: vertexC });
-      expect(dag.findCycles().hasCycles).to.equal(false);
+        dag.addEdge({ from: vertexB, to: vertexC });
+        expect(dag.findCycles().hasCycles).to.equal(false);
+      });
+
+      it("should detect a cycle of depth 1 between vertices with edges pointing to each other", () => {
+        const dag = new Dag();
+        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+
+        dag.addVertices(vertexA, vertexB);
+
+        dag.addEdge({ from: vertexA, to: vertexB });
+        expect(dag.findCycles().hasCycles).to.equal(false);
+
+        dag.addEdge({ from: vertexB, to: vertexA });
+        expect(dag.findCycles().hasCycles).to.equal(true);
+      });
+
+      it("should detect a cycle of depth 2 between vertices with edges pointing to each other", () => {
+        const dag = new Dag();
+        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+        const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+        const vertexD: Vertex = {
+          id: "d",
+          adjacentTo: [],
+          payload: {}
+        };
+
+        dag.addVertices(vertexA, vertexB, vertexC, vertexD);
+        dag.addEdge({ from: vertexA, to: vertexB });
+        dag.addEdge({ from: vertexB, to: vertexC });
+        dag.addEdge({ from: vertexC, to: vertexD });
+        expect(dag.findCycles().hasCycles).to.equal(false);
+
+        dag.addEdge({ from: vertexD, to: vertexA }); // D ----> A => cycle between A and D traversing B, C
+        expect(dag.findCycles().hasCycles).to.equal(true);
+      });
+
+      it("should trace cycles paths of any given depth", () => {
+        const dag = new Dag();
+        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+        const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+        const vertexD: Vertex = {
+          id: "d",
+          adjacentTo: [],
+          payload: {}
+        };
+
+        dag.addVertices(vertexA, vertexB, vertexC, vertexD);
+        dag.addEdge({ from: vertexC, to: vertexD });
+        dag.addEdge({ from: vertexB, to: vertexC });
+        dag.addEdge({ from: vertexA, to: vertexB });
+        dag.addEdge({ from: vertexD, to: vertexA }); // D ----> A => cycle between A and D traversing B, C
+
+        expect(dag.findCycles().cycles).to.deep.equal([["b", "c", "d", "a"]]);
+      });
+
+      it("should keep only one occurrence of a same cycle path", () => {
+        const dag = new Dag();
+
+        const fileA = {
+          id: "A.js",
+          adjacentTo: [],
+          payload: { fileContent: "import FunctionB from 'B.js';" }
+        };
+        const fileB = {
+          id: "B.js",
+          adjacentTo: [],
+          payload: { fileContent: "import FunctionC from 'C.js';" }
+        };
+        const fileC = {
+          id: "C.js",
+          adjacentTo: [],
+          payload: { fileContent: "import FunctionA from 'A.js';" }
+        };
+
+        dag.addVertices(fileA, fileB, fileC);
+        dag.addEdge({ from: fileA, to: fileB });
+        dag.addEdge({ from: fileB, to: fileC });
+        dag.addEdge({ from: fileC, to: fileA });
+
+        expect(dag.findCycles().cycles.length).to.equal(1);
+        expect(dag.findCycles().cycles).to.deep.equal([
+          ["B.js", "C.js", "A.js"]
+        ]);
+      });
     });
 
-    it("should find a cycle of depth 1 between vertices with edges pointing to each other", () => {
-      const dag = new Dag();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+    describe("When providing a max depth limit for detection", () => {
+      it("should not detect any cycle as the specified depth is zero", () => {
+        const dag = new Dag();
+        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
 
-      dag.addVertices(vertexA, vertexB);
+        dag.addVertices(vertexA, vertexB);
+        dag.addEdge({ from: vertexA, to: vertexB });
+        dag.addEdge({ from: vertexB, to: vertexA });
+        expect(dag.findCycles({ maxDepth: 0 }).hasCycles).to.equal(false);
+      });
 
-      dag.addEdge({ from: vertexA, to: vertexB });
-      expect(dag.findCycles().hasCycles).to.equal(false);
+      it("should detect the cycle only when the specified depth is greather than or equal to the depth of the cycle", () => {
+        const dag = new Dag();
+        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+        const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+        const vertexD: Vertex = {
+          id: "d",
+          adjacentTo: [],
+          payload: {}
+        };
 
-      dag.addEdge({ from: vertexB, to: vertexA });
-      expect(dag.findCycles().hasCycles).to.equal(true);
-    });
+        dag.addVertices(vertexA, vertexB, vertexC, vertexD);
+        dag.addEdge({ from: vertexA, to: vertexB });
+        dag.addEdge({ from: vertexB, to: vertexC });
+        dag.addEdge({ from: vertexC, to: vertexD });
+        expect(dag.findCycles().hasCycles).to.equal(false);
 
-    it("should find a cycle of depth 2 between vertices with edges pointing to each other", () => {
-      const dag = new Dag();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-      const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
-      const vertexD: Vertex = {
-        id: "d",
-        adjacentTo: [],
-        payload: {}
-      };
-
-      dag.addVertices(vertexA, vertexB, vertexC, vertexD);
-      dag.addEdge({ from: vertexA, to: vertexB });
-      dag.addEdge({ from: vertexB, to: vertexC });
-      dag.addEdge({ from: vertexC, to: vertexD });
-      expect(dag.findCycles().hasCycles).to.equal(false);
-
-      dag.addEdge({ from: vertexD, to: vertexA }); // D ----> A => cycle between A and D traversing B, C
-      expect(dag.findCycles().hasCycles).to.equal(true);
-    });
-
-    it("should find a cycle between vertices with edges towards each other independently of the add order", () => {
-      const dag = new Dag();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-      const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
-      const vertexD: Vertex = {
-        id: "d",
-        adjacentTo: [],
-        payload: {}
-      };
-
-      dag.addVertices(vertexA, vertexB, vertexC, vertexD);
-      dag.addEdge({ from: vertexC, to: vertexD });
-      dag.addEdge({ from: vertexB, to: vertexC });
-      dag.addEdge({ from: vertexA, to: vertexB });
-      expect(dag.findCycles().hasCycles).to.equal(false);
-
-      dag.addEdge({ from: vertexD, to: vertexA }); // D ----> A => cycle between A and D traversing B, C
-      expect(dag.findCycles().hasCycles).to.equal(true);
-    });
-
-    it("should trace cycles paths of any given depth", () => {
-      const dag = new Dag();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-      const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
-      const vertexD: Vertex = {
-        id: "d",
-        adjacentTo: [],
-        payload: {}
-      };
-
-      dag.addVertices(vertexA, vertexB, vertexC, vertexD);
-      dag.addEdge({ from: vertexC, to: vertexD });
-      dag.addEdge({ from: vertexB, to: vertexC });
-      dag.addEdge({ from: vertexA, to: vertexB });
-      dag.addEdge({ from: vertexD, to: vertexA }); // D ----> A => cycle between A and D traversing B, C
-
-      expect(dag.findCycles().cycles).to.deep.equal([["a", "d", "c", "b"]]);
-    });
-
-    it("should keep only one occurrence of a same cycle path", () => {
-      const dag = new Dag();
-
-      const fileA = {
-        id: "A.js",
-        adjacentTo: [],
-        payload: { fileContent: "import FunctionB from 'B.js';" }
-      };
-      const fileB = {
-        id: "B.js",
-        adjacentTo: [],
-        payload: { fileContent: "import FunctionC from 'C.js';" }
-      };
-      const fileC = {
-        id: "C.js",
-        adjacentTo: [],
-        payload: { fileContent: "import FunctionA from 'A.js';" }
-      };
-
-      dag.addVertices(fileA, fileB, fileC);
-      dag.addEdge({ from: fileA, to: fileB });
-      dag.addEdge({ from: fileB, to: fileC });
-      dag.addEdge({ from: fileC, to: fileA });
-
-      /**
-       * With the above graph structure, two different cycles are
-       * found: A->C->B and B->A->C
-       * It appears that these cycles belong to the same global cycle.
-       * Consequently we must keep only one occurrence of this cycle (i.e:
-       * keeping the first occurrence encountered).
-       */
-      expect(dag.findCycles().cycles.length).to.equal(1);
-      expect(dag.findCycles().cycles).to.deep.equal([["A.js", "C.js", "B.js"]]);
+        dag.addEdge({ from: vertexD, to: vertexA });
+        expect(dag.findCycles({ maxDepth: 1 }).hasCycles).to.equal(false);
+        expect(dag.findCycles({ maxDepth: 2 }).hasCycles).to.equal(false);
+        expect(dag.findCycles({ maxDepth: 3 }).hasCycles).to.equal(false);
+        expect(dag.findCycles({ maxDepth: 4 }).hasCycles).to.equal(true);
+        expect(dag.findCycles({ maxDepth: 20 }).hasCycles).to.equal(true);
+      });
     });
   });
 

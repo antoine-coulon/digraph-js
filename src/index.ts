@@ -1,2 +1,2 @@
-export { Dag } from "./dag.js";
+export { DiGraph } from "./digraph.js";
 export type { VertexDefinition, VertexId, VertexPayload } from "./vertex.js";

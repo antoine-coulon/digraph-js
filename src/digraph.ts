@@ -3,7 +3,7 @@ import uniqBy from "lodash.uniqby";
 
 import { VertexDefinition, VertexId, VertexPayload } from "./vertex.js";
 
-export class Dag<Vertex extends VertexDefinition<VertexPayload>> {
+export class DiGraph<Vertex extends VertexDefinition<VertexPayload>> {
   #vertices: Map<VertexId, Vertex>;
 
   constructor() {

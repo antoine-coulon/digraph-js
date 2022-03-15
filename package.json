@@ -1,6 +1,6 @@
 {
   "name": "digraph-js",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Fully exploit Directed Graph data structure",
   "author": "Antoine Coulon",
   "license": "MIT",

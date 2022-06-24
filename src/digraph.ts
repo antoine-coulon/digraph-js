@@ -33,6 +33,14 @@ export class DiGraph<Vertex extends VertexDefinition<VertexPayload>> {
     }
   }
 
+  hasVertex(vertexId: string): boolean {
+    return this.#vertices.has(vertexId);
+  }
+
+  addVertex(vertex: Vertex): void {
+    this.#vertices.set(vertex.id, vertex);
+  }
+
   addVertices(...vertices: Vertex[]): void {
     const verticesWithUniqueId = uniqBy(vertices, "id");
     const graphVerticesIds = Object.keys(this.#vertices);

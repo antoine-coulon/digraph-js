@@ -11,6 +11,19 @@ type Vertex = VertexDefinition<any>;
 
 describe("Directed Graph Implementation", () => {
   describe("When adding vertices to the graph", () => {
+    it("should add the given vertex to the graph", () => {
+      const digraph = new DiGraph();
+      const vertexA: Vertex = {
+        id: "a",
+        adjacentTo: [],
+        body: {}
+      };
+
+      digraph.addVertex(vertexA);
+
+      expect(digraph.hasVertex(vertexA.id)).to.equal(true);
+    });
+
     it("should avoid duplicates by adding only vertices with unique ids", () => {
       const digraph = new DiGraph();
       const vertexA: Vertex = {

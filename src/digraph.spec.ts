@@ -1,6 +1,7 @@
 /* eslint-disable no-inline-comments */
 /* eslint-disable line-comment-position */
 /* eslint-disable max-nested-callbacks */
+
 import { expect } from "chai";
 
 import { DiGraph } from "./digraph.js";
@@ -54,10 +55,11 @@ describe("Directed Graph Implementation", () => {
       const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
 
       digraph.addVertices(vertexA, vertexB, vertexC);
-      digraph.addEdge({ from: vertexB, to: vertexA });
+      digraph.addEdge({ from: vertexB.id, to: vertexA.id });
       expect(vertexB.adjacentTo).deep.equal([vertexA.id]);
 
-      digraph.addEdge({ from: vertexB, to: vertexC });
+      digraph.addEdge({ from: vertexB.id, to: vertexC.id });
+      digraph.addVertices(vertexA, vertexB, vertexC);
       expect(vertexB.adjacentTo).deep.equal([vertexA.id, vertexC.id]);
     });
 
@@ -67,7 +69,17 @@ describe("Directed Graph Implementation", () => {
       const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
 
       digraph.addVertices(vertexA);
-      digraph.addEdge({ from: vertexA, to: vertexB });
+      digraph.addEdge({ from: vertexA.id, to: vertexB.id });
+      expect(vertexA.adjacentTo).deep.equal([]);
+    });
+
+    it("should create a vertex when adding an edge with a node not already added in the graph", () => {
+      const digraph = new DiGraph();
+      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
+      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+
+      digraph.addVertices(vertexA);
+      digraph.addEdge({ from: vertexA.id, to: vertexB.id });
       expect(vertexA.adjacentTo).deep.equal([]);
     });
 
@@ -77,15 +89,15 @@ describe("Directed Graph Implementation", () => {
       const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
 
       digraph.addVertices(vertexA, vertexB);
-      digraph.addEdge({ from: vertexB, to: vertexA });
-      digraph.addEdge({ from: vertexB, to: vertexA });
+      digraph.addEdge({ from: vertexB.id, to: vertexA.id });
+      digraph.addEdge({ from: vertexB.id, to: vertexA.id });
 
       expect(vertexB.adjacentTo).deep.equal([vertexA.id]);
 
       const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
       digraph.addVertices(vertexC);
-      digraph.addEdge({ from: vertexB, to: vertexC });
-      digraph.addEdge({ from: vertexB, to: vertexC });
+      digraph.addEdge({ from: vertexB.id, to: vertexC.id });
+      digraph.addEdge({ from: vertexB.id, to: vertexC.id });
       expect(vertexB.adjacentTo).deep.equal([vertexA.id, vertexC.id]);
     });
 
@@ -94,7 +106,7 @@ describe("Directed Graph Implementation", () => {
       const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
 
       digraph.addVertices(vertexA);
-      digraph.addEdge({ from: vertexA, to: vertexA });
+      digraph.addEdge({ from: vertexA.id, to: vertexA.id });
 
       expect(vertexA.adjacentTo).to.deep.equal([]);
     });
@@ -110,11 +122,11 @@ describe("Directed Graph Implementation", () => {
 
       digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
 
-      digraph.addEdge({ from: vertexB, to: vertexA });
+      digraph.addEdge({ from: vertexB.id, to: vertexA.id });
       expect(digraph.getAdjacentVerticesTo(vertexB)).deep.equal([vertexA]);
 
-      digraph.addEdge({ from: vertexD, to: vertexA });
-      digraph.addEdge({ from: vertexD, to: vertexC });
+      digraph.addEdge({ from: vertexD.id, to: vertexA.id });
+      digraph.addEdge({ from: vertexD.id, to: vertexC.id });
       expect(digraph.getAdjacentVerticesTo(vertexD)).deep.equal([
         vertexA,
         vertexC
@@ -129,10 +141,10 @@ describe("Directed Graph Implementation", () => {
 
       digraph.addVertices(vertexA, vertexB, vertexC);
 
-      digraph.addEdge({ from: vertexA, to: vertexB });
+      digraph.addEdge({ from: vertexA.id, to: vertexB.id });
       expect(digraph.getAdjacentVerticesFrom(vertexB)).to.deep.equal([vertexA]);
 
-      digraph.addEdge({ from: vertexC, to: vertexB });
+      digraph.addEdge({ from: vertexC.id, to: vertexB.id });
       expect(digraph.getAdjacentVerticesFrom(vertexB)).to.deep.equal([
         vertexA,
         vertexC
@@ -146,14 +158,14 @@ describe("Directed Graph Implementation", () => {
         const digraph = new DiGraph();
         const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
         const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-        const vertexC: Vertex = { id: "b", adjacentTo: [], payload: {} };
+        const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
 
         digraph.addVertices(vertexA, vertexB, vertexC);
 
-        digraph.addEdge({ from: vertexA, to: vertexB });
+        digraph.addEdge({ from: vertexA.id, to: vertexB.id });
         expect(digraph.findCycles().hasCycles).to.equal(false);
 
-        digraph.addEdge({ from: vertexB, to: vertexC });
+        digraph.addEdge({ from: vertexB.id, to: vertexC.id });
         expect(digraph.findCycles().hasCycles).to.equal(false);
       });
 
@@ -164,10 +176,10 @@ describe("Directed Graph Implementation", () => {
 
         digraph.addVertices(vertexA, vertexB);
 
-        digraph.addEdge({ from: vertexA, to: vertexB });
+        digraph.addEdge({ from: vertexA.id, to: vertexB.id });
         expect(digraph.findCycles().hasCycles).to.equal(false);
 
-        digraph.addEdge({ from: vertexB, to: vertexA });
+        digraph.addEdge({ from: vertexB.id, to: vertexA.id });
         expect(digraph.findCycles().hasCycles).to.equal(true);
       });
 
@@ -183,12 +195,12 @@ describe("Directed Graph Implementation", () => {
         };
 
         digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
-        digraph.addEdge({ from: vertexA, to: vertexB });
-        digraph.addEdge({ from: vertexB, to: vertexC });
-        digraph.addEdge({ from: vertexC, to: vertexD });
+        digraph.addEdge({ from: vertexA.id, to: vertexB.id });
+        digraph.addEdge({ from: vertexB.id, to: vertexC.id });
+        digraph.addEdge({ from: vertexC.id, to: vertexD.id });
         expect(digraph.findCycles().hasCycles).to.equal(false);
 
-        digraph.addEdge({ from: vertexD, to: vertexA }); // D ----> A => cycle between A and D traversing B, C
+        digraph.addEdge({ from: vertexD.id, to: vertexA.id }); // D ----> A => cycle between A and D traversing B, C
         expect(digraph.findCycles().hasCycles).to.equal(true);
       });
 
@@ -204,10 +216,10 @@ describe("Directed Graph Implementation", () => {
         };
 
         digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
-        digraph.addEdge({ from: vertexC, to: vertexD });
-        digraph.addEdge({ from: vertexB, to: vertexC });
-        digraph.addEdge({ from: vertexA, to: vertexB });
-        digraph.addEdge({ from: vertexD, to: vertexA }); // D ----> A => cycle between A and D traversing B, C
+        digraph.addEdge({ from: vertexC.id, to: vertexD.id });
+        digraph.addEdge({ from: vertexB.id, to: vertexC.id });
+        digraph.addEdge({ from: vertexA.id, to: vertexB.id });
+        digraph.addEdge({ from: vertexD.id, to: vertexA.id }); // D ----> A => cycle between A and D traversing B, C
 
         expect(digraph.findCycles().cycles).to.deep.equal([
           ["b", "c", "d", "a"]
@@ -234,9 +246,9 @@ describe("Directed Graph Implementation", () => {
         };
 
         digraph.addVertices(fileA, fileB, fileC);
-        digraph.addEdge({ from: fileA, to: fileB });
-        digraph.addEdge({ from: fileB, to: fileC });
-        digraph.addEdge({ from: fileC, to: fileA });
+        digraph.addEdge({ from: fileA.id, to: fileB.id });
+        digraph.addEdge({ from: fileB.id, to: fileC.id });
+        digraph.addEdge({ from: fileC.id, to: fileA.id });
 
         expect(digraph.findCycles().cycles.length).to.equal(1);
         expect(digraph.findCycles().cycles).to.deep.equal([
@@ -252,8 +264,8 @@ describe("Directed Graph Implementation", () => {
         const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
 
         digraph.addVertices(vertexA, vertexB);
-        digraph.addEdge({ from: vertexA, to: vertexB });
-        digraph.addEdge({ from: vertexB, to: vertexA });
+        digraph.addEdge({ from: vertexA.id, to: vertexB.id });
+        digraph.addEdge({ from: vertexB.id, to: vertexA.id });
         expect(digraph.findCycles({ maxDepth: 0 }).hasCycles).to.equal(false);
       });
 
@@ -269,12 +281,12 @@ describe("Directed Graph Implementation", () => {
         };
 
         digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
-        digraph.addEdge({ from: vertexA, to: vertexB });
-        digraph.addEdge({ from: vertexB, to: vertexC });
-        digraph.addEdge({ from: vertexC, to: vertexD });
+        digraph.addEdge({ from: vertexA.id, to: vertexB.id });
+        digraph.addEdge({ from: vertexB.id, to: vertexC.id });
+        digraph.addEdge({ from: vertexC.id, to: vertexD.id });
         expect(digraph.findCycles().hasCycles).to.equal(false);
 
-        digraph.addEdge({ from: vertexD, to: vertexA });
+        digraph.addEdge({ from: vertexD.id, to: vertexA.id });
         expect(digraph.findCycles({ maxDepth: 1 }).hasCycles).to.equal(false);
         expect(digraph.findCycles({ maxDepth: 2 }).hasCycles).to.equal(false);
         expect(digraph.findCycles({ maxDepth: 3 }).hasCycles).to.equal(false);

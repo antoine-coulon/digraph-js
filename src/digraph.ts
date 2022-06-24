@@ -14,14 +14,15 @@ export class DiGraph<Vertex extends VertexDefinition<VertexPayload>> {
     return Object.fromEntries(this.#vertices.entries());
   }
 
-  addEdge({ from, to }: { from: Vertex; to: Vertex }): void {
-    if (from.id === to.id) {
+  addEdge({ from, to }: { from: string; to: string }): void {
+    if (from === to) {
       return;
     }
     const [fromVertex, toVertex] = [
-      this.#vertices.get(from.id),
-      this.#vertices.get(to.id)
+      this.#vertices.get(from),
+      this.#vertices.get(to)
     ];
+
     if (fromVertex && toVertex) {
       const hasNotSameAdjacentVertex = !fromVertex.adjacentTo.find(
         (adjacentVertex) => adjacentVertex === toVertex.id

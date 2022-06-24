@@ -29,43 +29,43 @@ describe("Directed Graph Implementation", () => {
       const vertexA: Vertex = {
         id: "a",
         adjacentTo: [],
-        payload: {}
+        body: {}
       };
       const vertexB: Vertex = {
         id: "b",
         adjacentTo: [],
-        payload: {}
+        body: {}
       };
       const vertexC: Vertex = {
         id: "c",
         adjacentTo: [],
-        payload: {}
+        body: {}
       };
 
       digraph.addVertices(vertexA, vertexB, vertexC);
-      expect(digraph.asObject()).to.deep.equal({
-        a: { id: "a", adjacentTo: [], payload: {} },
-        b: { id: "b", adjacentTo: [], payload: {} },
-        c: { id: "c", adjacentTo: [], payload: {} }
+      expect(digraph.toRecord()).to.deep.equal({
+        a: { id: "a", adjacentTo: [], body: {} },
+        b: { id: "b", adjacentTo: [], body: {} },
+        c: { id: "c", adjacentTo: [], body: {} }
       });
-      expect(Object.keys(digraph.asObject()).length).to.equal(3);
+      expect(Object.keys(digraph.toRecord()).length).to.equal(3);
 
       const duplicatedVertexB: Vertex = {
         id: "b",
         adjacentTo: [],
-        payload: {}
+        body: {}
       };
       digraph.addVertices(duplicatedVertexB);
-      expect(Object.keys(digraph.asObject()).length).to.equal(3);
+      expect(Object.keys(digraph.toRecord()).length).to.equal(3);
     });
   });
 
   describe("When adding edges to the graph", () => {
     it("should add edges between vertices", () => {
       const digraph = new DiGraph();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-      const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+      const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+      const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
+      const vertexC: Vertex = { id: "c", adjacentTo: [], body: {} };
 
       digraph.addVertices(vertexA, vertexB, vertexC);
       digraph.addEdge({ from: vertexB.id, to: vertexA.id });
@@ -78,28 +78,22 @@ describe("Directed Graph Implementation", () => {
 
     it("should only add edges for vertices already added in the graph", () => {
       const digraph = new DiGraph();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+      const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+      const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
 
       digraph.addVertices(vertexA);
       digraph.addEdge({ from: vertexA.id, to: vertexB.id });
-      expect(vertexA.adjacentTo).deep.equal([]);
-    });
 
-    it("should create a vertex when adding an edge with a node not already added in the graph", () => {
-      const digraph = new DiGraph();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-
-      digraph.addVertices(vertexA);
-      digraph.addEdge({ from: vertexA.id, to: vertexB.id });
       expect(vertexA.adjacentTo).deep.equal([]);
+      expect(digraph.toRecord()).to.deep.equal({
+        a: { id: "a", adjacentTo: [], body: {} }
+      });
     });
 
     it("should not add duplicate edges", () => {
       const digraph = new DiGraph();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+      const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+      const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
 
       digraph.addVertices(vertexA, vertexB);
       digraph.addEdge({ from: vertexB.id, to: vertexA.id });
@@ -107,7 +101,7 @@ describe("Directed Graph Implementation", () => {
 
       expect(vertexB.adjacentTo).deep.equal([vertexA.id]);
 
-      const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+      const vertexC: Vertex = { id: "c", adjacentTo: [], body: {} };
       digraph.addVertices(vertexC);
       digraph.addEdge({ from: vertexB.id, to: vertexC.id });
       digraph.addEdge({ from: vertexB.id, to: vertexC.id });
@@ -116,7 +110,7 @@ describe("Directed Graph Implementation", () => {
 
     it("should not allow adding an edge from a vertex to the same vertex", () => {
       const digraph = new DiGraph();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
+      const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
 
       digraph.addVertices(vertexA);
       digraph.addEdge({ from: vertexA.id, to: vertexA.id });
@@ -128,10 +122,10 @@ describe("Directed Graph Implementation", () => {
   describe("When traversing the graph", () => {
     it("should find all adjacent vertices OF a given vertex", () => {
       const digraph = new DiGraph();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-      const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
-      const vertexD: Vertex = { id: "d", adjacentTo: [], payload: {} };
+      const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+      const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
+      const vertexC: Vertex = { id: "c", adjacentTo: [], body: {} };
+      const vertexD: Vertex = { id: "d", adjacentTo: [], body: {} };
 
       digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
 
@@ -148,9 +142,9 @@ describe("Directed Graph Implementation", () => {
 
     it("should find all adjacent vertices FROM a given vertex", () => {
       const digraph = new DiGraph();
-      const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-      const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-      const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+      const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+      const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
+      const vertexC: Vertex = { id: "c", adjacentTo: [], body: {} };
 
       digraph.addVertices(vertexA, vertexB, vertexC);
 
@@ -169,9 +163,9 @@ describe("Directed Graph Implementation", () => {
     describe("When using infinite depth limit for detection", () => {
       it("should not detect a cycle between vertices with no edges pointing to each other", () => {
         const digraph = new DiGraph();
-        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-        const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+        const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
+        const vertexC: Vertex = { id: "c", adjacentTo: [], body: {} };
 
         digraph.addVertices(vertexA, vertexB, vertexC);
 
@@ -180,12 +174,14 @@ describe("Directed Graph Implementation", () => {
 
         digraph.addEdge({ from: vertexB.id, to: vertexC.id });
         expect(digraph.findCycles().hasCycles).to.equal(false);
+
+        console.log(digraph.toRecord());
       });
 
       it("should detect a cycle of depth 1 between vertices with edges pointing to each other", () => {
         const digraph = new DiGraph();
-        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+        const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
 
         digraph.addVertices(vertexA, vertexB);
 
@@ -198,13 +194,13 @@ describe("Directed Graph Implementation", () => {
 
       it("should detect a cycle of depth 2 between vertices with edges pointing to each other", () => {
         const digraph = new DiGraph();
-        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-        const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+        const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
+        const vertexC: Vertex = { id: "c", adjacentTo: [], body: {} };
         const vertexD: Vertex = {
           id: "d",
           adjacentTo: [],
-          payload: {}
+          body: {}
         };
 
         digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
@@ -219,13 +215,13 @@ describe("Directed Graph Implementation", () => {
 
       it("should trace cycles paths of any given depth", () => {
         const digraph = new DiGraph();
-        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-        const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+        const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
+        const vertexC: Vertex = { id: "c", adjacentTo: [], body: {} };
         const vertexD: Vertex = {
           id: "d",
           adjacentTo: [],
-          payload: {}
+          body: {}
         };
 
         digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
@@ -245,17 +241,17 @@ describe("Directed Graph Implementation", () => {
         const fileA = {
           id: "A.js",
           adjacentTo: [],
-          payload: { fileContent: "import FunctionB from 'B.js';" }
+          body: { fileContent: "import FunctionB from 'B.js';" }
         };
         const fileB = {
           id: "B.js",
           adjacentTo: [],
-          payload: { fileContent: "import FunctionC from 'C.js';" }
+          body: { fileContent: "import FunctionC from 'C.js';" }
         };
         const fileC = {
           id: "C.js",
           adjacentTo: [],
-          payload: { fileContent: "import FunctionA from 'A.js';" }
+          body: { fileContent: "import FunctionA from 'A.js';" }
         };
 
         digraph.addVertices(fileA, fileB, fileC);
@@ -273,8 +269,8 @@ describe("Directed Graph Implementation", () => {
     describe("When providing a max depth limit for detection", () => {
       it("should not detect any cycle as the specified depth is zero", () => {
         const digraph = new DiGraph();
-        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+        const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
 
         digraph.addVertices(vertexA, vertexB);
         digraph.addEdge({ from: vertexA.id, to: vertexB.id });
@@ -284,13 +280,13 @@ describe("Directed Graph Implementation", () => {
 
       it("should detect the cycle only when the specified depth is greather than or equal to the depth of the cycle", () => {
         const digraph = new DiGraph();
-        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
-        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
-        const vertexC: Vertex = { id: "c", adjacentTo: [], payload: {} };
+        const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
+        const vertexC: Vertex = { id: "c", adjacentTo: [], body: {} };
         const vertexD: Vertex = {
           id: "d",
           adjacentTo: [],
-          payload: {}
+          body: {}
         };
 
         digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
@@ -313,20 +309,20 @@ describe("Directed Graph Implementation", () => {
     describe("With no adjacent vertices (no dependencies)", () => {
       it("should only update one vertex with no dependencies", () => {
         const digraph = new DiGraph();
-        const vertexA: Vertex = { id: "a", adjacentTo: [], payload: {} };
+        const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
         const vertexE: Vertex = {
           id: "e",
           adjacentTo: [vertexA.id],
-          payload: {}
+          body: {}
         };
-        const vertexB: Vertex = { id: "b", adjacentTo: [], payload: {} };
+        const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
 
         digraph.addVertices(vertexA, vertexB, vertexE);
-        digraph.addMutation(vertexB, { payload: [] });
+        digraph.addMutation(vertexB, { body: [] });
 
-        expect(vertexB.payload).to.deep.equal({ payload: [] });
-        expect(vertexA.payload).to.deep.equal({});
-        expect(vertexE.payload).to.deep.equal({});
+        expect(vertexB.body).to.deep.equal({ body: [] });
+        expect(vertexA.body).to.deep.equal({});
+        expect(vertexE.body).to.deep.equal({});
       });
     });
   });

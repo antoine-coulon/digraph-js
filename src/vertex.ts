@@ -1,9 +1,9 @@
 export type VertexId = string;
 
-export type VertexPayload = Record<string, unknown>;
+export type VertexBody = Record<string, unknown>;
 
-export type VertexDefinition<Payload extends VertexPayload> = {
+export type VertexDefinition<Body extends VertexBody> = {
   id: VertexId;
   adjacentTo: VertexId[];
-  payload: Payload;
+  body: Body;
 };

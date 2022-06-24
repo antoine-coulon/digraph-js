@@ -1,23 +1,46 @@
 import difference from "lodash.difference";
 import uniqBy from "lodash.uniqby";
 
-import { VertexDefinition, VertexId, VertexPayload } from "./vertex.js";
+import { VertexDefinition, VertexId, VertexBody } from "./vertex.js";
 
-export class DiGraph<Vertex extends VertexDefinition<VertexPayload>> {
+export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   #vertices: Map<VertexId, Vertex>;
 
   constructor() {
     this.#vertices = new Map();
   }
 
-  asObject(): Record<VertexId, Vertex> {
+  public get isAcyclic(): boolean {
+    return !this.findCycles().hasCycles;
+  }
+
+  public toRecord(): Record<VertexId, Vertex> {
     return Object.fromEntries(this.#vertices.entries());
   }
 
-  addEdge({ from, to }: { from: string; to: string }): void {
+  public hasVertex(vertexId: string): boolean {
+    return this.#vertices.has(vertexId);
+  }
+
+  public addVertex(vertex: Vertex): void {
+    this.#vertices.set(vertex.id, vertex);
+  }
+
+  public addVertices(...vertices: Vertex[]): void {
+    const verticesWithUniqueId = uniqBy(vertices, "id");
+    const graphVerticesIds = Object.keys(this.#vertices);
+    const newUniqueVertices = verticesWithUniqueId.filter(
+      (vertex) => !graphVerticesIds.includes(vertex.id)
+    );
+
+    newUniqueVertices.forEach(this.addVertex.bind(this));
+  }
+
+  public addEdge({ from, to }: { from: string; to: string }): void {
     if (from === to) {
       return;
     }
+
     const [fromVertex, toVertex] = [
       this.#vertices.get(from),
       this.#vertices.get(to)
@@ -28,39 +51,19 @@ export class DiGraph<Vertex extends VertexDefinition<VertexPayload>> {
         (adjacentVertex) => adjacentVertex === toVertex.id
       );
       if (hasNotSameAdjacentVertex) {
-        fromVertex.adjacentTo = [...fromVertex.adjacentTo, toVertex.id];
+        fromVertex.adjacentTo = fromVertex.adjacentTo.concat(toVertex.id);
       }
     }
   }
 
-  hasVertex(vertexId: string): boolean {
-    return this.#vertices.has(vertexId);
-  }
-
-  addVertex(vertex: Vertex): void {
-    this.#vertices.set(vertex.id, vertex);
-  }
-
-  addVertices(...vertices: Vertex[]): void {
-    const verticesWithUniqueId = uniqBy(vertices, "id");
-    const graphVerticesIds = Object.keys(this.#vertices);
-    const newUniqueVertices = verticesWithUniqueId.filter(
-      (vertex) => !graphVerticesIds.includes(vertex.id)
-    );
-
-    newUniqueVertices.forEach((vertex) =>
-      this.#vertices.set(vertex.id, vertex)
-    );
-  }
-
-  addMutation<V extends VertexPayload>(
+  public addMutation<V extends VertexBody>(
     vertex: VertexDefinition<V>,
     value: V
   ): void {
     const rootVertexToMutate = this.#vertices.get(vertex.id);
 
     if (rootVertexToMutate) {
-      rootVertexToMutate.payload = value;
+      rootVertexToMutate.body = value;
     }
   }
 
@@ -71,7 +74,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexPayload>> {
    * // given A ---> B (i.e: A depends on B)
    * getAdjacentVerticesTo(A) === [ B ]
    */
-  getAdjacentVerticesTo(rootVertex: Vertex): Vertex[] {
+  public getAdjacentVerticesTo(rootVertex: Vertex): Vertex[] {
     return [...this.#vertices.values()].filter((vertex) =>
       rootVertex.adjacentTo.includes(vertex.id)
     );
@@ -84,68 +87,13 @@ export class DiGraph<Vertex extends VertexDefinition<VertexPayload>> {
    * // given A ---> B (i.e: A depends on B)
    * getAdjacentVerticesTo(B) === [ A ]
    */
-  getAdjacentVerticesFrom(rootVertex: Vertex): Vertex[] {
+  public getAdjacentVerticesFrom(rootVertex: Vertex): Vertex[] {
     return [...this.#vertices.values()].filter((vertex) =>
       vertex.adjacentTo.includes(rootVertex.id)
     );
   }
 
-  private *limitCycleDetectionDepth(
-    dependenciesWalker: Generator<string>,
-    maxDepth: number
-  ) {
-    /**
-     * At this point, we already traversed 2 levels of depth dependencies by:
-     * - accessing the root's node adjacency list (depth === 1)
-     * - then we continue by accessing the adjacent's node adjacency list (depth === 2)
-     * Consequently we start recursing using the limit only at depth 2 already
-     */
-    const TRAVERSAL_STEPS_ALREADY_DONE = 2;
-    for (
-      let depth = 0;
-      depth <= maxDepth - TRAVERSAL_STEPS_ALREADY_DONE;
-      depth++
-    ) {
-      const { done, value } = dependenciesWalker.next();
-      if (done) {
-        return;
-      }
-      yield value;
-    }
-  }
-
-  private *findDeepAdjacentVerticesDependencies(
-    rootVertex: Vertex,
-    traversedVertex: Vertex,
-    depthLimit: number
-  ): Generator<string> {
-    yield traversedVertex.id;
-
-    // Cycle reached, we must exit before entering in the infinite loop
-    if (rootVertex.id === traversedVertex.id) {
-      return;
-    }
-
-    for (const adjacentVertexId of traversedVertex.adjacentTo) {
-      const adjacentVertex = this.#vertices.get(adjacentVertexId);
-      if (adjacentVertex) {
-        yield* this.limitCycleDetectionDepth(
-          this.findDeepAdjacentVerticesDependencies(
-            rootVertex,
-            adjacentVertex,
-            depthLimit
-          ),
-          depthLimit
-        );
-      }
-    }
-  }
-
-  get isAcyclic(): boolean {
-    return !this.findCycles().hasCycles;
-  }
-
-  findCycles(
+  public findCycles(
     { maxDepth }: { maxDepth: number } = { maxDepth: Number.POSITIVE_INFINITY }
   ): {
     hasCycles: boolean;
@@ -201,5 +149,56 @@ export class DiGraph<Vertex extends VertexDefinition<VertexPayload>> {
       hasCycles,
       cycles
     };
+  }
+
+  private *limitCycleDetectionDepth(
+    dependenciesWalker: Generator<string>,
+    maxDepth: number
+  ) {
+    /**
+     * At this point, we already traversed 2 levels of depth dependencies by:
+     * - accessing the root's node adjacency list (depth === 1)
+     * - then we continue by accessing the adjacent's node adjacency list (depth === 2)
+     * Consequently we start recursing using the limit only at depth 2 already
+     */
+    const TRAVERSAL_STEPS_ALREADY_DONE = 2;
+    for (
+      let depth = 0;
+      depth <= maxDepth - TRAVERSAL_STEPS_ALREADY_DONE;
+      depth++
+    ) {
+      const { done, value } = dependenciesWalker.next();
+      if (done) {
+        return;
+      }
+      yield value;
+    }
+  }
+
+  private *findDeepAdjacentVerticesDependencies(
+    rootVertex: Vertex,
+    traversedVertex: Vertex,
+    depthLimit: number
+  ): Generator<string> {
+    yield traversedVertex.id;
+
+    // Cycle reached, we must exit before entering in the infinite loop
+    if (rootVertex.id === traversedVertex.id) {
+      return;
+    }
+
+    for (const adjacentVertexId of traversedVertex.adjacentTo) {
+      const adjacentVertex = this.#vertices.get(adjacentVertexId);
+      if (adjacentVertex) {
+        yield* this.limitCycleDetectionDepth(
+          this.findDeepAdjacentVerticesDependencies(
+            rootVertex,
+            adjacentVertex,
+            depthLimit
+          ),
+          depthLimit
+        );
+      }
+    }
   }
 }

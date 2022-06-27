@@ -1,4 +1,3 @@
-import difference from "lodash.difference";
 import uniqBy from "lodash.uniqby";
 
 import { VertexDefinition, VertexId, VertexBody } from "./vertex.js";
@@ -93,53 +92,60 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     );
   }
 
-  public findCycles(
-    { maxDepth }: { maxDepth: number } = { maxDepth: Number.POSITIVE_INFINITY }
-  ): {
+  public findCycles({ maxDepth } = { maxDepth: Number.POSITIVE_INFINITY }): {
     hasCycles: boolean;
-    cycles: VertexId[][];
+    cycles: VertexId[];
   } {
     let hasCycles = false;
-    const cycles: VertexId[][] = [];
+    const cycles: VertexId[] = [];
 
-    if (maxDepth && maxDepth === 0) {
+    if (maxDepth === 0) {
       return {
         hasCycles,
         cycles
       };
     }
     /**
-     * Vertex's id is used to detect cycle dependencies by comparing
-     * each children vertex's id with the root vertex id.
-     * If any children vertex's id has the id of the root vertex, we
-     * consider it as the same Vertex in the DAG hence forming a cycle.
+     * In order to detect circular dependencies, we compare
+     * each adjacent vertex's id with the root vertex (first added in the graph) id.
+     * If any adjacent vertex's id has the id of the root vertex, we can assert
+     * that the traversed path forms a cycle.
+     * While traversing the graph in a top-to-bottom maneer, we also check
+     * that there is no inner cycle from any vertex to any other vertex.
      */
-    for (const [rootVertexId, rootVertexValue] of this.#vertices.entries()) {
-      for (const adjacentVertexId of rootVertexValue.adjacentTo) {
-        const adjacentVertex = this.#vertices.get(adjacentVertexId);
-        const adjacentVerticesIds: VertexId[] = [];
-
-        if (adjacentVertex) {
-          adjacentVerticesIds.push(
-            ...this.findDeepAdjacentVerticesDependencies(
-              rootVertexValue,
-              adjacentVertex,
-              maxDepth
-            )
-          );
+    const cyclesWithDuplicates = [];
+    const verticesInvolvedInCycles = new Set<string>();
+    for (const [rootVertexId, rootVertex] of this.#vertices.entries()) {
+      for (const rootAdjacentVertexId of rootVertex.adjacentTo) {
+        const rootAdjacentVertex = this.#vertices.get(rootAdjacentVertexId);
+        if (!rootAdjacentVertex) {
+          continue;
         }
 
-        const vertexHasCycleDependency =
-          adjacentVerticesIds.includes(rootVertexId);
+        const adjacencyList = [];
+        for (const deepAdjacentVertex of this.findDeepAdjacentVerticesDependencies(
+          rootVertex,
+          rootAdjacentVertex,
+          [],
+          maxDepth
+        )) {
+          adjacencyList.push(deepAdjacentVertex);
 
-        if (vertexHasCycleDependency) {
-          hasCycles = true;
-          const isCycleAlreadyAdded = cycles.some(
-            (cycle) => difference(cycle, adjacentVerticesIds).length === 0
-          );
+          if (
+            deepAdjacentVertex === rootVertexId ||
+            adjacencyList.includes(rootVertexId)
+          ) {
+            hasCycles = true;
+            const cyclePath = adjacencyList.slice(
+              0,
+              adjacencyList.indexOf(rootVertexId) + 1
+            );
 
-          if (!isCycleAlreadyAdded) {
-            cycles.push(adjacentVerticesIds);
+            // eslint-disable-next-line max-depth
+            if (cyclePath.includes(deepAdjacentVertex)) {
+              verticesInvolvedInCycles.add(deepAdjacentVertex);
+              cyclesWithDuplicates.push(cyclePath);
+            }
           }
         }
       }
@@ -147,7 +153,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
 
     return {
       hasCycles,
-      cycles
+      cycles: [...verticesInvolvedInCycles]
     };
   }
 
@@ -175,12 +181,19 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     }
   }
 
+  // eslint-disable-next-line max-params
   private *findDeepAdjacentVerticesDependencies(
     rootVertex: Vertex,
     traversedVertex: Vertex,
+    alreadyTraversed: string[],
     depthLimit: number
   ): Generator<string> {
+    if (alreadyTraversed.includes(traversedVertex.id)) {
+      return;
+    }
+
     yield traversedVertex.id;
+    alreadyTraversed.push(traversedVertex.id);
 
     // Cycle reached, we must exit before entering in the infinite loop
     if (rootVertex.id === traversedVertex.id) {
@@ -194,6 +207,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
           this.findDeepAdjacentVerticesDependencies(
             rootVertex,
             adjacentVertex,
+            alreadyTraversed,
             depthLimit
           ),
           depthLimit

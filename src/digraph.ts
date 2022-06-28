@@ -1,5 +1,3 @@
-import uniqBy from "lodash.uniqby";
-
 import { VertexDefinition, VertexId, VertexBody } from "./vertex.js";
 
 export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
@@ -13,29 +11,32 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     return !this.findCycles().hasCycles;
   }
 
-  public toRecord(): Record<VertexId, Vertex> {
+  public toDict(): Record<VertexId, Vertex> {
     return Object.fromEntries(this.#vertices.entries());
   }
 
-  public hasVertex(vertexId: string): boolean {
+  public hasVertex(vertexId: VertexId): boolean {
     return this.#vertices.has(vertexId);
   }
 
   public addVertex(vertex: Vertex): void {
-    this.#vertices.set(vertex.id, vertex);
+    const graphVerticesIds = [...this.#vertices.keys()];
+
+    if (!graphVerticesIds.includes(vertex.id)) {
+      this.#vertices.set(vertex.id, vertex);
+    }
   }
 
   public addVertices(...vertices: Vertex[]): void {
-    const verticesWithUniqueId = uniqBy(vertices, "id");
-    const graphVerticesIds = Object.keys(this.#vertices);
-    const newUniqueVertices = verticesWithUniqueId.filter(
-      (vertex) => !graphVerticesIds.includes(vertex.id)
-    );
-
-    newUniqueVertices.forEach(this.addVertex.bind(this));
+    const graphVerticesIds = [...this.#vertices.keys()];
+    for (const uniqueVertex of this.keepUniqueVertices(vertices)) {
+      if (!graphVerticesIds.includes(uniqueVertex.id)) {
+        this.addVertex(uniqueVertex);
+      }
+    }
   }
 
-  public addEdge({ from, to }: { from: string; to: string }): void {
+  public addEdge({ from, to }: { from: VertexId; to: VertexId }): void {
     if (from === to) {
       return;
     }
@@ -55,14 +56,14 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     }
   }
 
-  public addMutation<V extends VertexBody>(
-    vertex: VertexDefinition<V>,
-    value: V
+  public updateVertexBody<Body extends VertexBody>(
+    vertex: VertexDefinition<Body>,
+    body: Body
   ): void {
     const rootVertexToMutate = this.#vertices.get(vertex.id);
 
     if (rootVertexToMutate) {
-      rootVertexToMutate.body = value;
+      rootVertexToMutate.body = body;
     }
   }
 
@@ -92,12 +93,55 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     );
   }
 
+  public *findDeepAdjacencyList(rootVertex: Vertex): Generator<VertexId> {
+    for (const adjacentVertexId of rootVertex.adjacentTo) {
+      const adjacentVertex = this.#vertices.get(adjacentVertexId);
+      if (!adjacentVertex) {
+        continue;
+      }
+
+      yield* this.findDeepAdjacentVerticesDependencies(
+        rootVertex,
+        adjacentVertex
+      );
+    }
+  }
+
+  public mutualPathExistsBetweenVertices(a: VertexId, b: VertexId): boolean {
+    const rootVertexA = this.#vertices.get(a);
+    const rootVertexB = this.#vertices.get(b);
+
+    if (!rootVertexA || !rootVertexB) {
+      return false;
+    }
+
+    const rootAdjacencyListOfA = rootVertexA.adjacentTo;
+    const rootAdjacencyListOfB = rootVertexB.adjacentTo;
+
+    if (rootAdjacencyListOfA.includes(b) && rootAdjacencyListOfB.includes(a)) {
+      // At root adjacency level (without checking in depth adjacent nodes),
+      // it exists a path from A to B and B to A, meaning there is a cycle
+      return true;
+    }
+
+    const deepAdjacencyListA = [...this.findDeepAdjacencyList(rootVertexA)];
+    const deepAdjacencyListB = [...this.findDeepAdjacencyList(rootVertexB)];
+
+    if (deepAdjacencyListA.includes(b) && deepAdjacencyListB.includes(a)) {
+      // At some depth in the graph (by checking in depth adjacent nodes),
+      // it exists a path from A to B and B to A, meaning there is a cycle
+      return true;
+    }
+
+    return false;
+  }
+
   public findCycles({ maxDepth } = { maxDepth: Number.POSITIVE_INFINITY }): {
     hasCycles: boolean;
-    cycles: VertexId[];
+    cycles: VertexId[][];
   } {
     let hasCycles = false;
-    const cycles: VertexId[] = [];
+    const cycles: VertexId[][] = [];
 
     if (maxDepth === 0) {
       return {
@@ -105,6 +149,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
         cycles
       };
     }
+
     /**
      * In order to detect circular dependencies, we compare
      * each adjacent vertex's id with the root vertex (first added in the graph) id.
@@ -113,8 +158,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
      * While traversing the graph in a top-to-bottom maneer, we also check
      * that there is no inner cycle from any vertex to any other vertex.
      */
-    const cyclesWithDuplicates = [];
-    const verticesInvolvedInCycles = new Set<string>();
+    const cyclicPathsWithMaybeDuplicates = [];
     for (const [rootVertexId, rootVertex] of this.#vertices.entries()) {
       for (const rootAdjacentVertexId of rootVertex.adjacentTo) {
         const rootAdjacentVertex = this.#vertices.get(rootAdjacentVertexId);
@@ -126,7 +170,6 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
         for (const deepAdjacentVertex of this.findDeepAdjacentVerticesDependencies(
           rootVertex,
           rootAdjacentVertex,
-          [],
           maxDepth
         )) {
           adjacencyList.push(deepAdjacentVertex);
@@ -143,8 +186,10 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
 
             // eslint-disable-next-line max-depth
             if (cyclePath.includes(deepAdjacentVertex)) {
-              verticesInvolvedInCycles.add(deepAdjacentVertex);
-              cyclesWithDuplicates.push(cyclePath);
+              const verticesInvolvedInTheCycle =
+                this.keepOnlyVerticesInvolvedInTheCycle(cyclePath);
+
+              cyclicPathsWithMaybeDuplicates.push(verticesInvolvedInTheCycle);
             }
           }
         }
@@ -153,12 +198,12 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
 
     return {
       hasCycles,
-      cycles: [...verticesInvolvedInCycles]
+      cycles: this.unifyCyclicPaths(cyclicPathsWithMaybeDuplicates)
     };
   }
 
   private *limitCycleDetectionDepth(
-    dependenciesWalker: Generator<string>,
+    dependenciesWalker: Generator<VertexId>,
     maxDepth: number
   ) {
     /**
@@ -185,9 +230,9 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   private *findDeepAdjacentVerticesDependencies(
     rootVertex: Vertex,
     traversedVertex: Vertex,
-    alreadyTraversed: string[],
-    depthLimit: number
-  ): Generator<string> {
+    depthLimit: number = Number.POSITIVE_INFINITY,
+    alreadyTraversed: VertexId[] = []
+  ): Generator<VertexId> {
     if (alreadyTraversed.includes(traversedVertex.id)) {
       return;
     }
@@ -207,11 +252,111 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
           this.findDeepAdjacentVerticesDependencies(
             rootVertex,
             adjacentVertex,
-            alreadyTraversed,
-            depthLimit
+            depthLimit,
+            alreadyTraversed
           ),
           depthLimit
         );
+      }
+    }
+  }
+
+  /**
+   * During the circular dependency detecting, cycles can be duplicated as
+   * the same cycle can be found in different paths or from starting from
+   * different vertices.
+   * This method unifies the duplicated cycles by keeping only one occurrence
+   * of a cyclic path e.g: [ ["d", "a", "b"], ["b", "a", "d"] ] are both
+   * representing the same cycle. Once we are sure about the fact that they
+   * are strictly equal, we can just keep one of the occurrences.
+   */
+  private unifyCyclicPaths(cyclicPaths: VertexId[][]): VertexId[][] {
+    const cyclicPathsAsSets = cyclicPaths.map(
+      (cyclicPath) => new Set(cyclicPath)
+    );
+
+    for (let i = 0; i < cyclicPathsAsSets.length; i++) {
+      for (let j = i + 1; j < cyclicPathsAsSets.length; j++) {
+        if (cyclicPathsAsSets[i].size === cyclicPathsAsSets[j].size) {
+          for (const vertex of cyclicPathsAsSets[j]) {
+            // eslint-disable-next-line max-depth
+            if (cyclicPathsAsSets[i].has(vertex)) {
+              cyclicPathsAsSets[j].delete(vertex);
+            }
+          }
+        }
+      }
+    }
+
+    return cyclicPathsAsSets
+      .map((cyclicPathAsSet) => Array.from(cyclicPathAsSet))
+      .filter((cyclicPath) => cyclicPath.length > 0);
+  }
+
+  /**
+   * Given a cyclic path (created from circular dependencies), we can check
+   * if each vertex is involved in it by verifying that it exists a path starting
+   * from it allowing to reach any other vertex in the list of vertices.
+   * For instance take the cyclic path ["a", "b", "c", "d"] in which the
+   * cycle is only involving "a", "b", "c":
+   * To filter out the vertices, we can check that "d" can reach "a", "b", "c".
+   * If that's not the case, "a" is surely not involved in the cycle.
+   */
+  private keepOnlyVerticesInvolvedInTheCycle(
+    verticesIdsInPath: VertexId[]
+  ): VertexId[] {
+    const numberOfVerticesThatShouldBeMatched = verticesIdsInPath.length - 1;
+    const verticesReallyInvolvedInTheCycle = [];
+    const matchesByVertex: Record<VertexId, number> = {};
+
+    for (let index = 0; index < verticesIdsInPath.length; index++) {
+      const currentVertexId = verticesIdsInPath[index];
+      const everyVerticesExceptCurrentOne = verticesIdsInPath.filter(
+        (_, idx) => idx !== index
+      );
+
+      if (!matchesByVertex[currentVertexId]) {
+        matchesByVertex[currentVertexId] = 0;
+      }
+
+      for (const otherVertexId of everyVerticesExceptCurrentOne) {
+        /**
+         * Given ["a", "b"], if we can go from "a" to "b" and back to "a",
+         * it means that it exists a cycle between the two vertices.
+         * Consequently, we can check if there is a "mutual path" between
+         * these two vertices.
+         */
+        if (
+          this.mutualPathExistsBetweenVertices(currentVertexId, otherVertexId)
+        ) {
+          matchesByVertex[currentVertexId]++;
+        }
+      }
+
+      /**
+       * Any vertex involved in the cyclic path should be able to find atleast
+       * a path to another vertex involved in the cycle. Vertices that are not able
+       * to do that are probably not involved in the cycle.
+       */
+      if (
+        matchesByVertex[currentVertexId] === numberOfVerticesThatShouldBeMatched
+      ) {
+        // We found paths from currentVertexId to every other vertex in the cycle.
+        verticesReallyInvolvedInTheCycle.push(currentVertexId);
+      }
+    }
+
+    return verticesReallyInvolvedInTheCycle;
+  }
+
+  private *keepUniqueVertices(vertices: Vertex[]): Generator<Vertex> {
+    const uniqueVerticesIds = new Set<VertexId>();
+
+    for (const vertex of vertices) {
+      if (!uniqueVerticesIds.has(vertex.id)) {
+        uniqueVerticesIds.add(vertex.id);
+
+        yield vertex;
       }
     }
   }

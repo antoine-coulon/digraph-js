@@ -3,8 +3,16 @@
   "version": "1.0.5",
   "type": "module",
   "main": "./dist/index.js",
+  "exports": {
+    "import": "./dist/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "description": "A dependency free library to create and traverse directed graphs",
-  "author": "Antoine Coulon",
+  "author": {
+    "name": "Antoine Coulon",
+    "url": "https://github.com/antoine-coulon"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -22,13 +30,16 @@
   ],
   "keywords": [
     "node",
+    "javascript",
+    "typescript",
     "nodejs",
     "node_modules",
     "tree",
     "npm",
     "graph",
     "visualization",
-    "dependencies"
+    "dependencies",
+    "lightweight"
   ],
   "scripts": {
     "prestart": "npm run build",

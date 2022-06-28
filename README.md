@@ -1,10 +1,9 @@
   
   # digraph-js ♽
   
-  Make Directed Graphs construction and manipulation easy, including cycle 
-  dependency detection and graph traversal.
+  Make Directed Graphs traversal and construction effortless, including deep circular dependency detection.
 
-  **digraph-js** is a lightweight library allowing you to create a directed graph structure with embedded features such as cycle dependency detection 
+  **digraph-js** is a lightweight and dependency free library allowing you to create a Directed Graph structure with embedded features such as deep cycle dependency detection 
   and graph introspection (finding ancestors and successors for any given vertices).
   It can be used to model your underlying system (can be a filesystem or simply objects)
   as a graph.
@@ -23,18 +22,19 @@
 
   const myGraph = new DiGraph();
 
-  const myDependencyA = { id: "dependencyA", adjacentTo: [], payload: {} };
-  const myDependencyB = { id: "dependencyB", adjacentTo: [], payload: {} };
+  const myDependencyA = { id: "dependencyA", adjacentTo: [], body: {} };
+  const myDependencyB = { id: "dependencyB", adjacentTo: [], body: {} };
 
   // Add vertices to the graph
   myGraph.addVertices(myDependencyA, myDependencyB);
 
   // Link graph vertices: A ---> B link created
-  myGraph.addEdge({ from: myDependencyA, to: myDependencyB });
+  myGraph.addEdge({ from: myDependencyA.id, to: myDependencyB.id });
 
   // Detect cycles (A ---> B and B ---> A)
-  myGraph.addEdge({ from: myDependencyB, to: myDependencyA });
+  myGraph.addEdge({ from: myDependencyB.id, to: myDependencyA.id });
 
+  // Detect if the Directed Graph is acyclic (Directed Acyclic Graph)
   assert.equal(myGraph.isAcyclic, false);
   assert.deepEqual(myGraph.findCycles().cycles, [ ["dependencyB", "dependencyA"] ]);
   ```

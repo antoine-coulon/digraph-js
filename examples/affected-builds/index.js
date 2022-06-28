@@ -6,7 +6,7 @@ import { DiGraph } from "../../dist/index.js";
 const lib1Metadata = {
   id: "lib1",
   adjacentTo: [],
-  payload: {
+  body: {
     component: `<lib3.MyLib3Component />`
   }
 };
@@ -14,13 +14,13 @@ const lib1Metadata = {
 const lib2Metadata = {
   id: "lib2",
   adjacentTo: [],
-  payload: { component: `<div>hello lib2</div>` }
+  body: { component: `<div>hello lib2</div>` }
 };
 
 const lib3Metadata = {
   id: "lib3",
   adjacentTo: [],
-  payload: { component: `<MyLib3Component>hello lib3</MyLib3Component>` }
+  body: { component: `<MyLib3Component>hello lib3</MyLib3Component>` }
 };
 
 /**
@@ -34,7 +34,7 @@ const lib3Metadata = {
 projectGraph.addVertices(lib1Metadata, lib2Metadata, lib3Metadata);
 
 // lib1 depends on lib3 so we need to express this relationship using an edge
-projectGraph.addEdge({ from: lib1Metadata, to: lib3Metadata });
+projectGraph.addEdge({ from: lib1Metadata.id, to: lib3Metadata.id });
 
 // Simulating a simple cache, persisting an hashed value of the component
 const cache = {
@@ -46,7 +46,7 @@ const cache = {
 function isLibraryAffected(library) {
   const libraryHashedContent = crypto
     .createHash("sha1")
-    .update(library.payload.component)
+    .update(library.body.component)
     .digest("hex");
 
   return libraryHashedContent !== cache[library.id].component;
@@ -55,7 +55,7 @@ function isLibraryAffected(library) {
 function buildLibrary(library) {
   const libraryHashedContent = crypto
     .createHash("sha1")
-    .update(library.payload.component)
+    .update(library.body.component)
     .digest("hex");
 
   console.log(`Building library: '${library.id}'`);
@@ -82,7 +82,7 @@ function buildAffected(library) {
 }
 
 function* buildAllRootLibraryDependencies(rootLibrary) {
-  for (const rootLibraryDependency of projectGraph.getAdjacentVerticesTo(
+  for (const rootLibraryDependency of projectGraph.getLowerDependencies(
     rootLibrary
   )) {
     /**
@@ -107,7 +107,7 @@ function* buildAllRootLibraryDependencies(rootLibrary) {
  */
 function buildEverythingAffectedIncludingRootLibrary(rootLibrary) {
   const rootLibraryDependencies =
-    projectGraph.getAdjacentVerticesTo(rootLibrary);
+    projectGraph.getLowerDependencies(rootLibrary);
   const allRebuiltLibraries = [];
 
   for (const dependencyLibrary of rootLibraryDependencies) {
@@ -153,7 +153,7 @@ function buildProjectUsingAffectedStrategy() {
    * Remember, lib1 depends on lib3 via the use of lib3.MyLib3Component.
    */
   console.log("Changing lib3's content...");
-  projectGraph.addMutation(lib3Metadata, {
+  projectGraph.updateVertexBody(lib3Metadata, {
     // lib3 component is updated 
     component: `<MyLib3Component>hello affected lib3!</MyLib3Component>`
   });

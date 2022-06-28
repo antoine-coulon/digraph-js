@@ -103,6 +103,23 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     );
   }
 
+  public getDeepLowerDependencies(rootVertex: Vertex): VertexId[] {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self = this;
+
+    function* getDeepDependencies() {
+      for (const adjacentVertexId of rootVertex.adjacentTo) {
+        const adjacentVertex = self.#vertices.get(adjacentVertexId);
+
+        if (adjacentVertex) {
+          yield* self.findDeepDependencies("lower", rootVertex, adjacentVertex);
+        }
+      }
+    }
+
+    return Array.from(new Set([...getDeepDependencies()]));
+  }
+
   /**
    * In order to allow bottom-to-top traversals, we provide this method allowing
    * us to know all vertices depending on the provided root vertex.
@@ -116,6 +133,19 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     );
   }
 
+  public getDeepUpperDependencies(rootVertex: Vertex): VertexId[] {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self = this;
+
+    function* getDeepDependencies() {
+      for (const adjacentVertex of self.getUpperDependencies(rootVertex.id)) {
+        yield* self.findDeepDependencies("upper", rootVertex, adjacentVertex);
+      }
+    }
+
+    return Array.from(new Set([...getDeepDependencies()]));
+  }
+
   public *findDeepAdjacencyList(rootVertex: Vertex): Generator<VertexId> {
     for (const adjacentVertexId of rootVertex.adjacentTo) {
       const adjacentVertex = this.#vertices.get(adjacentVertexId);
@@ -123,10 +153,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
         continue;
       }
 
-      yield* this.findDeepAdjacentVerticesDependencies(
-        rootVertex,
-        adjacentVertex
-      );
+      yield* this.findDeepDependencies("lower", rootVertex, adjacentVertex);
     }
   }
 
@@ -190,15 +217,16 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
         }
 
         const adjacencyList = [];
-        for (const deepAdjacentVertex of this.findDeepAdjacentVerticesDependencies(
+        for (const deepAdjacentVertexId of this.findDeepDependencies(
+          "lower",
           rootVertex,
           rootAdjacentVertex,
           maxDepth
         )) {
-          adjacencyList.push(deepAdjacentVertex);
+          adjacencyList.push(deepAdjacentVertexId);
 
           if (
-            deepAdjacentVertex === rootVertexId ||
+            deepAdjacentVertexId === rootVertexId ||
             adjacencyList.includes(rootVertexId)
           ) {
             hasCycles = true;
@@ -208,7 +236,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
             );
 
             // eslint-disable-next-line max-depth
-            if (cyclePath.includes(deepAdjacentVertex)) {
+            if (cyclePath.includes(deepAdjacentVertexId)) {
               const verticesInvolvedInTheCycle =
                 this.keepOnlyVerticesInvolvedInTheCycle(cyclePath);
 
@@ -249,34 +277,45 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     }
   }
 
+  /**
+   * This method is used to deeply find either all lower dependencies of a given
+   * vertex or all its upper dependencies.
+   */
   // eslint-disable-next-line max-params
-  private *findDeepAdjacentVerticesDependencies(
+  private *findDeepDependencies(
+    dependencyTraversal: "upper" | "lower",
     rootVertex: Vertex,
     traversedVertex: Vertex,
     depthLimit: number = Number.POSITIVE_INFINITY,
-    alreadyTraversed: VertexId[] = []
+    verticesAlreadyVisited: VertexId[] = []
   ): Generator<VertexId> {
-    if (alreadyTraversed.includes(traversedVertex.id)) {
+    if (verticesAlreadyVisited.includes(traversedVertex.id)) {
       return;
     }
 
     yield traversedVertex.id;
-    alreadyTraversed.push(traversedVertex.id);
+    verticesAlreadyVisited.push(traversedVertex.id);
 
     // Cycle reached, we must exit before entering in the infinite loop
     if (rootVertex.id === traversedVertex.id) {
       return;
     }
 
-    for (const adjacentVertexId of traversedVertex.adjacentTo) {
+    const nextDependencies =
+      dependencyTraversal === "lower"
+        ? traversedVertex.adjacentTo
+        : this.getUpperDependencies(traversedVertex.id).map(({ id }) => id);
+
+    for (const adjacentVertexId of nextDependencies) {
       const adjacentVertex = this.#vertices.get(adjacentVertexId);
       if (adjacentVertex) {
         yield* this.limitCycleDetectionDepth(
-          this.findDeepAdjacentVerticesDependencies(
+          this.findDeepDependencies(
+            dependencyTraversal,
             rootVertex,
             adjacentVertex,
             depthLimit,
-            alreadyTraversed
+            verticesAlreadyVisited
           ),
           depthLimit
         );
@@ -328,7 +367,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   private keepOnlyVerticesInvolvedInTheCycle(
     verticesIdsInPath: VertexId[]
   ): VertexId[] {
-    const numberOfVerticesThatShouldBeMatched = verticesIdsInPath.length - 1;
+    // const numberOfVerticesThatShouldBeMatched = verticesIdsInPath.length - 1;
     const verticesReallyInvolvedInTheCycle = [];
     const matchesByVertex: Record<VertexId, number> = {};
 
@@ -361,9 +400,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
        * a path to another vertex involved in the cycle. Vertices that are not able
        * to do that are probably not involved in the cycle.
        */
-      if (
-        matchesByVertex[currentVertexId] === numberOfVerticesThatShouldBeMatched
-      ) {
+      if (matchesByVertex[currentVertexId] >= 1) {
         // We found paths from currentVertexId to every other vertex in the cycle.
         verticesReallyInvolvedInTheCycle.push(currentVertexId);
       }

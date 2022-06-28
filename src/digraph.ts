@@ -36,6 +36,19 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     }
   }
 
+  public deleteVertex(vertexId: VertexId): void {
+    this.#vertices.delete(vertexId);
+
+    for (const vertexDependingOnDeletedVertex of this.getUpperDependencies(
+      vertexId
+    )) {
+      this.deleteEdge({
+        from: vertexDependingOnDeletedVertex.id,
+        to: vertexId
+      });
+    }
+  }
+
   public addEdge({ from, to }: { from: VertexId; to: VertexId }): void {
     if (from === to) {
       return;
@@ -56,6 +69,16 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     }
   }
 
+  public deleteEdge({ from, to }: { from: VertexId; to: VertexId }): void {
+    const fromVertex = this.#vertices.get(from);
+
+    if (fromVertex) {
+      fromVertex.adjacentTo = fromVertex.adjacentTo.filter(
+        (adjacentVertexId) => adjacentVertexId !== to
+      );
+    }
+  }
+
   public updateVertexBody<Body extends VertexBody>(
     vertex: VertexDefinition<Body>,
     body: Body
@@ -71,10 +94,10 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    * Allow top-to-bottom traversal by finding all direct dependencies of a given
    * vertex.
    * @example
-   * // given A ---> B (i.e: A depends on B)
-   * getAdjacentVerticesTo(A) === [ B ]
+   * // given A ---> B, A depends on B hence B is a lower dependency of A
+   * getLowerDependencies(A).deepEqual(["B"]) === true
    */
-  public getAdjacentVerticesTo(rootVertex: Vertex): Vertex[] {
+  public getLowerDependencies(rootVertex: Vertex): Vertex[] {
     return [...this.#vertices.values()].filter((vertex) =>
       rootVertex.adjacentTo.includes(vertex.id)
     );
@@ -84,12 +107,12 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    * In order to allow bottom-to-top traversals, we provide this method allowing
    * us to know all vertices depending on the provided root vertex.
    * @example
-   * // given A ---> B (i.e: A depends on B)
-   * getAdjacentVerticesTo(B) === [ A ]
+   * // given A ---> B, A depends on B hence A is an upper dependency of B
+   * getUpperDependencies(B).deepEqual(["A"]) === true
    */
-  public getAdjacentVerticesFrom(rootVertex: Vertex): Vertex[] {
+  public getUpperDependencies(rootVertexId: VertexId): Vertex[] {
     return [...this.#vertices.values()].filter((vertex) =>
-      vertex.adjacentTo.includes(rootVertex.id)
+      vertex.adjacentTo.includes(rootVertexId)
     );
   }
 

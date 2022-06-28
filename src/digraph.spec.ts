@@ -93,6 +93,64 @@ describe("Directed Graph Implementation", () => {
         expect(vertexE.body).to.deep.equal({});
       });
     });
+
+    describe("When deleting vertices", () => {
+      describe("When no vertices depends on the deleted one", () => {
+        it("should only delete the isolated vertex", () => {
+          const digraph = new DiGraph();
+          const [vertexA, vertexB, vertexC, vertexD] = [
+            ...createRawVertices("a", "b", "c", "d")
+          ];
+
+          digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
+
+          expect(digraph.toDict()).to.deep.equal({
+            a: vertexA,
+            b: vertexB,
+            c: vertexC,
+            d: vertexD
+          });
+
+          digraph.deleteVertex(vertexC.id);
+
+          expect(digraph.toDict()).to.deep.equal({
+            a: vertexA,
+            b: vertexB,
+            d: vertexD
+          });
+        });
+      });
+
+      describe("When one or many vertices directly depends on the deleted one", () => {
+        it("should delete the vertex and update the adjacency list of vertices directly depending on it", () => {
+          const digraph = new DiGraph();
+          const [vertexA, vertexB, vertexC, vertexD] = [
+            ...createRawVertices("a", "b", "c", "d")
+          ];
+
+          digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
+          digraph.addEdge({ from: vertexA.id, to: vertexD.id });
+          digraph.addEdge({ from: vertexB.id, to: vertexD.id });
+          digraph.addEdge({ from: vertexB.id, to: vertexC.id });
+          digraph.addEdge({ from: vertexC.id, to: vertexA.id });
+
+          expect(digraph.toDict()).to.deep.equal({
+            a: { ...vertexA, adjacentTo: [vertexD.id] },
+            b: { ...vertexB, adjacentTo: [vertexD.id, vertexC.id] },
+            c: { ...vertexC, adjacentTo: [vertexA.id] },
+            d: { ...vertexD, adjacentTo: [] }
+          });
+
+          digraph.deleteVertex(vertexD.id);
+
+          expect(digraph.toDict()).to.deep.equal({
+            a: { ...vertexA, adjacentTo: [] },
+            b: { ...vertexB, adjacentTo: [vertexC.id] },
+            c: { ...vertexC, adjacentTo: [vertexA.id] }
+          });
+        });
+      });
+    });
   });
 
   describe("When managing edges in the graph", () => {
@@ -167,12 +225,12 @@ describe("Directed Graph Implementation", () => {
       digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
       digraph.addEdge({ from: vertexB.id, to: vertexA.id });
 
-      expect(digraph.getAdjacentVerticesTo(vertexB)).deep.equal([vertexA]);
+      expect(digraph.getLowerDependencies(vertexB)).deep.equal([vertexA]);
 
       digraph.addEdge({ from: vertexD.id, to: vertexA.id });
       digraph.addEdge({ from: vertexD.id, to: vertexC.id });
 
-      expect(digraph.getAdjacentVerticesTo(vertexD)).deep.equal([
+      expect(digraph.getLowerDependencies(vertexD)).deep.equal([
         vertexA,
         vertexC
       ]);
@@ -185,11 +243,11 @@ describe("Directed Graph Implementation", () => {
       digraph.addVertices(vertexA, vertexB, vertexC);
       digraph.addEdge({ from: vertexA.id, to: vertexB.id });
 
-      expect(digraph.getAdjacentVerticesFrom(vertexB)).to.deep.equal([vertexA]);
+      expect(digraph.getUpperDependencies(vertexB.id)).to.deep.equal([vertexA]);
 
       digraph.addEdge({ from: vertexC.id, to: vertexB.id });
 
-      expect(digraph.getAdjacentVerticesFrom(vertexB)).to.deep.equal([
+      expect(digraph.getUpperDependencies(vertexB.id)).to.deep.equal([
         vertexA,
         vertexC
       ]);

@@ -3,10 +3,14 @@
   
   Make Directed Graphs traversal and construction effortless, including deep circular dependency detection.
 
-  **digraph-js** is a lightweight and dependency free library allowing you to create a Directed Graph structure with embedded features such as deep cycle dependency detection 
-  and graph introspection (finding ancestors and successors for any given vertices).
-  It can be used to model your underlying system (can be a filesystem or simply objects)
-  as a graph.
+  **digraph-js** is a lightweight and dependency free library allowing you to create a Directed Graph data structure with embedded features such as deep cycle dependency detection 
+  and graph introspection (find deeply ancestors and successors for any given vertex).
+  It can be used to model complex dependencies systems based on graphs.
+
+  ✅ Detect deeply circular dependencies while having the possibility to limit the search depth
+  ✅ Discover what are the direct and indirect child and parent dependencies of each vertex in the graph (top-to-bottom or bottom-to-top traversals)
+  ✅ Find out if a path exists between two vertices 
+  ✅ Manage graph edges and vertices seamlessly 
 
   ## Installation
 

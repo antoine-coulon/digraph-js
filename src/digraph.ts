@@ -8,7 +8,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   }
 
   public get isAcyclic(): boolean {
-    return !this.findCycles().hasCycles;
+    return !this.hasCycles();
   }
 
   public toDict(): Record<VertexId, Vertex> {
@@ -186,18 +186,47 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     return false;
   }
 
-  public findCycles({ maxDepth } = { maxDepth: Number.POSITIVE_INFINITY }): {
-    hasCycles: boolean;
-    cycles: VertexId[][];
-  } {
+  public hasCycles(
+    { maxDepth } = { maxDepth: Number.POSITIVE_INFINITY }
+  ): boolean {
     let hasCycles = false;
+
+    if (maxDepth === 0) {
+      return hasCycles;
+    }
+
+    for (const [
+      rootVertex,
+      rootAdjacentVertex
+    ] of this.collectRootAdjacencyLists()) {
+      const adjacencyList = [];
+      for (const deepAdjacentVertexId of this.findDeepDependencies(
+        "lower",
+        rootVertex,
+        rootAdjacentVertex,
+        maxDepth
+      )) {
+        adjacencyList.push(deepAdjacentVertexId);
+
+        if (
+          deepAdjacentVertexId === rootVertex.id ||
+          adjacencyList.includes(rootVertex.id)
+        ) {
+          hasCycles = true;
+        }
+      }
+    }
+
+    return hasCycles;
+  }
+
+  public findCycles(
+    { maxDepth } = { maxDepth: Number.POSITIVE_INFINITY }
+  ): VertexId[][] {
     const cycles: VertexId[][] = [];
 
     if (maxDepth === 0) {
-      return {
-        hasCycles,
-        cycles
-      };
+      return cycles;
     }
 
     /**
@@ -209,48 +238,40 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
      * that there is no inner cycle from any vertex to any other vertex.
      */
     const cyclicPathsWithMaybeDuplicates = [];
-    for (const [rootVertexId, rootVertex] of this.#vertices.entries()) {
-      for (const rootAdjacentVertexId of rootVertex.adjacentTo) {
-        const rootAdjacentVertex = this.#vertices.get(rootAdjacentVertexId);
-        if (!rootAdjacentVertex) {
-          continue;
-        }
+    for (const [
+      rootVertex,
+      rootAdjacentVertex
+    ] of this.collectRootAdjacencyLists()) {
+      const adjacencyList = [];
+      for (const deepAdjacentVertexId of this.findDeepDependencies(
+        "lower",
+        rootVertex,
+        rootAdjacentVertex,
+        maxDepth
+      )) {
+        adjacencyList.push(deepAdjacentVertexId);
 
-        const adjacencyList = [];
-        for (const deepAdjacentVertexId of this.findDeepDependencies(
-          "lower",
-          rootVertex,
-          rootAdjacentVertex,
-          maxDepth
-        )) {
-          adjacencyList.push(deepAdjacentVertexId);
+        if (
+          deepAdjacentVertexId === rootVertex.id ||
+          adjacencyList.includes(rootVertex.id)
+        ) {
+          const cyclePath = adjacencyList.slice(
+            0,
+            adjacencyList.indexOf(rootVertex.id) + 1
+          );
 
-          if (
-            deepAdjacentVertexId === rootVertexId ||
-            adjacencyList.includes(rootVertexId)
-          ) {
-            hasCycles = true;
-            const cyclePath = adjacencyList.slice(
-              0,
-              adjacencyList.indexOf(rootVertexId) + 1
-            );
+          // eslint-disable-next-line max-depth
+          if (cyclePath.includes(deepAdjacentVertexId)) {
+            const verticesInvolvedInTheCycle =
+              this.keepOnlyVerticesInvolvedInTheCycle(cyclePath);
 
-            // eslint-disable-next-line max-depth
-            if (cyclePath.includes(deepAdjacentVertexId)) {
-              const verticesInvolvedInTheCycle =
-                this.keepOnlyVerticesInvolvedInTheCycle(cyclePath);
-
-              cyclicPathsWithMaybeDuplicates.push(verticesInvolvedInTheCycle);
-            }
+            cyclicPathsWithMaybeDuplicates.push(verticesInvolvedInTheCycle);
           }
         }
       }
     }
 
-    return {
-      hasCycles,
-      cycles: this.unifyCyclicPaths(cyclicPathsWithMaybeDuplicates)
-    };
+    return this.unifyCyclicPaths(cyclicPathsWithMaybeDuplicates);
   }
 
   private *limitCycleDetectionDepth(
@@ -274,6 +295,19 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
         return;
       }
       yield value;
+    }
+  }
+
+  private *collectRootAdjacencyLists(): Generator<[Vertex, Vertex]> {
+    for (const rootVertex of this.#vertices.values()) {
+      for (const rootAdjacentVertexId of rootVertex.adjacentTo) {
+        const rootAdjacentVertex = this.#vertices.get(rootAdjacentVertexId);
+        if (!rootAdjacentVertex) {
+          continue;
+        }
+
+        yield [rootVertex, rootAdjacentVertex];
+      }
     }
   }
 

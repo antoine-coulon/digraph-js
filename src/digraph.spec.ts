@@ -437,10 +437,10 @@ describe("Directed Graph Implementation", () => {
             digraph.addVertices(vertexA, vertexB, vertexC);
 
             digraph.addEdge({ from: vertexA.id, to: vertexB.id });
-            expect(digraph.findCycles().hasCycles).to.equal(false);
+            expect(digraph.hasCycles()).to.equal(false);
 
             digraph.addEdge({ from: vertexB.id, to: vertexC.id });
-            expect(digraph.findCycles().hasCycles).to.equal(false);
+            expect(digraph.hasCycles()).to.equal(false);
           });
 
           it("should detect a cycle of depth 1 between vertices with edges pointing directly to each other", () => {
@@ -450,12 +450,12 @@ describe("Directed Graph Implementation", () => {
             digraph.addVertices(vertexB, vertexA);
             digraph.addEdge({ from: vertexA.id, to: vertexB.id });
 
-            expect(digraph.findCycles().hasCycles).to.equal(false);
+            expect(digraph.hasCycles()).to.equal(false);
 
             digraph.addEdge({ from: vertexB.id, to: vertexA.id });
 
-            expect(digraph.findCycles().hasCycles).to.equal(true);
-            expect(digraph.findCycles().cycles).to.deep.equal([["a", "b"]]);
+            expect(digraph.hasCycles()).to.equal(true);
+            expect(digraph.findCycles()).to.deep.equal([["a", "b"]]);
           });
 
           it("should detect a cycle of depth 2 with indirect edges pointing to each other", () => {
@@ -468,13 +468,11 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexA.id, to: vertexB.id });
             digraph.addEdge({ from: vertexB.id, to: vertexC.id });
             digraph.addEdge({ from: vertexC.id, to: vertexD.id });
-            expect(digraph.findCycles().hasCycles).to.equal(false);
+            expect(digraph.hasCycles()).to.equal(false);
 
             digraph.addEdge({ from: vertexD.id, to: vertexA.id }); // D ----> A => cycle between A and D traversing B, C
-            expect(digraph.findCycles().hasCycles).to.equal(true);
-            expect(digraph.findCycles().cycles).to.deep.equal([
-              ["b", "c", "d", "a"]
-            ]);
+            expect(digraph.hasCycles()).to.equal(true);
+            expect(digraph.findCycles()).to.deep.equal([["b", "c", "d", "a"]]);
           });
 
           it("should detect cyclic paths of any given depth", () => {
@@ -489,9 +487,7 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexA.id, to: vertexB.id });
             digraph.addEdge({ from: vertexD.id, to: vertexA.id }); // D ----> A => cycle between A and D traversing B, C
 
-            expect(digraph.findCycles().cycles).to.deep.equal([
-              ["b", "c", "d", "a"]
-            ]);
+            expect(digraph.findCycles()).to.deep.equal([["b", "c", "d", "a"]]);
           });
 
           it("should keep only one occurrence of a same cyclic path", () => {
@@ -506,8 +502,8 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: fileB.id, to: fileC.id });
             digraph.addEdge({ from: fileC.id, to: fileA.id });
 
-            expect(digraph.findCycles().cycles.length).to.equal(1);
-            expect(digraph.findCycles().cycles).to.deep.equal([
+            expect(digraph.findCycles().length).to.equal(1);
+            expect(digraph.findCycles()).to.deep.equal([
               ["B.js", "C.js", "A.js"]
             ]);
           });
@@ -521,12 +517,12 @@ describe("Directed Graph Implementation", () => {
             digraph.addVertices(vertexC, vertexA, vertexB);
             digraph.addEdge({ from: vertexA.id, to: vertexB.id });
             digraph.addEdge({ from: vertexB.id, to: vertexC.id });
-            expect(digraph.findCycles().hasCycles).to.equal(false);
+            expect(digraph.hasCycles()).to.equal(false);
 
             digraph.addEdge({ from: vertexB.id, to: vertexA.id });
 
-            const { hasCycles, cycles } = digraph.findCycles();
-            expect(hasCycles).to.equal(true);
+            const cycles = digraph.findCycles();
+            expect(digraph.hasCycles()).to.equal(true);
             expect(cycles).to.deep.equal([["b", "a"]]);
           });
 
@@ -540,13 +536,13 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexA.id, to: vertexB.id });
             digraph.addEdge({ from: vertexB.id, to: vertexC.id });
             digraph.addEdge({ from: vertexB.id, to: vertexD.id });
-            // expect(digraph.findCycles().hasCycles).to.equal(false);
+            // expect(digraph.hasCycles()).to.equal(false);
 
             digraph.addEdge({ from: vertexC.id, to: vertexA.id });
             digraph.addEdge({ from: vertexC.id, to: vertexE.id });
 
-            const { hasCycles, cycles } = digraph.findCycles();
-            expect(hasCycles).to.equal(true);
+            const cycles = digraph.findCycles();
+            expect(digraph.hasCycles()).to.equal(true);
             expect(cycles).to.deep.equal([["b", "c", "a"]]);
           });
         });
@@ -559,9 +555,7 @@ describe("Directed Graph Implementation", () => {
             digraph.addVertices(vertexA, vertexB);
             digraph.addEdge({ from: vertexA.id, to: vertexB.id });
             digraph.addEdge({ from: vertexB.id, to: vertexA.id });
-            expect(digraph.findCycles({ maxDepth: 0 }).hasCycles).to.equal(
-              false
-            );
+            expect(digraph.hasCycles({ maxDepth: 0 })).to.equal(false);
           });
 
           it("should detect the cycle only when the specified depth is greather than or equal to the depth of the cycle", () => {
@@ -574,24 +568,14 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexA.id, to: vertexB.id });
             digraph.addEdge({ from: vertexB.id, to: vertexC.id });
             digraph.addEdge({ from: vertexC.id, to: vertexD.id });
-            expect(digraph.findCycles().hasCycles).to.equal(false);
+            expect(digraph.hasCycles()).to.equal(false);
 
             digraph.addEdge({ from: vertexD.id, to: vertexA.id });
-            expect(digraph.findCycles({ maxDepth: 1 }).hasCycles).to.equal(
-              false
-            );
-            expect(digraph.findCycles({ maxDepth: 2 }).hasCycles).to.equal(
-              false
-            );
-            expect(digraph.findCycles({ maxDepth: 3 }).hasCycles).to.equal(
-              false
-            );
-            expect(digraph.findCycles({ maxDepth: 4 }).hasCycles).to.equal(
-              true
-            );
-            expect(digraph.findCycles({ maxDepth: 20 }).hasCycles).to.equal(
-              true
-            );
+            expect(digraph.hasCycles({ maxDepth: 1 })).to.equal(false);
+            expect(digraph.hasCycles({ maxDepth: 2 })).to.equal(false);
+            expect(digraph.hasCycles({ maxDepth: 3 })).to.equal(false);
+            expect(digraph.hasCycles({ maxDepth: 4 })).to.equal(true);
+            expect(digraph.hasCycles({ maxDepth: 20 })).to.equal(true);
           });
         });
       });
@@ -619,8 +603,8 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexC.id, to: vertexD.id });
             digraph.addEdge({ from: vertexD.id, to: vertexC.id });
 
-            const { hasCycles, cycles } = digraph.findCycles();
-            expect(hasCycles).to.equal(true);
+            const cycles = digraph.findCycles();
+            expect(digraph.hasCycles()).to.equal(true);
             expect(cycles).to.deep.equal([["d", "c"]]);
           });
 
@@ -648,9 +632,8 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexC.id, to: vertexF.id });
             digraph.addEdge({ from: vertexF.id, to: vertexC.id });
 
-            const { hasCycles, cycles } = digraph.findCycles();
-            expect(hasCycles).to.equal(true);
-
+            const cycles = digraph.findCycles();
+            expect(digraph.hasCycles()).to.equal(true);
             expect(cycles).to.deep.equal([["c", "f"]]);
           });
         });
@@ -674,9 +657,8 @@ describe("Directed Graph Implementation", () => {
 
           // third and global cycle (A -> B -> C -> D -> C -> A)
 
-          const { hasCycles, cycles } = digraph.findCycles();
-          expect(hasCycles).to.equal(true);
-
+          const cycles = digraph.findCycles();
+          expect(digraph.hasCycles()).to.equal(true);
           expect(cycles).to.deep.equal([
             ["b", "c", "a"],
             ["d", "c"],
@@ -703,9 +685,8 @@ describe("Directed Graph Implementation", () => {
           digraph.addEdge({ from: vertexE.id, to: vertexD.id });
           digraph.addEdge({ from: vertexD.id, to: vertexE.id });
 
-          const { hasCycles, cycles } = digraph.findCycles();
-          expect(hasCycles).to.equal(true);
-
+          const cycles = digraph.findCycles();
+          expect(digraph.hasCycles()).to.equal(true);
           expect(cycles).to.deep.equal([
             ["c", "b"],
             ["e", "d"]

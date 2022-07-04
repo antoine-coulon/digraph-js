@@ -103,6 +103,10 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     );
   }
 
+  /**
+   * Same as `getLowerDependencies()`, but keeps collecting in a DFS manner
+   * dependencies all the way down to the bottom of the graph.
+   */
   public getDeepLowerDependencies(rootVertex: Vertex): VertexId[] {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
@@ -133,6 +137,10 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     );
   }
 
+  /**
+   * Same as `getLowerDependencies()`, but keeps collecting in a DFS manner
+   * dependencies all the way up to the top of the graph.
+   */
   public getDeepUpperDependencies(rootVertex: Vertex): VertexId[] {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
@@ -146,6 +154,9 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     return Array.from(new Set([...getDeepDependencies()]));
   }
 
+  /**
+   * Same as `getDeepLowerDependencies()`, but exposed with a Generator-based API.
+   */
   public *findDeepAdjacencyList(rootVertex: Vertex): Generator<VertexId> {
     for (const adjacentVertexId of rootVertex.adjacentTo) {
       const adjacentVertex = this.#vertices.get(adjacentVertexId);
@@ -157,6 +168,10 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     }
   }
 
+  /**
+   * Given A and B, this method will assert that there exists a circular path
+   * from A to B and B to A.
+   */
   public mutualPathExistsBetweenVertices(a: VertexId, b: VertexId): boolean {
     const rootVertexA = this.#vertices.get(a);
     const rootVertexB = this.#vertices.get(b);
@@ -186,6 +201,12 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     return false;
   }
 
+  /**
+   * Return `true` if atleast one circular dependency exists in the graph,
+   * otherwise, return `false`.
+   * If you want to know precisely what are the circular dependencies and
+   * know what vertices are involved, use `findCycles()` instead.
+   */
   public hasCycles(
     { maxDepth } = { maxDepth: Number.POSITIVE_INFINITY }
   ): boolean {
@@ -229,14 +250,6 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
       return cycles;
     }
 
-    /**
-     * In order to detect circular dependencies, we compare
-     * each adjacent vertex's id with the root vertex (first added in the graph) id.
-     * If any adjacent vertex's id has the id of the root vertex, we can assert
-     * that the traversed path forms a cycle.
-     * While traversing the graph in a top-to-bottom maneer, we also check
-     * that there is no inner cycle from any vertex to any other vertex.
-     */
     const cyclicPathsWithMaybeDuplicates = [];
     for (const [
       rootVertex,

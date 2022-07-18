@@ -226,12 +226,12 @@ describe("Directed Graph Implementation", () => {
         digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
         digraph.addEdge({ from: vertexB.id, to: vertexA.id });
 
-        expect(digraph.getLowerDependencies(vertexB)).deep.equal([vertexA]);
+        expect(digraph.getLowerDependencies(vertexB.id)).deep.equal([vertexA]);
 
         digraph.addEdge({ from: vertexD.id, to: vertexA.id });
         digraph.addEdge({ from: vertexD.id, to: vertexC.id });
 
-        expect(digraph.getLowerDependencies(vertexD)).deep.equal([
+        expect(digraph.getLowerDependencies(vertexD.id)).deep.equal([
           vertexA,
           vertexC
         ]);
@@ -280,7 +280,7 @@ describe("Directed Graph Implementation", () => {
         digraph.addEdge({ from: vertexD.id, to: vertexE.id });
         digraph.addEdge({ from: vertexE.id, to: vertexF.id });
 
-        expect([...digraph.getDeepLowerDependencies(vertexA)]).deep.equal([
+        expect([...digraph.getDeepLowerDependencies(vertexA.id)]).deep.equal([
           "b",
           "c",
           "d",
@@ -309,7 +309,7 @@ describe("Directed Graph Implementation", () => {
         digraph.addEdge({ from: vertexC.id, to: vertexB.id });
         digraph.addEdge({ from: vertexE.id, to: vertexD.id });
 
-        expect([...digraph.getDeepUpperDependencies(vertexA)]).deep.equal([
+        expect([...digraph.getDeepUpperDependencies(vertexA.id)]).deep.equal([
           "f",
           "d",
           "e",
@@ -343,13 +343,9 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexE.id, to: vertexF.id });
             digraph.addEdge({ from: vertexF.id, to: vertexE.id });
 
-            expect([...digraph.getDeepLowerDependencies(vertexA)]).deep.equal([
-              "b",
-              "c",
-              "d",
-              "e",
-              "f"
-            ]);
+            expect([
+              ...digraph.getDeepLowerDependencies(vertexA.id)
+            ]).deep.equal(["b", "c", "d", "e", "f"]);
           });
 
           it("scenario n°2", () => {
@@ -376,13 +372,9 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexC.id, to: vertexF.id });
             digraph.addEdge({ from: vertexF.id, to: vertexC.id });
 
-            expect([...digraph.getDeepLowerDependencies(vertexA)]).deep.equal([
-              "f",
-              "c",
-              "b",
-              "d",
-              "e"
-            ]);
+            expect([
+              ...digraph.getDeepLowerDependencies(vertexA.id)
+            ]).deep.equal(["f", "c", "b", "d", "e"]);
           });
         });
 
@@ -411,13 +403,9 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexC.id, to: vertexF.id });
             digraph.addEdge({ from: vertexF.id, to: vertexC.id });
 
-            expect([...digraph.getDeepUpperDependencies(vertexA)]).deep.equal([
-              "f",
-              "c",
-              "d",
-              "e",
-              "b"
-            ]);
+            expect([
+              ...digraph.getDeepUpperDependencies(vertexA.id)
+            ]).deep.equal(["f", "c", "d", "e", "b"]);
           });
         });
       });

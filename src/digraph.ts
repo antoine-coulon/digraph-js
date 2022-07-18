@@ -97,9 +97,9 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    * // given A ---> B, A depends on B hence B is a lower dependency of A
    * getLowerDependencies(A).deepEqual(["B"]) === true
    */
-  public getLowerDependencies(rootVertex: Vertex): Vertex[] {
+  public getLowerDependencies(rootVertexId: VertexId): Vertex[] {
     return [...this.#vertices.values()].filter((vertex) =>
-      rootVertex.adjacentTo.includes(vertex.id)
+      this.#vertices.get(rootVertexId)?.adjacentTo.includes(vertex.id)
     );
   }
 
@@ -107,11 +107,16 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    * Same as `getLowerDependencies()`, but keeps collecting in a DFS manner
    * dependencies all the way down to the bottom of the graph.
    */
-  public getDeepLowerDependencies(rootVertex: Vertex): VertexId[] {
+  public getDeepLowerDependencies(rootVertexId: VertexId): VertexId[] {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     function* getDeepDependencies() {
+      const rootVertex = self.#vertices.get(rootVertexId);
+      if (!rootVertex) {
+        return;
+      }
+
       for (const adjacentVertexId of rootVertex.adjacentTo) {
         const adjacentVertex = self.#vertices.get(adjacentVertexId);
 
@@ -141,11 +146,16 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    * Same as `getLowerDependencies()`, but keeps collecting in a DFS manner
    * dependencies all the way up to the top of the graph.
    */
-  public getDeepUpperDependencies(rootVertex: Vertex): VertexId[] {
+  public getDeepUpperDependencies(rootVertexId: VertexId): VertexId[] {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     function* getDeepDependencies() {
+      const rootVertex = self.#vertices.get(rootVertexId);
+      if (!rootVertex) {
+        return;
+      }
+
       for (const adjacentVertex of self.getUpperDependencies(rootVertex.id)) {
         yield* self.findDeepDependencies("upper", rootVertex, adjacentVertex);
       }

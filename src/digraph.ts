@@ -80,10 +80,10 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   }
 
   public updateVertexBody<Body extends VertexBody>(
-    vertex: VertexDefinition<Body>,
+    vertexId: VertexId,
     body: Body
   ): void {
-    const rootVertexToMutate = this.#vertices.get(vertex.id);
+    const rootVertexToMutate = this.#vertices.get(vertexId);
 
     if (rootVertexToMutate) {
       rootVertexToMutate.body = body;

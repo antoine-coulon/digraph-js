@@ -80,17 +80,22 @@ describe("Directed Graph Implementation", () => {
         const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
 
         digraph.addVertices(vertexA, vertexB, vertexE);
-        digraph.updateVertexBody(vertexB, {
-          body: {
-            brandNewProp: "newValue"
-          }
+        digraph.updateVertexBody(vertexB.id, {
+          brandNewProp: "newValue"
         });
 
         expect(vertexB.body).to.deep.equal({
-          body: { brandNewProp: "newValue" }
+          brandNewProp: "newValue"
         });
         expect(vertexA.body).to.deep.equal({});
         expect(vertexE.body).to.deep.equal({});
+
+        digraph.updateVertexBody(vertexB.id, {
+          otherProp: []
+        });
+        expect(vertexB.body).to.deep.equal({
+          otherProp: []
+        });
       });
     });
 

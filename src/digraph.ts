@@ -90,10 +90,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    * });
    *
    */
-  public updateVertexBody<Body extends VertexBody>(
-    vertexId: VertexId,
-    body: Body
-  ): void {
+  public updateVertexBody(vertexId: VertexId, body: Vertex["body"]): void {
     const rootVertexToMutate = this.#vertices.get(vertexId);
 
     if (rootVertexToMutate) {
@@ -114,7 +111,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    */
   public mergeVertexBody(
     vertexId: VertexId,
-    mergeCallback: (vertex: VertexBody) => void
+    mergeCallback: (vertex: Vertex["body"]) => void
   ): void {
     const rootVertexToMutate = this.#vertices.get(vertexId);
 

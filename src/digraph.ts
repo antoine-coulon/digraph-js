@@ -79,6 +79,17 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     }
   }
 
+  /**
+   * This function updates the vertex's body with the provided value without
+   * doing any merging with the previous value. If you want to preserve values,
+   * check `mergeVertexBody`.
+   * @example
+   * updateVertexBody("Node1", {
+   *    // body only contains this prop now.
+   *    newProperty: []
+   * });
+   *
+   */
   public updateVertexBody<Body extends VertexBody>(
     vertexId: VertexId,
     body: Body
@@ -87,6 +98,28 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
 
     if (rootVertexToMutate) {
       rootVertexToMutate.body = body;
+    }
+  }
+
+  /**
+   * This function lets you choose the way of merging the vertex's body
+   * by providing a callback function with the corresponding vertex instance.
+   * @example
+   * mergeVertexBody("Node1", (nodeBody) => {
+   *    // either by directly mutating the value
+   *    nodeBody.someProperty.list[0] = {};
+   *    // either by providing a new reference
+   *    nodeBody.someProperty.list = nodeBody.someProperty.map(operation);
+   * });
+   */
+  public mergeVertexBody(
+    vertexId: VertexId,
+    mergeCallback: (vertex: VertexBody) => void
+  ): void {
+    const rootVertexToMutate = this.#vertices.get(vertexId);
+
+    if (rootVertexToMutate) {
+      mergeCallback(rootVertexToMutate.body);
     }
   }
 

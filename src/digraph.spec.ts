@@ -68,33 +68,99 @@ describe("Directed Graph Implementation", () => {
       });
     });
 
-    describe("When updating vertices", () => {
-      it("should only update one vertex with no dependencies", () => {
-        const digraph = new DiGraph();
-        const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
-        const vertexE: Vertex = {
-          id: "e",
-          adjacentTo: [vertexA.id],
-          body: {}
-        };
-        const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
+    describe("When modifying vertices bodies", () => {
+      describe("When updating vertices", () => {
+        it("should only update one vertex with no dependencies", () => {
+          const digraph = new DiGraph();
+          const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+          const vertexE: Vertex = {
+            id: "e",
+            adjacentTo: [vertexA.id],
+            body: {}
+          };
+          const vertexB: Vertex = { id: "b", adjacentTo: [], body: {} };
 
-        digraph.addVertices(vertexA, vertexB, vertexE);
-        digraph.updateVertexBody(vertexB.id, {
-          brandNewProp: "newValue"
+          digraph.addVertices(vertexA, vertexB, vertexE);
+          digraph.updateVertexBody(vertexB.id, {
+            brandNewProp: "newValue"
+          });
+
+          expect(vertexB.body).to.deep.equal({
+            brandNewProp: "newValue"
+          });
+          expect(vertexA.body).to.deep.equal({});
+          expect(vertexE.body).to.deep.equal({});
+
+          digraph.updateVertexBody(vertexB.id, {
+            otherProp: []
+          });
+          expect(vertexB.body).to.deep.equal({
+            otherProp: []
+          });
+        });
+      });
+
+      describe("When merging vertices", () => {
+        describe("When the initial body is empty", () => {
+          it("should merge add the new values to the vertex", () => {
+            const digraph = new DiGraph();
+            const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
+
+            digraph.addVertex(vertexA);
+            digraph.mergeVertexBody(vertexA.id, (body) => {
+              body.brandNewProp = "newValue";
+            });
+            expect(vertexA.body).to.deep.equal({
+              brandNewProp: "newValue"
+            });
+          });
         });
 
-        expect(vertexB.body).to.deep.equal({
-          brandNewProp: "newValue"
-        });
-        expect(vertexA.body).to.deep.equal({});
-        expect(vertexE.body).to.deep.equal({});
+        describe("When the new body contains new properties", () => {
+          it("should merge new values with old values", () => {
+            const digraph = new DiGraph();
+            const vertexA: Vertex = {
+              id: "a",
+              adjacentTo: [],
+              body: {
+                prop1: {
+                  a: 2
+                }
+              }
+            };
 
-        digraph.updateVertexBody(vertexB.id, {
-          otherProp: []
+            digraph.addVertex(vertexA);
+            digraph.mergeVertexBody(vertexA.id, (body) => {
+              body.brandNewProp = "newValue";
+            });
+            expect(vertexA.body).to.deep.equal({
+              prop1: {
+                a: 2
+              },
+              brandNewProp: "newValue"
+            });
+          });
         });
-        expect(vertexB.body).to.deep.equal({
-          otherProp: []
+
+        describe("When then new body contains same properties with new values", () => {
+          it("should merge old properties with new values", () => {
+            const digraph = new DiGraph();
+            const vertexA: Vertex = {
+              id: "a",
+              adjacentTo: [],
+              body: {
+                list: ["a", "b"]
+              }
+            };
+
+            digraph.addVertex(vertexA);
+            digraph.mergeVertexBody(vertexA.id, (vertex) => {
+              vertex.list = [...(vertex.list as any[]), "c"];
+            });
+            expect(vertexA.body).to.deep.equal({
+              list: ["a", "b", "c"]
+            });
+          });
         });
       });
     });

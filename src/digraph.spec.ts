@@ -297,13 +297,11 @@ describe("Directed Graph Implementation", () => {
         digraph.addVertices(vertexA, vertexB, vertexC);
         digraph.addEdge({ from: vertexA.id, to: vertexB.id });
 
-        expect(digraph.getUpperDependencies(vertexB.id)).to.deep.equal([
-          vertexA
-        ]);
+        expect(digraph.getParents(vertexB.id)).to.deep.equal([vertexA]);
 
         digraph.addEdge({ from: vertexC.id, to: vertexB.id });
 
-        expect(digraph.getUpperDependencies(vertexB.id)).to.deep.equal([
+        expect(digraph.getParents(vertexB.id)).to.deep.equal([
           vertexA,
           vertexC
         ]);
@@ -329,7 +327,7 @@ describe("Directed Graph Implementation", () => {
         digraph.addEdge({ from: vertexC.id, to: vertexB.id });
         digraph.addEdge({ from: vertexE.id, to: vertexD.id });
 
-        expect([...digraph.getDeepUpperDependencies(vertexA.id)]).deep.equal([
+        expect([...digraph.getDeepParents(vertexA.id)]).deep.equal([
           "f",
           "d",
           "e",
@@ -363,7 +361,15 @@ describe("Directed Graph Implementation", () => {
           digraph.addEdge({ from: vertexC.id, to: vertexF.id });
           digraph.addEdge({ from: vertexF.id, to: vertexC.id });
 
-          expect([...digraph.getDeepUpperDependencies(vertexA.id)]).deep.equal([
+          /**
+           * When there is a cycle, multiple occurrences of a same vertex
+           * can be found. Here, we just want to check that there is atleast
+           * one occurrence of a given set of vertices.
+           */
+          const uniqueSetOfVertices = new Set([
+            ...digraph.getDeepParents(vertexA.id)
+          ]);
+          expect([...uniqueSetOfVertices]).deep.equal([
             "f",
             "c",
             "d",
@@ -384,15 +390,12 @@ describe("Directed Graph Implementation", () => {
         digraph.addVertices(vertexA, vertexB, vertexC, vertexD);
         digraph.addEdge({ from: vertexB.id, to: vertexA.id });
 
-        expect(digraph.getLowerDependencies(vertexB.id)).deep.equal([vertexA]);
+        expect(digraph.getChildren(vertexB.id)).deep.equal([vertexA]);
 
         digraph.addEdge({ from: vertexD.id, to: vertexA.id });
         digraph.addEdge({ from: vertexD.id, to: vertexC.id });
 
-        expect(digraph.getLowerDependencies(vertexD.id)).deep.equal([
-          vertexA,
-          vertexC
-        ]);
+        expect(digraph.getChildren(vertexD.id)).deep.equal([vertexA, vertexC]);
       });
 
       it("should deeply find and collect all dependencies", () => {
@@ -415,7 +418,7 @@ describe("Directed Graph Implementation", () => {
         digraph.addEdge({ from: vertexD.id, to: vertexE.id });
         digraph.addEdge({ from: vertexE.id, to: vertexF.id });
 
-        expect([...digraph.getDeepLowerDependencies(vertexA.id)]).deep.equal([
+        expect([...digraph.getDeepChildren(vertexA.id)]).deep.equal([
           "b",
           "c",
           "d",
@@ -448,7 +451,15 @@ describe("Directed Graph Implementation", () => {
           digraph.addEdge({ from: vertexE.id, to: vertexF.id });
           digraph.addEdge({ from: vertexF.id, to: vertexE.id });
 
-          expect([...digraph.getDeepLowerDependencies(vertexA.id)]).deep.equal([
+          /**
+           * When there is a cycle, multiple occurrences of a same vertex
+           * can be found. Here, we just want to check that there is atleast
+           * one occurrence of a given set of vertices.
+           */
+          const uniqueSetOfVertices = new Set([
+            ...digraph.getDeepChildren(vertexA.id)
+          ]);
+          expect([...uniqueSetOfVertices]).deep.equal([
             "b",
             "c",
             "d",
@@ -481,7 +492,15 @@ describe("Directed Graph Implementation", () => {
           digraph.addEdge({ from: vertexC.id, to: vertexF.id });
           digraph.addEdge({ from: vertexF.id, to: vertexC.id });
 
-          expect([...digraph.getDeepLowerDependencies(vertexA.id)]).deep.equal([
+          /**
+           * When there is a cycle, multiple occurrences of a same vertex
+           * can be found. Here, we just want to check that there is atleast
+           * one occurrence of a given set of vertices.
+           */
+          const uniqueSetOfVertices = new Set([
+            ...digraph.getDeepChildren(vertexA.id)
+          ]);
+          expect([...uniqueSetOfVertices]).deep.equal([
             "f",
             "c",
             "b",

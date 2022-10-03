@@ -41,9 +41,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   public deleteVertex(vertexId: VertexId): void {
     this.#vertices.delete(vertexId);
 
-    for (const vertexDependingOnDeletedVertex of this.getUpperDependencies(
-      vertexId
-    )) {
+    for (const vertexDependingOnDeletedVertex of this.getParents(vertexId)) {
       this.deleteEdge({
         from: vertexDependingOnDeletedVertex.id,
         to: vertexId
@@ -83,11 +81,11 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
 
   /**
    * This function updates the vertex's body with the provided value without
-   * doing any merging with the previous value. If you want to preserve values,
-   * check `mergeVertexBody`.
+   * doing any merging with the previous value. If you want to preserve/update
+   * values, check `mergeVertexBody` instead.
    * @example
    * updateVertexBody("Node1", {
-   *    // body only contains this prop now.
+   *    // body only contains this property "newProperty" now.
    *    newProperty: []
    * });
    *
@@ -108,7 +106,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    *    // either by directly mutating the value
    *    nodeBody.someProperty.list[0] = {};
    *    // either by providing a new reference
-   *    nodeBody.someProperty.list = nodeBody.someProperty.map(operation);
+   *    nodeBody.someProperty.list = newCollection.map(operation);
    * });
    */
   public mergeVertexBody(
@@ -123,85 +121,33 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   }
 
   /**
-   * Allow top-to-bottom traversal by finding all direct dependencies of a given
-   * vertex.
+   * Allows top-to-bottom traversals by finding only the first relationship level
+   * of children dependencies of the provided vertex.
    * @example
-   * // given A ---> B, A depends on B hence B is a lower dependency of A
-   * getLowerDependencies(A).deepEqual(["B"]) === true
+   * // given A --> B, A depends on B hence B is a children dependency of A
+   * assert.deepEqual(graph.getChildren("A"), [VertexB]) // ok
    */
-  public getLowerDependencies(rootVertexId: VertexId): Vertex[] {
+  public getChildren(rootVertexId: VertexId): Vertex[] {
     return [...this.#vertices.values()].filter((vertex) =>
       this.#vertices.get(rootVertexId)?.adjacentTo.includes(vertex.id)
     );
   }
 
   /**
-   * Same as `getLowerDependencies()`, but keeps collecting in a DFS manner
-   * dependencies all the way down to the bottom of the graph.
+   * Same as `getChildren()`, but doesn't stop at the first level hence deeply
+   * collects all children dependencies in  a Depth-First Search manner.
+   * Allows top-to-bottom traversals i.e: which nodes are dependencies of
+   * the provided rootVertexId.
    */
-  public getDeepLowerDependencies(rootVertexId: VertexId): VertexId[] {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const self = this;
-
-    function* getDeepDependencies() {
-      const rootVertex = self.#vertices.get(rootVertexId);
-      if (!rootVertex) {
-        return;
-      }
-
-      for (const adjacentVertexId of rootVertex.adjacentTo) {
-        const adjacentVertex = self.#vertices.get(adjacentVertexId);
-
-        if (adjacentVertex) {
-          yield* self.findDeepDependencies("lower", rootVertex, adjacentVertex);
-        }
-      }
+  public *getDeepChildren(rootVertexId: VertexId): Generator<VertexId> {
+    const rootVertex = this.#vertices.get(rootVertexId);
+    if (!rootVertex) {
+      return;
     }
 
-    return Array.from(new Set([...getDeepDependencies()]));
-  }
-
-  /**
-   * In order to allow bottom-to-top traversals, we provide this method allowing
-   * us to know all vertices depending on the provided root vertex.
-   * @example
-   * // given A ---> B, A depends on B hence A is an upper dependency of B
-   * getUpperDependencies(B).deepEqual(["A"]) === true
-   */
-  public getUpperDependencies(rootVertexId: VertexId): Vertex[] {
-    return [...this.#vertices.values()].filter((vertex) =>
-      vertex.adjacentTo.includes(rootVertexId)
-    );
-  }
-
-  /**
-   * Same as `getLowerDependencies()`, but keeps collecting in a DFS manner
-   * dependencies all the way up to the top of the graph.
-   */
-  public getDeepUpperDependencies(rootVertexId: VertexId): VertexId[] {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const self = this;
-
-    function* getDeepDependencies() {
-      const rootVertex = self.#vertices.get(rootVertexId);
-      if (!rootVertex) {
-        return;
-      }
-
-      for (const adjacentVertex of self.getUpperDependencies(rootVertex.id)) {
-        yield* self.findDeepDependencies("upper", rootVertex, adjacentVertex);
-      }
-    }
-
-    return Array.from(new Set([...getDeepDependencies()]));
-  }
-
-  /**
-   * Same as `getDeepLowerDependencies()`, but exposed with a Generator-based API.
-   */
-  public *findDeepAdjacencyList(rootVertex: Vertex): Generator<VertexId> {
     for (const adjacentVertexId of rootVertex.adjacentTo) {
       const adjacentVertex = this.#vertices.get(adjacentVertexId);
+
       if (!adjacentVertex) {
         continue;
       }
@@ -211,41 +157,40 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   }
 
   /**
-   * Given A and B, this method will assert that there exists a circular path
-   * from A to B and B to A.
+   * Allows bottom-to-top traversals by finding only the first relationship level
+   * of parent dependencies of the provided vertex.
+   * @example
+   * // given A --> B, A depends on B hence A is a parent dependency of B
+   * assert.deepEqual(graph.getParents("B"), [VertexA]) // ok
    */
-  public mutualPathExistsBetweenVertices(a: VertexId, b: VertexId): boolean {
-    const rootVertexA = this.#vertices.get(a);
-    const rootVertexB = this.#vertices.get(b);
-
-    if (!rootVertexA || !rootVertexB) {
-      return false;
-    }
-
-    const rootAdjacencyListOfA = rootVertexA.adjacentTo;
-    const rootAdjacencyListOfB = rootVertexB.adjacentTo;
-
-    if (rootAdjacencyListOfA.includes(b) && rootAdjacencyListOfB.includes(a)) {
-      // At root adjacency level (without checking in depth adjacent nodes),
-      // it exists a path from A to B and B to A, meaning there is a cycle
-      return true;
-    }
-
-    const deepAdjacencyListA = [...this.findDeepAdjacencyList(rootVertexA)];
-    const deepAdjacencyListB = [...this.findDeepAdjacencyList(rootVertexB)];
-
-    if (deepAdjacencyListA.includes(b) && deepAdjacencyListB.includes(a)) {
-      // At some depth in the graph (by checking in depth adjacent nodes),
-      // it exists a path from A to B and B to A, meaning there is a cycle
-      return true;
-    }
-
-    return false;
+  public getParents(rootVertexId: VertexId): Vertex[] {
+    return [...this.#vertices.values()].filter((vertex) =>
+      vertex.adjacentTo.includes(rootVertexId)
+    );
   }
 
   /**
-   * Return `true` if atleast one circular dependency exists in the graph,
-   * otherwise, return `false`.
+   * Same as `getParents()`, but doesn't stop at the first level hence deeply
+   * collects all parent dependencies in a Depth-First Search manner.
+   * Allows bottom-to-top traversals i.e: which nodes are depending on
+   * the provided rootVertexId.
+   */
+  public *getDeepParents(rootVertexId: VertexId): Generator<VertexId> {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+
+    const rootVertex = this.#vertices.get(rootVertexId);
+    if (!rootVertex) {
+      return;
+    }
+
+    for (const adjacentVertex of this.getParents(rootVertex.id)) {
+      yield* this.findDeepDependencies("upper", rootVertex, adjacentVertex);
+    }
+  }
+
+  /**
+   * Returns `true` if atleast one circular dependency exists in the graph,
+   * otherwise, returns `false`.
    * If you want to know precisely what are the circular dependencies and
    * know what vertices are involved, use `findCycles()` instead.
    */
@@ -402,7 +347,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     const nextDependencies =
       dependencyTraversal === "lower"
         ? traversedVertex.adjacentTo
-        : this.getUpperDependencies(traversedVertex.id).map(({ id }) => id);
+        : this.getParents(traversedVertex.id).map(({ id }) => id);
 
     for (const adjacentVertexId of nextDependencies) {
       const adjacentVertex = this.#vertices.get(adjacentVertexId);

@@ -54,12 +54,12 @@ function detectCyclicImports() {
   diGraph.addEdge({ from: fileC.id, to: fileD.id });
   diGraph.addEdge({ from: fileD.id, to: fileC.id });
 
-  const { hasCycles, cycles } = diGraph.findCycles();
+  const cycles = diGraph.findCycles();
   const prettyPrintCycles = cycles
     .map((cycle, index) => `Cycle n°${index + 1}: [${cycle.join(" --> ")}]`)
     .join("\n");
 
-  console.log("Has cycle dependencies?", hasCycles);
+  console.log("Has cycle dependencies?", cycles.length > 0);
   console.log(prettyPrintCycles);
 }
 

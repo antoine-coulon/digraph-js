@@ -1,4 +1,3 @@
-
 import crypto from "node:crypto";
 
 import { DiGraph } from "../../dist/index.js";
@@ -28,7 +27,7 @@ const lib3Metadata = {
  * lib1 depends on lib3 (via the use of lib3.MyLib3Component) while library 2 is
  * independent.
  */
- const projectGraph = new DiGraph();
+const projectGraph = new DiGraph();
 
 // Update the Graph with detected dependencies
 projectGraph.addVertices(lib1Metadata, lib2Metadata, lib3Metadata);
@@ -106,8 +105,9 @@ function* buildAllRootLibraryDependencies(rootLibrary) {
  * unnecessary rebuild if possible)
  */
 function buildEverythingAffectedIncludingRootLibrary(rootLibrary) {
-  const rootLibraryDependencies =
-    projectGraph.getLowerDependencies(rootLibrary);
+  const rootLibraryDependencies = projectGraph.getLowerDependencies(
+    rootLibrary.id
+  );
   const allRebuiltLibraries = [];
 
   for (const dependencyLibrary of rootLibraryDependencies) {
@@ -139,7 +139,7 @@ function buildEverythingAffectedIncludingRootLibrary(rootLibrary) {
 function buildProjectUsingAffectedStrategy() {
   console.log("\n----STEP 1-----");
   // Building for the first time
-  buildEverythingAffectedIncludingRootLibrary(lib1Metadata); 
+  buildEverythingAffectedIncludingRootLibrary(lib1Metadata);
   /**
    * Building for the second time but no dependencies of lib1 changed (neither
    * lib3 or lib4) so it remains unaffected (i.e: using cache)
@@ -153,8 +153,8 @@ function buildProjectUsingAffectedStrategy() {
    * Remember, lib1 depends on lib3 via the use of lib3.MyLib3Component.
    */
   console.log("Changing lib3's content...");
-  projectGraph.updateVertexBody(lib3Metadata, {
-    // lib3 component is updated 
+  projectGraph.updateVertexBody(lib3Metadata.id, {
+    // lib3 component is updated
     component: `<MyLib3Component>hello affected lib3!</MyLib3Component>`
   });
 
@@ -164,6 +164,13 @@ function buildProjectUsingAffectedStrategy() {
    * affected.
    * It means that we must rebuild both, starting with lib3 (lib1 must build
    * with the latest version of lib3).
+   */
+  buildEverythingAffectedIncludingRootLibrary(lib1Metadata);
+
+  console.log("\n----STEP 5-----");
+  /**
+   * Now that everything was rebuilt, we can easily use cached versions once
+   * again.
    */
   buildEverythingAffectedIncludingRootLibrary(lib1Metadata);
 }

@@ -1,0 +1,7023 @@
+{
+  "index.js": {
+    "id": "index.js",
+    "adjacentTo": [
+      "util/memoize.js",
+      "webpack.js",
+      "../schemas/WebpackOptions.check.js",
+      "validateSchema.js",
+      "cli.js",
+      "AutomaticPrefetchPlugin.js",
+      "AsyncDependenciesBlock.js",
+      "BannerPlugin.js",
+      "Cache.js",
+      "Chunk.js",
+      "ChunkGraph.js",
+      "CleanPlugin.js",
+      "Compilation.js",
+      "Compiler.js",
+      "ConcatenationScope.js",
+      "ContextExclusionPlugin.js",
+      "ContextReplacementPlugin.js",
+      "DefinePlugin.js",
+      "DelegatedPlugin.js",
+      "Dependency.js",
+      "DllPlugin.js",
+      "DllReferencePlugin.js",
+      "DynamicEntryPlugin.js",
+      "EntryOptionPlugin.js",
+      "EntryPlugin.js",
+      "EnvironmentPlugin.js",
+      "EvalDevToolModulePlugin.js",
+      "EvalSourceMapDevToolPlugin.js",
+      "ExternalModule.js",
+      "ExternalsPlugin.js",
+      "Generator.js",
+      "HotUpdateChunk.js",
+      "HotModuleReplacementPlugin.js",
+      "IgnorePlugin.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "LibManifestPlugin.js",
+      "LibraryTemplatePlugin.js",
+      "LoaderOptionsPlugin.js",
+      "LoaderTargetPlugin.js",
+      "Module.js",
+      "ModuleFilenameHelpers.js",
+      "ModuleGraph.js",
+      "ModuleGraphConnection.js",
+      "NoEmitOnErrorsPlugin.js",
+      "NormalModule.js",
+      "NormalModuleReplacementPlugin.js",
+      "MultiCompiler.js",
+      "Parser.js",
+      "PrefetchPlugin.js",
+      "ProgressPlugin.js",
+      "ProvidePlugin.js",
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "SourceMapDevToolPlugin.js",
+      "Stats.js",
+      "Template.js",
+      "ExportsInfo.js",
+      "WatchIgnorePlugin.js",
+      "WebpackError.js",
+      "WebpackOptionsApply.js",
+      "WebpackOptionsDefaulter.js",
+      "cache/MemoryCachePlugin.js",
+      "config/normalization.js",
+      "config/defaults.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/HarmonyImportDependency.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/NullDependency.js",
+      "ids/ChunkModuleIdRangePlugin.js",
+      "ids/NaturalModuleIdsPlugin.js",
+      "ids/OccurrenceModuleIdsPlugin.js",
+      "ids/NamedModuleIdsPlugin.js",
+      "ids/DeterministicChunkIdsPlugin.js",
+      "ids/DeterministicModuleIdsPlugin.js",
+      "ids/NamedChunkIdsPlugin.js",
+      "ids/OccurrenceChunkIdsPlugin.js",
+      "ids/HashedModuleIdsPlugin.js",
+      "javascript/EnableChunkLoadingPlugin.js",
+      "javascript/JavascriptParser.js",
+      "optimize/AggressiveMergingPlugin.js",
+      "optimize/AggressiveSplittingPlugin.js",
+      "optimize/InnerGraph.js",
+      "optimize/LimitChunkCountPlugin.js",
+      "optimize/MinChunkSizePlugin.js",
+      "optimize/ModuleConcatenationPlugin.js",
+      "optimize/RealContentHashPlugin.js",
+      "optimize/RuntimeChunkPlugin.js",
+      "optimize/SideEffectsFlagPlugin.js",
+      "optimize/SplitChunksPlugin.js",
+      "runtime/GetChunkFilenameRuntimeModule.js",
+      "runtime/LoadScriptRuntimeModule.js",
+      "prefetch/ChunkPrefetchPreloadPlugin.js",
+      "web/FetchCompileAsyncWasmPlugin.js",
+      "web/FetchCompileWasmPlugin.js",
+      "web/JsonpChunkLoadingRuntimeModule.js",
+      "web/JsonpTemplatePlugin.js",
+      "webworker/WebWorkerTemplatePlugin.js",
+      "node/NodeEnvironmentPlugin.js",
+      "node/NodeSourcePlugin.js",
+      "node/NodeTargetPlugin.js",
+      "node/NodeTemplatePlugin.js",
+      "node/ReadFileCompileWasmPlugin.js",
+      "electron/ElectronTargetPlugin.js",
+      "wasm-async/AsyncWebAssemblyModulesPlugin.js",
+      "library/AbstractLibraryPlugin.js",
+      "library/EnableLibraryPlugin.js",
+      "container/ContainerPlugin.js",
+      "container/ContainerReferencePlugin.js",
+      "container/ModuleFederationPlugin.js",
+      "container/options.js",
+      "sharing/ConsumeSharedPlugin.js",
+      "sharing/ProvideSharedPlugin.js",
+      "sharing/SharePlugin.js",
+      "debug/ProfilingPlugin.js",
+      "util/createHash.js",
+      "util/comparators.js",
+      "util/runtime.js",
+      "util/serialization.js",
+      "util/cleverMerge.js",
+      "util/LazySet.js",
+      "schemes/HttpUriPlugin.js",
+      "ids/SyncModuleIdsPlugin.js"
+    ],
+    "body": {
+      "size": 16760,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/memoize.js": {
+    "id": "util/memoize.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 604,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "webpack.js": {
+    "id": "webpack.js",
+    "adjacentTo": [
+      "../schemas/WebpackOptions.check.js",
+      "Compiler.js",
+      "MultiCompiler.js",
+      "WebpackOptionsApply.js",
+      "config/defaults.js",
+      "config/normalization.js",
+      "node/NodeEnvironmentPlugin.js",
+      "util/memoize.js",
+      "validateSchema.js"
+    ],
+    "body": {
+      "size": 5393,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/WebpackOptions.check.js": {
+    "id": "../schemas/WebpackOptions.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 226114,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Compiler.js": {
+    "id": "Compiler.js",
+    "adjacentTo": [
+      "index.js",
+      "Cache.js",
+      "CacheFacade.js",
+      "ChunkGraph.js",
+      "Compilation.js",
+      "ConcurrentCompilationError.js",
+      "ContextModuleFactory.js",
+      "ModuleGraph.js",
+      "NormalModuleFactory.js",
+      "RequestShortener.js",
+      "ResolverFactory.js",
+      "Stats.js",
+      "Watching.js",
+      "WebpackError.js",
+      "logging/Logger.js",
+      "util/fs.js",
+      "util/identifier.js",
+      "util/source.js"
+    ],
+    "body": {
+      "size": 36177,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Cache.js": {
+    "id": "Cache.js",
+    "adjacentTo": ["HookWebpackError.js"],
+    "body": {
+      "size": 3976,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "HookWebpackError.js": {
+    "id": "HookWebpackError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 2079,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "WebpackError.js": {
+    "id": "WebpackError.js",
+    "adjacentTo": ["util/makeSerializable.js"],
+    "body": {
+      "size": 1377,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/makeSerializable.js": {
+    "id": "util/makeSerializable.js",
+    "adjacentTo": ["util/serialization.js"],
+    "body": {
+      "size": 640,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/serialization.js": {
+    "id": "util/serialization.js",
+    "adjacentTo": [
+      "util/memoize.js",
+      "serialization/BinaryMiddleware.js",
+      "serialization/ObjectMiddleware.js",
+      "serialization/SingleItemMiddleware.js",
+      "serialization/Serializer.js",
+      "serialization/SerializerMiddleware.js",
+      "util/registerExternalSerializer.js",
+      "util/internalSerializables.js",
+      "serialization/FileMiddleware.js"
+    ],
+    "body": {
+      "size": 4018,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/BinaryMiddleware.js": {
+    "id": "serialization/BinaryMiddleware.js",
+    "adjacentTo": ["util/memoize.js", "serialization/SerializerMiddleware.js"],
+    "body": {
+      "size": 26476,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/SerializerMiddleware.js": {
+    "id": "serialization/SerializerMiddleware.js",
+    "adjacentTo": ["util/memoize.js", "AbstractMethodError.js"],
+    "body": {
+      "size": 4496,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "AbstractMethodError.js": {
+    "id": "AbstractMethodError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 1133,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/ObjectMiddleware.js": {
+    "id": "serialization/ObjectMiddleware.js",
+    "adjacentTo": [
+      "util/createHash.js",
+      "serialization/ArraySerializer.js",
+      "serialization/DateObjectSerializer.js",
+      "serialization/ErrorObjectSerializer.js",
+      "serialization/MapObjectSerializer.js",
+      "serialization/NullPrototypeObjectSerializer.js",
+      "serialization/PlainObjectSerializer.js",
+      "serialization/RegExpObjectSerializer.js",
+      "serialization/SerializerMiddleware.js",
+      "serialization/SetObjectSerializer.js"
+    ],
+    "body": {
+      "size": 20372,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/createHash.js": {
+    "id": "util/createHash.js",
+    "adjacentTo": [
+      "util/Hash.js",
+      "util/hash/xxhash64.js",
+      "util/hash/BatchedHash.js",
+      "util/hash/md4.js"
+    ],
+    "body": {
+      "size": 4819,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/Hash.js": {
+    "id": "util/Hash.js",
+    "adjacentTo": ["AbstractMethodError.js"],
+    "body": {
+      "size": 925,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/hash/xxhash64.js": {
+    "id": "util/hash/xxhash64.js",
+    "adjacentTo": ["util/hash/wasm-hash.js"],
+    "body": {
+      "size": 1971,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/hash/wasm-hash.js": {
+    "id": "util/hash/wasm-hash.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 4578,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/hash/BatchedHash.js": {
+    "id": "util/hash/BatchedHash.js",
+    "adjacentTo": ["util/Hash.js", "util/hash/wasm-hash.js"],
+    "body": {
+      "size": 1700,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/hash/md4.js": {
+    "id": "util/hash/md4.js",
+    "adjacentTo": ["util/hash/wasm-hash.js"],
+    "body": {
+      "size": 3267,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/ArraySerializer.js": {
+    "id": "serialization/ArraySerializer.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 398,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/DateObjectSerializer.js": {
+    "id": "serialization/DateObjectSerializer.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 268,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/ErrorObjectSerializer.js": {
+    "id": "serialization/ErrorObjectSerializer.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 400,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/MapObjectSerializer.js": {
+    "id": "serialization/MapObjectSerializer.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 554,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/NullPrototypeObjectSerializer.js": {
+    "id": "serialization/NullPrototypeObjectSerializer.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 589,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/PlainObjectSerializer.js": {
+    "id": "serialization/PlainObjectSerializer.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1653,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/RegExpObjectSerializer.js": {
+    "id": "serialization/RegExpObjectSerializer.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 299,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/SetObjectSerializer.js": {
+    "id": "serialization/SetObjectSerializer.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 403,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/SingleItemMiddleware.js": {
+    "id": "serialization/SingleItemMiddleware.js",
+    "adjacentTo": ["serialization/SerializerMiddleware.js"],
+    "body": {
+      "size": 806,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/Serializer.js": {
+    "id": "serialization/Serializer.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1194,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/registerExternalSerializer.js": {
+    "id": "util/registerExternalSerializer.js",
+    "adjacentTo": ["util/serialization.js"],
+    "body": {
+      "size": 7913,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/internalSerializables.js": {
+    "id": "util/internalSerializables.js",
+    "adjacentTo": [
+      "AsyncDependenciesBlock.js",
+      "CommentCompilationWarning.js",
+      "ContextModule.js",
+      "cache/PackFileCacheStrategy.js",
+      "cache/ResolverCachePlugin.js",
+      "container/ContainerEntryDependency.js",
+      "container/ContainerEntryModule.js",
+      "container/ContainerExposedDependency.js",
+      "container/FallbackDependency.js",
+      "container/FallbackItemDependency.js",
+      "container/FallbackModule.js",
+      "container/RemoteModule.js",
+      "container/RemoteToExternalDependency.js",
+      "dependencies/AMDDefineDependency.js",
+      "dependencies/AMDRequireArrayDependency.js",
+      "dependencies/AMDRequireContextDependency.js",
+      "dependencies/AMDRequireDependenciesBlock.js",
+      "dependencies/AMDRequireDependency.js",
+      "dependencies/AMDRequireItemDependency.js",
+      "dependencies/CachedConstDependency.js",
+      "dependencies/CreateScriptUrlDependency.js",
+      "dependencies/CommonJsRequireContextDependency.js",
+      "dependencies/CommonJsExportRequireDependency.js",
+      "dependencies/CommonJsExportsDependency.js",
+      "dependencies/CommonJsFullRequireDependency.js",
+      "dependencies/CommonJsRequireDependency.js",
+      "dependencies/CommonJsSelfReferenceDependency.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/ContextDependency.js",
+      "dependencies/ContextElementDependency.js",
+      "dependencies/CriticalDependencyWarning.js",
+      "dependencies/CssImportDependency.js",
+      "dependencies/CssLocalIdentifierDependency.js",
+      "dependencies/CssSelfLocalIdentifierDependency.js",
+      "dependencies/CssExportDependency.js",
+      "dependencies/CssUrlDependency.js",
+      "dependencies/DelegatedSourceDependency.js",
+      "dependencies/DllEntryDependency.js",
+      "dependencies/EntryDependency.js",
+      "dependencies/ExportsInfoDependency.js",
+      "dependencies/HarmonyAcceptDependency.js",
+      "dependencies/HarmonyAcceptImportDependency.js",
+      "dependencies/HarmonyCompatibilityDependency.js",
+      "dependencies/HarmonyExportExpressionDependency.js",
+      "dependencies/HarmonyExportHeaderDependency.js",
+      "dependencies/HarmonyExportImportedSpecifierDependency.js",
+      "dependencies/HarmonyExportSpecifierDependency.js",
+      "dependencies/HarmonyImportSideEffectDependency.js",
+      "dependencies/HarmonyImportSpecifierDependency.js",
+      "dependencies/HarmonyEvaluatedImportSpecifierDependency.js",
+      "dependencies/ImportContextDependency.js",
+      "dependencies/ImportDependency.js",
+      "dependencies/ImportEagerDependency.js",
+      "dependencies/ImportWeakDependency.js",
+      "dependencies/JsonExportsDependency.js",
+      "dependencies/LocalModule.js",
+      "dependencies/LocalModuleDependency.js",
+      "dependencies/ModuleDecoratorDependency.js",
+      "dependencies/ModuleHotAcceptDependency.js",
+      "dependencies/ModuleHotDeclineDependency.js",
+      "dependencies/ImportMetaHotAcceptDependency.js",
+      "dependencies/ImportMetaHotDeclineDependency.js",
+      "dependencies/ImportMetaContextDependency.js",
+      "dependencies/ProvidedDependency.js",
+      "dependencies/PureExpressionDependency.js",
+      "dependencies/RequireContextDependency.js",
+      "dependencies/RequireEnsureDependenciesBlock.js",
+      "dependencies/RequireEnsureDependency.js",
+      "dependencies/RequireEnsureItemDependency.js",
+      "dependencies/RequireHeaderDependency.js",
+      "dependencies/RequireIncludeDependency.js",
+      "dependencies/RequireIncludeDependencyParserPlugin.js",
+      "dependencies/RequireResolveContextDependency.js",
+      "dependencies/RequireResolveDependency.js",
+      "dependencies/RequireResolveHeaderDependency.js",
+      "dependencies/RuntimeRequirementsDependency.js",
+      "dependencies/StaticExportsDependency.js",
+      "dependencies/SystemPlugin.js",
+      "dependencies/UnsupportedDependency.js",
+      "dependencies/URLDependency.js",
+      "dependencies/WebAssemblyExportImportedDependency.js",
+      "dependencies/WebAssemblyImportDependency.js",
+      "dependencies/WebpackIsIncludedDependency.js",
+      "dependencies/WorkerDependency.js",
+      "json/JsonData.js",
+      "optimize/ConcatenatedModule.js",
+      "DelegatedModule.js",
+      "DependenciesBlock.js",
+      "DllModule.js",
+      "ExternalModule.js",
+      "FileSystemInfo.js",
+      "InitFragment.js",
+      "InvalidDependenciesModuleWarning.js",
+      "Module.js",
+      "ModuleBuildError.js",
+      "ModuleDependencyWarning.js",
+      "ModuleError.js",
+      "ModuleGraph.js",
+      "ModuleParseError.js",
+      "ModuleWarning.js",
+      "NormalModule.js",
+      "asset/RawDataUrlModule.js",
+      "RawModule.js",
+      "sharing/ConsumeSharedModule.js",
+      "sharing/ConsumeSharedFallbackDependency.js",
+      "sharing/ProvideSharedModule.js",
+      "sharing/ProvideSharedDependency.js",
+      "sharing/ProvideForSharedDependency.js",
+      "UnsupportedFeatureWarning.js",
+      "util/LazySet.js",
+      "UnhandledSchemeError.js",
+      "NodeStuffInWebError.js",
+      "WebpackError.js"
+    ],
+    "body": {
+      "size": 10785,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "AsyncDependenciesBlock.js": {
+    "id": "AsyncDependenciesBlock.js",
+    "adjacentTo": ["DependenciesBlock.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 2930,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DependenciesBlock.js": {
+    "id": "DependenciesBlock.js",
+    "adjacentTo": ["util/makeSerializable.js"],
+    "body": {
+      "size": 2589,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "CommentCompilationWarning.js": {
+    "id": "CommentCompilationWarning.js",
+    "adjacentTo": ["WebpackError.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 729,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ContextModule.js": {
+    "id": "ContextModule.js",
+    "adjacentTo": [
+      "AsyncDependenciesBlock.js",
+      "HookWebpackError.js",
+      "Module.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "WebpackError.js",
+      "util/comparators.js",
+      "util/identifier.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 34961,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Module.js": {
+    "id": "Module.js",
+    "adjacentTo": [
+      "ChunkGraph.js",
+      "DependenciesBlock.js",
+      "ModuleGraph.js",
+      "RuntimeGlobals.js",
+      "util/SetHelpers.js",
+      "util/comparators.js",
+      "util/makeSerializable.js",
+      "AbstractMethodError.js"
+    ],
+    "body": {
+      "size": 30866,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ChunkGraph.js": {
+    "id": "ChunkGraph.js",
+    "adjacentTo": [
+      "Entrypoint.js",
+      "ModuleGraphConnection.js",
+      "util/SetHelpers.js",
+      "util/SortableSet.js",
+      "util/comparators.js",
+      "util/createHash.js",
+      "util/findGraphRoots.js",
+      "util/runtime.js"
+    ],
+    "body": {
+      "size": 53248,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Entrypoint.js": {
+    "id": "Entrypoint.js",
+    "adjacentTo": ["ChunkGroup.js"],
+    "body": {
+      "size": 3025,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ChunkGroup.js": {
+    "id": "ChunkGroup.js",
+    "adjacentTo": ["util/SortableSet.js", "util/comparators.js"],
+    "body": {
+      "size": 15120,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/SortableSet.js": {
+    "id": "util/SortableSet.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 3635,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/comparators.js": {
+    "id": "util/comparators.js",
+    "adjacentTo": ["util/runtime.js"],
+    "body": {
+      "size": 12446,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/runtime.js": {
+    "id": "util/runtime.js",
+    "adjacentTo": ["util/SortableSet.js"],
+    "body": {
+      "size": 14605,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleGraphConnection.js": {
+    "id": "ModuleGraphConnection.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 5209,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/SetHelpers.js": {
+    "id": "util/SetHelpers.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2316,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/findGraphRoots.js": {
+    "id": "util/findGraphRoots.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 6111,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleGraph.js": {
+    "id": "ModuleGraph.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "ModuleGraphConnection.js",
+      "util/SortableSet.js",
+      "util/WeakTupleMap.js"
+    ],
+    "body": {
+      "size": 24568,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ExportsInfo.js": {
+    "id": "ExportsInfo.js",
+    "adjacentTo": [
+      "util/ArrayHelpers.js",
+      "util/SortableSet.js",
+      "util/makeSerializable.js",
+      "util/runtime.js"
+    ],
+    "body": {
+      "size": 44043,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/ArrayHelpers.js": {
+    "id": "util/ArrayHelpers.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1484,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/WeakTupleMap.js": {
+    "id": "util/WeakTupleMap.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 3443,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "RuntimeGlobals.js": {
+    "id": "RuntimeGlobals.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 9223,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Template.js": {
+    "id": "Template.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 12817,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/identifier.js": {
+    "id": "util/identifier.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 11054,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cache/PackFileCacheStrategy.js": {
+    "id": "cache/PackFileCacheStrategy.js",
+    "adjacentTo": [
+      "FileSystemInfo.js",
+      "ProgressPlugin.js",
+      "SizeFormatHelpers.js",
+      "serialization/SerializerMiddleware.js",
+      "util/LazySet.js",
+      "util/makeSerializable.js",
+      "util/memoize.js",
+      "util/serialization.js"
+    ],
+    "body": {
+      "size": 40828,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "FileSystemInfo.js": {
+    "id": "FileSystemInfo.js",
+    "adjacentTo": [
+      "util/AsyncQueue.js",
+      "util/StackedCacheMap.js",
+      "util/createHash.js",
+      "util/fs.js",
+      "util/makeSerializable.js",
+      "util/processAsyncTree.js"
+    ],
+    "body": {
+      "size": 105468,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/AsyncQueue.js": {
+    "id": "util/AsyncQueue.js",
+    "adjacentTo": [
+      "HookWebpackError.js",
+      "WebpackError.js",
+      "util/ArrayQueue.js"
+    ],
+    "body": {
+      "size": 9640,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/ArrayQueue.js": {
+    "id": "util/ArrayQueue.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2198,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/StackedCacheMap.js": {
+    "id": "util/StackedCacheMap.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2284,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/fs.js": {
+    "id": "util/fs.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 11421,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/processAsyncTree.js": {
+    "id": "util/processAsyncTree.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1483,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ProgressPlugin.js": {
+    "id": "ProgressPlugin.js",
+    "adjacentTo": [
+      "Compiler.js",
+      "MultiCompiler.js",
+      "NormalModule.js",
+      "util/create-schema-validation.js",
+      "util/identifier.js",
+      "../schemas/plugins/ProgressPlugin.check.js"
+    ],
+    "body": {
+      "size": 17179,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "MultiCompiler.js": {
+    "id": "MultiCompiler.js",
+    "adjacentTo": [
+      "ConcurrentCompilationError.js",
+      "MultiStats.js",
+      "MultiWatching.js",
+      "util/ArrayQueue.js"
+    ],
+    "body": {
+      "size": 16047,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ConcurrentCompilationError.js": {
+    "id": "ConcurrentCompilationError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 441,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "MultiStats.js": {
+    "id": "MultiStats.js",
+    "adjacentTo": ["util/identifier.js"],
+    "body": {
+      "size": 4222,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "MultiWatching.js": {
+    "id": "MultiWatching.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1475,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "NormalModule.js": {
+    "id": "NormalModule.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "HookWebpackError.js",
+      "Module.js",
+      "ModuleBuildError.js",
+      "ModuleError.js",
+      "ModuleGraphConnection.js",
+      "ModuleParseError.js",
+      "ModuleWarning.js",
+      "RuntimeGlobals.js",
+      "UnhandledSchemeError.js",
+      "WebpackError.js",
+      "formatLocation.js",
+      "util/LazySet.js",
+      "util/SetHelpers.js",
+      "util/URLAbsoluteSpecifier.js",
+      "util/comparators.js",
+      "util/createHash.js",
+      "util/deprecation.js",
+      "util/fs.js",
+      "util/identifier.js",
+      "util/makeSerializable.js",
+      "util/memoize.js",
+      "InvalidDependenciesModuleWarning.js"
+    ],
+    "body": {
+      "size": 42111,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Compilation.js": {
+    "id": "Compilation.js",
+    "adjacentTo": [
+      "CacheFacade.js",
+      "Chunk.js",
+      "ChunkGraph.js",
+      "ChunkGroup.js",
+      "ChunkRenderError.js",
+      "ChunkTemplate.js",
+      "CodeGenerationError.js",
+      "CodeGenerationResults.js",
+      "Dependency.js",
+      "DependencyTemplates.js",
+      "Entrypoint.js",
+      "ErrorHelpers.js",
+      "FileSystemInfo.js",
+      "GraphHelpers.js",
+      "HookWebpackError.js",
+      "MainTemplate.js",
+      "Module.js",
+      "ModuleDependencyError.js",
+      "ModuleDependencyWarning.js",
+      "ModuleGraph.js",
+      "ModuleHashingError.js",
+      "ModuleNotFoundError.js",
+      "ModuleProfile.js",
+      "ModuleRestoreError.js",
+      "ModuleStoreError.js",
+      "ModuleTemplate.js",
+      "RuntimeGlobals.js",
+      "RuntimeTemplate.js",
+      "Stats.js",
+      "WebpackError.js",
+      "buildChunkGraph.js",
+      "errors/BuildCycleError.js",
+      "logging/Logger.js",
+      "stats/StatsFactory.js",
+      "stats/StatsPrinter.js",
+      "util/ArrayHelpers.js",
+      "util/AsyncQueue.js",
+      "util/LazySet.js",
+      "util/MapHelpers.js",
+      "util/WeakTupleMap.js",
+      "util/cleverMerge.js",
+      "util/comparators.js",
+      "util/createHash.js",
+      "util/deprecation.js",
+      "util/processAsyncTree.js",
+      "util/runtime.js",
+      "util/source.js",
+      "NormalModule.js",
+      "util/ParallelismFactorCalculator.js"
+    ],
+    "body": {
+      "size": 161665,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "CacheFacade.js": {
+    "id": "CacheFacade.js",
+    "adjacentTo": ["cache/getLazyHashedEtag.js", "cache/mergeEtags.js"],
+    "body": {
+      "size": 8576,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cache/getLazyHashedEtag.js": {
+    "id": "cache/getLazyHashedEtag.js",
+    "adjacentTo": ["util/createHash.js"],
+    "body": {
+      "size": 2185,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cache/mergeEtags.js": {
+    "id": "cache/mergeEtags.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1486,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Chunk.js": {
+    "id": "Chunk.js",
+    "adjacentTo": [
+      "ChunkGraph.js",
+      "Entrypoint.js",
+      "util/SetHelpers.js",
+      "util/SortableSet.js",
+      "util/StringXor.js",
+      "util/comparators.js",
+      "util/deprecation.js",
+      "util/runtime.js"
+    ],
+    "body": {
+      "size": 21608,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/StringXor.js": {
+    "id": "util/StringXor.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1120,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/deprecation.js": {
+    "id": "util/deprecation.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 6454,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ChunkRenderError.js": {
+    "id": "ChunkRenderError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 657,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ChunkTemplate.js": {
+    "id": "ChunkTemplate.js",
+    "adjacentTo": ["util/memoize.js", "javascript/JavascriptModulesPlugin.js"],
+    "body": {
+      "size": 3992,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/JavascriptModulesPlugin.js": {
+    "id": "javascript/JavascriptModulesPlugin.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "HookWebpackError.js",
+      "HotUpdateChunk.js",
+      "InitFragment.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "util/IterableHelpers.js",
+      "util/StringXor.js",
+      "util/comparators.js",
+      "util/createHash.js",
+      "util/nonNumericOnlyHash.js",
+      "util/runtime.js",
+      "javascript/JavascriptGenerator.js",
+      "javascript/JavascriptParser.js"
+    ],
+    "body": {
+      "size": 43960,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "HotUpdateChunk.js": {
+    "id": "HotUpdateChunk.js",
+    "adjacentTo": ["Chunk.js"],
+    "body": {
+      "size": 353,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "InitFragment.js": {
+    "id": "InitFragment.js",
+    "adjacentTo": ["util/makeSerializable.js"],
+    "body": {
+      "size": 4647,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/IterableHelpers.js": {
+    "id": "util/IterableHelpers.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 962,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/nonNumericOnlyHash.js": {
+    "id": "util/nonNumericOnlyHash.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 556,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/JavascriptGenerator.js": {
+    "id": "javascript/JavascriptGenerator.js",
+    "adjacentTo": [
+      "Generator.js",
+      "InitFragment.js",
+      "dependencies/HarmonyCompatibilityDependency.js"
+    ],
+    "body": {
+      "size": 6846,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Generator.js": {
+    "id": "Generator.js",
+    "adjacentTo": ["AbstractMethodError.js"],
+    "body": {
+      "size": 4848,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyCompatibilityDependency.js": {
+    "id": "dependencies/HarmonyCompatibilityDependency.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "InitFragment.js",
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 2759,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/NullDependency.js": {
+    "id": "dependencies/NullDependency.js",
+    "adjacentTo": ["Dependency.js", "DependencyTemplate.js"],
+    "body": {
+      "size": 1282,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Dependency.js": {
+    "id": "Dependency.js",
+    "adjacentTo": ["util/memoize.js", "RawModule.js"],
+    "body": {
+      "size": 9683,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "RawModule.js": {
+    "id": "RawModule.js",
+    "adjacentTo": ["Module.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 4643,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DependencyTemplate.js": {
+    "id": "DependencyTemplate.js",
+    "adjacentTo": ["AbstractMethodError.js"],
+    "body": {
+      "size": 2493,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/JavascriptParser.js": {
+    "id": "javascript/JavascriptParser.js",
+    "adjacentTo": [
+      "Parser.js",
+      "util/StackedMap.js",
+      "util/binarySearchBounds.js",
+      "util/memoize.js",
+      "javascript/BasicEvaluatedExpression.js"
+    ],
+    "body": {
+      "size": 115222,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Parser.js": {
+    "id": "Parser.js",
+    "adjacentTo": ["AbstractMethodError.js"],
+    "body": {
+      "size": 968,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/StackedMap.js": {
+    "id": "util/StackedMap.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 3453,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/binarySearchBounds.js": {
+    "id": "util/binarySearchBounds.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1907,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/BasicEvaluatedExpression.js": {
+    "id": "javascript/BasicEvaluatedExpression.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 10507,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "CodeGenerationError.js": {
+    "id": "CodeGenerationError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 619,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "CodeGenerationResults.js": {
+    "id": "CodeGenerationResults.js",
+    "adjacentTo": [
+      "util/MapHelpers.js",
+      "util/SetHelpers.js",
+      "util/createHash.js",
+      "util/runtime.js"
+    ],
+    "body": {
+      "size": 4463,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/MapHelpers.js": {
+    "id": "util/MapHelpers.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 472,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DependencyTemplates.js": {
+    "id": "DependencyTemplates.js",
+    "adjacentTo": ["util/createHash.js"],
+    "body": {
+      "size": 1734,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ErrorHelpers.js": {
+    "id": "ErrorHelpers.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1452,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "GraphHelpers.js": {
+    "id": "GraphHelpers.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1074,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "MainTemplate.js": {
+    "id": "MainTemplate.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "util/memoize.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "web/JsonpTemplatePlugin.js",
+      "runtime/LoadScriptRuntimeModule.js"
+    ],
+    "body": {
+      "size": 10391,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "web/JsonpTemplatePlugin.js": {
+    "id": "web/JsonpTemplatePlugin.js",
+    "adjacentTo": [
+      "javascript/ArrayPushCallbackChunkFormatPlugin.js",
+      "javascript/EnableChunkLoadingPlugin.js",
+      "web/JsonpChunkLoadingRuntimeModule.js"
+    ],
+    "body": {
+      "size": 1242,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/ArrayPushCallbackChunkFormatPlugin.js": {
+    "id": "javascript/ArrayPushCallbackChunkFormatPlugin.js",
+    "adjacentTo": [
+      "index.js",
+      "HotUpdateChunk.js",
+      "Template.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "javascript/StartupHelpers.js"
+    ],
+    "body": {
+      "size": 4807,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/StartupHelpers.js": {
+    "id": "javascript/StartupHelpers.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "util/SetHelpers.js",
+      "javascript/ChunkHelpers.js"
+    ],
+    "body": {
+      "size": 4012,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/ChunkHelpers.js": {
+    "id": "javascript/ChunkHelpers.js",
+    "adjacentTo": ["Entrypoint.js"],
+    "body": {
+      "size": 922,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/EnableChunkLoadingPlugin.js": {
+    "id": "javascript/EnableChunkLoadingPlugin.js",
+    "adjacentTo": [
+      "web/JsonpChunkLoadingPlugin.js",
+      "webworker/ImportScriptsChunkLoadingPlugin.js",
+      "node/CommonJsChunkLoadingPlugin.js",
+      "esm/ModuleChunkLoadingPlugin.js"
+    ],
+    "body": {
+      "size": 3610,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "web/JsonpChunkLoadingPlugin.js": {
+    "id": "web/JsonpChunkLoadingPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "web/JsonpChunkLoadingRuntimeModule.js"
+    ],
+    "body": {
+      "size": 3180,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "web/JsonpChunkLoadingRuntimeModule.js": {
+    "id": "web/JsonpChunkLoadingRuntimeModule.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "javascript/StartupHelpers.js",
+      "util/compileBooleanMatcher.js",
+      "hmr/JavascriptHotModuleReplacement.runtime.js"
+    ],
+    "body": {
+      "size": 16055,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "RuntimeModule.js": {
+    "id": "RuntimeModule.js",
+    "adjacentTo": ["Module.js", "AbstractMethodError.js"],
+    "body": {
+      "size": 5760,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/compileBooleanMatcher.js": {
+    "id": "util/compileBooleanMatcher.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 5821,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "hmr/JavascriptHotModuleReplacement.runtime.js": {
+    "id": "hmr/JavascriptHotModuleReplacement.runtime.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 13261,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "webworker/ImportScriptsChunkLoadingPlugin.js": {
+    "id": "webworker/ImportScriptsChunkLoadingPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "runtime/StartupChunkDependenciesPlugin.js",
+      "webworker/ImportScriptsChunkLoadingRuntimeModule.js"
+    ],
+    "body": {
+      "size": 3471,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/StartupChunkDependenciesPlugin.js": {
+    "id": "runtime/StartupChunkDependenciesPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "runtime/StartupChunkDependenciesRuntimeModule.js",
+      "runtime/StartupEntrypointRuntimeModule.js"
+    ],
+    "body": {
+      "size": 2271,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/StartupChunkDependenciesRuntimeModule.js": {
+    "id": "runtime/StartupChunkDependenciesRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 1844,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/StartupEntrypointRuntimeModule.js": {
+    "id": "runtime/StartupEntrypointRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js"],
+    "body": {
+      "size": 1409,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "webworker/ImportScriptsChunkLoadingRuntimeModule.js": {
+    "id": "webworker/ImportScriptsChunkLoadingRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "javascript/StartupHelpers.js",
+      "util/compileBooleanMatcher.js",
+      "util/identifier.js",
+      "hmr/JavascriptHotModuleReplacement.runtime.js"
+    ],
+    "body": {
+      "size": 7975,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/CommonJsChunkLoadingPlugin.js": {
+    "id": "node/CommonJsChunkLoadingPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "runtime/StartupChunkDependenciesPlugin.js",
+      "node/ReadFileChunkLoadingRuntimeModule.js",
+      "node/RequireChunkLoadingRuntimeModule.js"
+    ],
+    "body": {
+      "size": 3665,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/ReadFileChunkLoadingRuntimeModule.js": {
+    "id": "node/ReadFileChunkLoadingRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "javascript/StartupHelpers.js",
+      "util/compileBooleanMatcher.js",
+      "util/identifier.js",
+      "hmr/JavascriptHotModuleReplacement.runtime.js"
+    ],
+    "body": {
+      "size": 9798,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/RequireChunkLoadingRuntimeModule.js": {
+    "id": "node/RequireChunkLoadingRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "javascript/StartupHelpers.js",
+      "util/compileBooleanMatcher.js",
+      "util/identifier.js",
+      "hmr/JavascriptHotModuleReplacement.runtime.js"
+    ],
+    "body": {
+      "size": 7539,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "esm/ModuleChunkLoadingPlugin.js": {
+    "id": "esm/ModuleChunkLoadingPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "esm/ExportWebpackRequireRuntimeModule.js",
+      "esm/ModuleChunkLoadingRuntimeModule.js"
+    ],
+    "body": {
+      "size": 2568,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "esm/ExportWebpackRequireRuntimeModule.js": {
+    "id": "esm/ExportWebpackRequireRuntimeModule.js",
+    "adjacentTo": ["RuntimeModule.js"],
+    "body": {
+      "size": 577,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "esm/ModuleChunkLoadingRuntimeModule.js": {
+    "id": "esm/ModuleChunkLoadingRuntimeModule.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "javascript/StartupHelpers.js",
+      "util/compileBooleanMatcher.js",
+      "util/identifier.js"
+    ],
+    "body": {
+      "size": 7694,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/LoadScriptRuntimeModule.js": {
+    "id": "runtime/LoadScriptRuntimeModule.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 4803,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/HelperRuntimeModule.js": {
+    "id": "runtime/HelperRuntimeModule.js",
+    "adjacentTo": ["RuntimeModule.js"],
+    "body": {
+      "size": 319,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleDependencyError.js": {
+    "id": "ModuleDependencyError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 1107,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleDependencyWarning.js": {
+    "id": "ModuleDependencyWarning.js",
+    "adjacentTo": ["WebpackError.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 1222,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleHashingError.js": {
+    "id": "ModuleHashingError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 615,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleNotFoundError.js": {
+    "id": "ModuleNotFoundError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 2610,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleProfile.js": {
+    "id": "ModuleProfile.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2440,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleRestoreError.js": {
+    "id": "ModuleRestoreError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 957,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleStoreError.js": {
+    "id": "ModuleStoreError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 951,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleTemplate.js": {
+    "id": "ModuleTemplate.js",
+    "adjacentTo": ["util/memoize.js", "javascript/JavascriptModulesPlugin.js"],
+    "body": {
+      "size": 3999,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "RuntimeTemplate.js": {
+    "id": "RuntimeTemplate.js",
+    "adjacentTo": [
+      "InitFragment.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "util/ArrayHelpers.js",
+      "util/compileBooleanMatcher.js",
+      "util/propertyAccess.js",
+      "util/runtime.js"
+    ],
+    "body": {
+      "size": 31855,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/propertyAccess.js": {
+    "id": "util/propertyAccess.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1190,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Stats.js": {
+    "id": "Stats.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2003,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "buildChunkGraph.js": {
+    "id": "buildChunkGraph.js",
+    "adjacentTo": [
+      "AsyncDependencyToInitialChunkError.js",
+      "GraphHelpers.js",
+      "ModuleGraphConnection.js",
+      "util/runtime.js"
+    ],
+    "body": {
+      "size": 45622,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "AsyncDependencyToInitialChunkError.js": {
+    "id": "AsyncDependencyToInitialChunkError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 913,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "errors/BuildCycleError.js": {
+    "id": "errors/BuildCycleError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 600,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "logging/Logger.js": {
+    "id": "logging/Logger.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 4371,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "stats/StatsFactory.js": {
+    "id": "stats/StatsFactory.js",
+    "adjacentTo": ["util/comparators.js", "util/smartGrouping.js"],
+    "body": {
+      "size": 8586,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/smartGrouping.js": {
+    "id": "util/smartGrouping.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 5271,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "stats/StatsPrinter.js": {
+    "id": "stats/StatsPrinter.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 7858,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/LazySet.js": {
+    "id": "util/LazySet.js",
+    "adjacentTo": ["util/makeSerializable.js"],
+    "body": {
+      "size": 4569,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/cleverMerge.js": {
+    "id": "util/cleverMerge.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 16534,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/source.js": {
+    "id": "util/source.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1759,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/ParallelismFactorCalculator.js": {
+    "id": "util/ParallelismFactorCalculator.js",
+    "adjacentTo": ["util/binarySearchBounds.js"],
+    "body": {
+      "size": 1528,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleBuildError.js": {
+    "id": "ModuleBuildError.js",
+    "adjacentTo": [
+      "ErrorHelpers.js",
+      "WebpackError.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 1626,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleError.js": {
+    "id": "ModuleError.js",
+    "adjacentTo": [
+      "ErrorHelpers.js",
+      "WebpackError.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 1202,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleParseError.js": {
+    "id": "ModuleParseError.js",
+    "adjacentTo": ["WebpackError.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 3332,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleWarning.js": {
+    "id": "ModuleWarning.js",
+    "adjacentTo": [
+      "ErrorHelpers.js",
+      "WebpackError.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 1280,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "UnhandledSchemeError.js": {
+    "id": "UnhandledSchemeError.js",
+    "adjacentTo": ["WebpackError.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 833,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "formatLocation.js": {
+    "id": "formatLocation.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1781,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/URLAbsoluteSpecifier.js": {
+    "id": "util/URLAbsoluteSpecifier.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2553,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "InvalidDependenciesModuleWarning.js": {
+    "id": "InvalidDependenciesModuleWarning.js",
+    "adjacentTo": ["WebpackError.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 1874,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/create-schema-validation.js": {
+    "id": "util/create-schema-validation.js",
+    "adjacentTo": ["util/memoize.js"],
+    "body": {
+      "size": 711,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/ProgressPlugin.check.js": {
+    "id": "../schemas/plugins/ProgressPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2867,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "SizeFormatHelpers.js": {
+    "id": "SizeFormatHelpers.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 583,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cache/ResolverCachePlugin.js": {
+    "id": "cache/ResolverCachePlugin.js",
+    "adjacentTo": ["util/LazySet.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 10590,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/ContainerEntryDependency.js": {
+    "id": "container/ContainerEntryDependency.js",
+    "adjacentTo": ["Dependency.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 1099,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/ContainerEntryModule.js": {
+    "id": "container/ContainerEntryModule.js",
+    "adjacentTo": [
+      "AsyncDependenciesBlock.js",
+      "Module.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "dependencies/StaticExportsDependency.js",
+      "util/makeSerializable.js",
+      "container/ContainerExposedDependency.js"
+    ],
+    "body": {
+      "size": 8393,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/StaticExportsDependency.js": {
+    "id": "dependencies/StaticExportsDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 1620,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/ContainerExposedDependency.js": {
+    "id": "container/ContainerExposedDependency.js",
+    "adjacentTo": [
+      "dependencies/ModuleDependency.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 1156,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ModuleDependency.js": {
+    "id": "dependencies/ModuleDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "DependencyTemplate.js",
+      "util/memoize.js",
+      "RawModule.js"
+    ],
+    "body": {
+      "size": 2252,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/FallbackDependency.js": {
+    "id": "container/FallbackDependency.js",
+    "adjacentTo": ["Dependency.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 955,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/FallbackItemDependency.js": {
+    "id": "container/FallbackItemDependency.js",
+    "adjacentTo": [
+      "dependencies/ModuleDependency.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 571,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/FallbackModule.js": {
+    "id": "container/FallbackModule.js",
+    "adjacentTo": [
+      "Module.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "util/makeSerializable.js",
+      "container/FallbackItemDependency.js"
+    ],
+    "body": {
+      "size": 5406,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/RemoteModule.js": {
+    "id": "container/RemoteModule.js",
+    "adjacentTo": [
+      "Module.js",
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "container/FallbackDependency.js",
+      "container/RemoteToExternalDependency.js"
+    ],
+    "body": {
+      "size": 5315,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/RemoteToExternalDependency.js": {
+    "id": "container/RemoteToExternalDependency.js",
+    "adjacentTo": [
+      "dependencies/ModuleDependency.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 592,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDDefineDependency.js": {
+    "id": "dependencies/AMDDefineDependency.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 7553,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDRequireArrayDependency.js": {
+    "id": "dependencies/AMDRequireArrayDependency.js",
+    "adjacentTo": [
+      "DependencyTemplate.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 2409,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDRequireContextDependency.js": {
+    "id": "dependencies/AMDRequireContextDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ContextDependency.js",
+      "dependencies/ContextDependencyTemplateAsRequireCall.js"
+    ],
+    "body": {
+      "size": 1027,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ContextDependency.js": {
+    "id": "dependencies/ContextDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "DependencyTemplate.js",
+      "util/makeSerializable.js",
+      "util/memoize.js",
+      "dependencies/CriticalDependencyWarning.js"
+    ],
+    "body": {
+      "size": 4112,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CriticalDependencyWarning.js": {
+    "id": "dependencies/CriticalDependencyWarning.js",
+    "adjacentTo": ["WebpackError.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 568,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ContextDependencyTemplateAsRequireCall.js": {
+    "id": "dependencies/ContextDependencyTemplateAsRequireCall.js",
+    "adjacentTo": ["dependencies/ContextDependency.js"],
+    "body": {
+      "size": 1834,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDRequireDependenciesBlock.js": {
+    "id": "dependencies/AMDRequireDependenciesBlock.js",
+    "adjacentTo": ["AsyncDependenciesBlock.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 533,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDRequireDependency.js": {
+    "id": "dependencies/AMDRequireDependency.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 5086,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDRequireItemDependency.js": {
+    "id": "dependencies/AMDRequireItemDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/ModuleDependencyTemplateAsRequireId.js"
+    ],
+    "body": {
+      "size": 764,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ModuleDependencyTemplateAsRequireId.js": {
+    "id": "dependencies/ModuleDependencyTemplateAsRequireId.js",
+    "adjacentTo": ["dependencies/ModuleDependency.js"],
+    "body": {
+      "size": 1243,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CachedConstDependency.js": {
+    "id": "dependencies/CachedConstDependency.js",
+    "adjacentTo": [
+      "DependencyTemplate.js",
+      "InitFragment.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 2847,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CreateScriptUrlDependency.js": {
+    "id": "dependencies/CreateScriptUrlDependency.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 1781,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsRequireContextDependency.js": {
+    "id": "dependencies/CommonJsRequireContextDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ContextDependency.js",
+      "dependencies/ContextDependencyTemplateAsRequireCall.js"
+    ],
+    "body": {
+      "size": 1285,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsExportRequireDependency.js": {
+    "id": "dependencies/CommonJsExportRequireDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "ExportsInfo.js",
+      "Template.js",
+      "util/ArrayHelpers.js",
+      "util/makeSerializable.js",
+      "util/propertyAccess.js",
+      "dependencies/CommonJsDependencyHelpers.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/processExportInfo.js"
+    ],
+    "body": {
+      "size": 10482,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsDependencyHelpers.js": {
+    "id": "dependencies/CommonJsDependencyHelpers.js",
+    "adjacentTo": ["RuntimeGlobals.js"],
+    "body": {
+      "size": 1330,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/processExportInfo.js": {
+    "id": "dependencies/processExportInfo.js",
+    "adjacentTo": ["ExportsInfo.js"],
+    "body": {
+      "size": 1777,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsExportsDependency.js": {
+    "id": "dependencies/CommonJsExportsDependency.js",
+    "adjacentTo": [
+      "InitFragment.js",
+      "util/makeSerializable.js",
+      "util/propertyAccess.js",
+      "dependencies/CommonJsDependencyHelpers.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 4006,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsFullRequireDependency.js": {
+    "id": "dependencies/CommonJsFullRequireDependency.js",
+    "adjacentTo": [
+      "Template.js",
+      "util/ArrayHelpers.js",
+      "util/makeSerializable.js",
+      "util/propertyAccess.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 3757,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsRequireDependency.js": {
+    "id": "dependencies/CommonJsRequireDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/ModuleDependencyTemplateAsId.js"
+    ],
+    "body": {
+      "size": 788,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ModuleDependencyTemplateAsId.js": {
+    "id": "dependencies/ModuleDependencyTemplateAsId.js",
+    "adjacentTo": ["dependencies/ModuleDependency.js"],
+    "body": {
+      "size": 1171,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsSelfReferenceDependency.js": {
+    "id": "dependencies/CommonJsSelfReferenceDependency.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "util/ArrayHelpers.js",
+      "util/makeSerializable.js",
+      "util/propertyAccess.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 3861,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ConstDependency.js": {
+    "id": "dependencies/ConstDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 3220,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ContextElementDependency.js": {
+    "id": "dependencies/ContextElementDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 2289,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CssImportDependency.js": {
+    "id": "dependencies/CssImportDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 2311,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CssLocalIdentifierDependency.js": {
+    "id": "dependencies/CssLocalIdentifierDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 3043,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CssSelfLocalIdentifierDependency.js": {
+    "id": "dependencies/CssSelfLocalIdentifierDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "util/makeSerializable.js",
+      "dependencies/CssLocalIdentifierDependency.js"
+    ],
+    "body": {
+      "size": 3184,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CssExportDependency.js": {
+    "id": "dependencies/CssExportDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 2063,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CssUrlDependency.js": {
+    "id": "dependencies/CssUrlDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "util/memoize.js",
+      "dependencies/ModuleDependency.js",
+      "asset/RawDataUrlModule.js"
+    ],
+    "body": {
+      "size": 3641,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "asset/RawDataUrlModule.js": {
+    "id": "asset/RawDataUrlModule.js",
+    "adjacentTo": [
+      "Module.js",
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 4401,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/DelegatedSourceDependency.js": {
+    "id": "dependencies/DelegatedSourceDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 575,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/DllEntryDependency.js": {
+    "id": "dependencies/DllEntryDependency.js",
+    "adjacentTo": ["Dependency.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 819,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/EntryDependency.js": {
+    "id": "dependencies/EntryDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 581,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ExportsInfoDependency.js": {
+    "id": "dependencies/ExportsInfoDependency.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 3987,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyAcceptDependency.js": {
+    "id": "dependencies/HarmonyAcceptDependency.js",
+    "adjacentTo": [
+      "Template.js",
+      "util/makeSerializable.js",
+      "dependencies/HarmonyImportDependency.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 3759,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyImportDependency.js": {
+    "id": "dependencies/HarmonyImportDependency.js",
+    "adjacentTo": [
+      "ConditionalInitFragment.js",
+      "Dependency.js",
+      "HarmonyLinkingError.js",
+      "InitFragment.js",
+      "Template.js",
+      "async-modules/AwaitDependenciesInitFragment.js",
+      "util/runtime.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 11118,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ConditionalInitFragment.js": {
+    "id": "ConditionalInitFragment.js",
+    "adjacentTo": ["InitFragment.js", "Template.js", "util/runtime.js"],
+    "body": {
+      "size": 3445,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "HarmonyLinkingError.js": {
+    "id": "HarmonyLinkingError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 357,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "async-modules/AwaitDependenciesInitFragment.js": {
+    "id": "async-modules/AwaitDependenciesInitFragment.js",
+    "adjacentTo": ["InitFragment.js", "RuntimeGlobals.js", "Template.js"],
+    "body": {
+      "size": 1995,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyAcceptImportDependency.js": {
+    "id": "dependencies/HarmonyAcceptImportDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/HarmonyImportDependency.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 1007,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyExportExpressionDependency.js": {
+    "id": "dependencies/HarmonyExportExpressionDependency.js",
+    "adjacentTo": [
+      "ConcatenationScope.js",
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "dependencies/HarmonyExportInitFragment.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 5474,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ConcatenationScope.js": {
+    "id": "ConcatenationScope.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 4636,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyExportInitFragment.js": {
+    "id": "dependencies/HarmonyExportInitFragment.js",
+    "adjacentTo": [
+      "InitFragment.js",
+      "RuntimeGlobals.js",
+      "util/SetHelpers.js"
+    ],
+    "body": {
+      "size": 4529,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyExportHeaderDependency.js": {
+    "id": "dependencies/HarmonyExportHeaderDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 1819,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyExportImportedSpecifierDependency.js": {
+    "id": "dependencies/HarmonyExportImportedSpecifierDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "ExportsInfo.js",
+      "HarmonyLinkingError.js",
+      "InitFragment.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "util/IterableHelpers.js",
+      "util/SetHelpers.js",
+      "util/makeSerializable.js",
+      "util/propertyAccess.js",
+      "util/runtime.js",
+      "dependencies/HarmonyExportInitFragment.js",
+      "dependencies/HarmonyImportDependency.js",
+      "dependencies/processExportInfo.js"
+    ],
+    "body": {
+      "size": 34884,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyExportSpecifierDependency.js": {
+    "id": "dependencies/HarmonyExportSpecifierDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/HarmonyExportInitFragment.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 3021,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyImportSideEffectDependency.js": {
+    "id": "dependencies/HarmonyImportSideEffectDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/HarmonyImportDependency.js"
+    ],
+    "body": {
+      "size": 2821,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyImportSpecifierDependency.js": {
+    "id": "dependencies/HarmonyImportSpecifierDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "optimize/InnerGraph.js",
+      "util/makeSerializable.js",
+      "util/propertyAccess.js",
+      "dependencies/HarmonyImportDependency.js"
+    ],
+    "body": {
+      "size": 9908,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/InnerGraph.js": {
+    "id": "optimize/InnerGraph.js",
+    "adjacentTo": ["ExportsInfo.js"],
+    "body": {
+      "size": 9218,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyEvaluatedImportSpecifierDependency.js": {
+    "id": "dependencies/HarmonyEvaluatedImportSpecifierDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/HarmonyImportSpecifierDependency.js"
+    ],
+    "body": {
+      "size": 3647,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportContextDependency.js": {
+    "id": "dependencies/ImportContextDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ContextDependency.js",
+      "dependencies/ContextDependencyTemplateAsRequireCall.js"
+    ],
+    "body": {
+      "size": 1068,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportDependency.js": {
+    "id": "dependencies/ImportDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 2989,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportEagerDependency.js": {
+    "id": "dependencies/ImportEagerDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ImportDependency.js"
+    ],
+    "body": {
+      "size": 2020,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportWeakDependency.js": {
+    "id": "dependencies/ImportWeakDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ImportDependency.js"
+    ],
+    "body": {
+      "size": 2004,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/JsonExportsDependency.js": {
+    "id": "dependencies/JsonExportsDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 2222,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/LocalModule.js": {
+    "id": "dependencies/LocalModule.js",
+    "adjacentTo": ["util/makeSerializable.js"],
+    "body": {
+      "size": 743,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/LocalModuleDependency.js": {
+    "id": "dependencies/LocalModuleDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 1856,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ModuleDecoratorDependency.js": {
+    "id": "dependencies/ModuleDecoratorDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "InitFragment.js",
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 3861,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ModuleHotAcceptDependency.js": {
+    "id": "dependencies/ModuleHotAcceptDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/ModuleDependencyTemplateAsId.js"
+    ],
+    "body": {
+      "size": 778,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ModuleHotDeclineDependency.js": {
+    "id": "dependencies/ModuleHotDeclineDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/ModuleDependencyTemplateAsId.js"
+    ],
+    "body": {
+      "size": 785,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportMetaHotAcceptDependency.js": {
+    "id": "dependencies/ImportMetaHotAcceptDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/ModuleDependencyTemplateAsId.js"
+    ],
+    "body": {
+      "size": 805,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportMetaHotDeclineDependency.js": {
+    "id": "dependencies/ImportMetaHotDeclineDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/ModuleDependencyTemplateAsId.js"
+    ],
+    "body": {
+      "size": 812,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportMetaContextDependency.js": {
+    "id": "dependencies/ImportMetaContextDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ContextDependency.js",
+      "dependencies/ModuleDependencyTemplateAsRequireId.js"
+    ],
+    "body": {
+      "size": 818,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ProvidedDependency.js": {
+    "id": "dependencies/ProvidedDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "InitFragment.js",
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 4127,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/PureExpressionDependency.js": {
+    "id": "dependencies/PureExpressionDependency.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "util/makeSerializable.js",
+      "util/runtime.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 3664,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireContextDependency.js": {
+    "id": "dependencies/RequireContextDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ContextDependency.js",
+      "dependencies/ModuleDependencyTemplateAsRequireId.js"
+    ],
+    "body": {
+      "size": 733,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireEnsureDependenciesBlock.js": {
+    "id": "dependencies/RequireEnsureDependenciesBlock.js",
+    "adjacentTo": ["AsyncDependenciesBlock.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 549,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireEnsureDependency.js": {
+    "id": "dependencies/RequireEnsureDependency.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 2734,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireEnsureItemDependency.js": {
+    "id": "dependencies/RequireEnsureItemDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 708,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireHeaderDependency.js": {
+    "id": "dependencies/RequireHeaderDependency.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 1721,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireIncludeDependency.js": {
+    "id": "dependencies/RequireIncludeDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "Template.js",
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 2237,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireIncludeDependencyParserPlugin.js": {
+    "id": "dependencies/RequireIncludeDependencyParserPlugin.js",
+    "adjacentTo": [
+      "WebpackError.js",
+      "javascript/JavascriptParserHelpers.js",
+      "util/makeSerializable.js",
+      "dependencies/RequireIncludeDependency.js"
+    ],
+    "body": {
+      "size": 2046,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/JavascriptParserHelpers.js": {
+    "id": "javascript/JavascriptParserHelpers.js",
+    "adjacentTo": [
+      "UnsupportedFeatureWarning.js",
+      "dependencies/ConstDependency.js",
+      "javascript/BasicEvaluatedExpression.js"
+    ],
+    "body": {
+      "size": 3201,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "UnsupportedFeatureWarning.js": {
+    "id": "UnsupportedFeatureWarning.js",
+    "adjacentTo": ["WebpackError.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 780,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireResolveContextDependency.js": {
+    "id": "dependencies/RequireResolveContextDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/ContextDependency.js",
+      "dependencies/ContextDependencyTemplateAsId.js"
+    ],
+    "body": {
+      "size": 1087,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ContextDependencyTemplateAsId.js": {
+    "id": "dependencies/ContextDependencyTemplateAsId.js",
+    "adjacentTo": ["dependencies/ContextDependency.js"],
+    "body": {
+      "size": 1791,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireResolveDependency.js": {
+    "id": "dependencies/RequireResolveDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/ModuleDependencyTemplateAsId.js"
+    ],
+    "body": {
+      "size": 1405,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireResolveHeaderDependency.js": {
+    "id": "dependencies/RequireResolveHeaderDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 1792,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RuntimeRequirementsDependency.js": {
+    "id": "dependencies/RuntimeRequirementsDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 2311,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/SystemPlugin.js": {
+    "id": "dependencies/SystemPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "WebpackError.js",
+      "javascript/JavascriptParserHelpers.js",
+      "util/makeSerializable.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/SystemRuntimeModule.js"
+    ],
+    "body": {
+      "size": 3821,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/SystemRuntimeModule.js": {
+    "id": "dependencies/SystemRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 698,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/UnsupportedDependency.js": {
+    "id": "dependencies/UnsupportedDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "dependencies/NullDependency.js"
+    ],
+    "body": {
+      "size": 1642,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/URLDependency.js": {
+    "id": "dependencies/URLDependency.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "optimize/InnerGraph.js",
+      "util/makeSerializable.js",
+      "util/memoize.js",
+      "dependencies/ModuleDependency.js",
+      "asset/RawDataUrlModule.js"
+    ],
+    "body": {
+      "size": 4611,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/WebAssemblyExportImportedDependency.js": {
+    "id": "dependencies/WebAssemblyExportImportedDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 2073,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/WebAssemblyImportDependency.js": {
+    "id": "dependencies/WebAssemblyImportDependency.js",
+    "adjacentTo": [
+      "util/makeSerializable.js",
+      "wasm-sync/UnsupportedWebAssemblyFeatureError.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 2676,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-sync/UnsupportedWebAssemblyFeatureError.js": {
+    "id": "wasm-sync/UnsupportedWebAssemblyFeatureError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 388,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/WebpackIsIncludedDependency.js": {
+    "id": "dependencies/WebpackIsIncludedDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "Template.js",
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 2520,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/WorkerDependency.js": {
+    "id": "dependencies/WorkerDependency.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "dependencies/ModuleDependency.js"
+    ],
+    "body": {
+      "size": 2994,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "json/JsonData.js": {
+    "id": "json/JsonData.js",
+    "adjacentTo": ["util/serialization.js"],
+    "body": {
+      "size": 1048,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/ConcatenatedModule.js": {
+    "id": "optimize/ConcatenatedModule.js",
+    "adjacentTo": [
+      "ConcatenationScope.js",
+      "ExportsInfo.js",
+      "Module.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "dependencies/HarmonyImportDependency.js",
+      "javascript/JavascriptParser.js",
+      "util/ArrayHelpers.js",
+      "util/LazySet.js",
+      "util/comparators.js",
+      "util/createHash.js",
+      "util/identifier.js",
+      "util/makeSerializable.js",
+      "util/propertyAccess.js",
+      "util/runtime.js"
+    ],
+    "body": {
+      "size": 55887,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DelegatedModule.js": {
+    "id": "DelegatedModule.js",
+    "adjacentTo": [
+      "Module.js",
+      "RuntimeGlobals.js",
+      "dependencies/DelegatedSourceDependency.js",
+      "dependencies/StaticExportsDependency.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 7246,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DllModule.js": {
+    "id": "DllModule.js",
+    "adjacentTo": [
+      "Module.js",
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 4502,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ExternalModule.js": {
+    "id": "ExternalModule.js",
+    "adjacentTo": [
+      "ConcatenationScope.js",
+      "ExportsInfo.js",
+      "InitFragment.js",
+      "Module.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "dependencies/StaticExportsDependency.js",
+      "util/createHash.js",
+      "util/extractUrlAndGlobal.js",
+      "util/makeSerializable.js",
+      "util/propertyAccess.js",
+      "util/serialization.js"
+    ],
+    "body": {
+      "size": 22463,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/extractUrlAndGlobal.js": {
+    "id": "util/extractUrlAndGlobal.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 531,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ConsumeSharedModule.js": {
+    "id": "sharing/ConsumeSharedModule.js",
+    "adjacentTo": [
+      "AsyncDependenciesBlock.js",
+      "Module.js",
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "util/semver.js",
+      "sharing/ConsumeSharedFallbackDependency.js"
+    ],
+    "body": {
+      "size": 7314,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/semver.js": {
+    "id": "util/semver.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 15724,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ConsumeSharedFallbackDependency.js": {
+    "id": "sharing/ConsumeSharedFallbackDependency.js",
+    "adjacentTo": [
+      "dependencies/ModuleDependency.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 615,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ProvideSharedModule.js": {
+    "id": "sharing/ProvideSharedModule.js",
+    "adjacentTo": [
+      "AsyncDependenciesBlock.js",
+      "Module.js",
+      "RuntimeGlobals.js",
+      "util/makeSerializable.js",
+      "sharing/ProvideForSharedDependency.js"
+    ],
+    "body": {
+      "size": 5493,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ProvideForSharedDependency.js": {
+    "id": "sharing/ProvideForSharedDependency.js",
+    "adjacentTo": [
+      "dependencies/ModuleDependency.js",
+      "util/makeSerializable.js"
+    ],
+    "body": {
+      "size": 654,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ProvideSharedDependency.js": {
+    "id": "sharing/ProvideSharedDependency.js",
+    "adjacentTo": ["Dependency.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 1359,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "NodeStuffInWebError.js": {
+    "id": "NodeStuffInWebError.js",
+    "adjacentTo": ["WebpackError.js", "util/makeSerializable.js"],
+    "body": {
+      "size": 843,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "serialization/FileMiddleware.js": {
+    "id": "serialization/FileMiddleware.js",
+    "adjacentTo": [
+      "util/createHash.js",
+      "util/fs.js",
+      "util/memoize.js",
+      "serialization/SerializerMiddleware.js"
+    ],
+    "body": {
+      "size": 18592,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ContextModuleFactory.js": {
+    "id": "ContextModuleFactory.js",
+    "adjacentTo": [
+      "ContextModule.js",
+      "ModuleFactory.js",
+      "dependencies/ContextElementDependency.js",
+      "util/LazySet.js",
+      "util/cleverMerge.js",
+      "util/deprecation.js",
+      "util/fs.js"
+    ],
+    "body": {
+      "size": 12447,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleFactory.js": {
+    "id": "ModuleFactory.js",
+    "adjacentTo": ["AbstractMethodError.js"],
+    "body": {
+      "size": 1427,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "NormalModuleFactory.js": {
+    "id": "NormalModuleFactory.js",
+    "adjacentTo": [
+      "ChunkGraph.js",
+      "Module.js",
+      "ModuleFactory.js",
+      "ModuleGraph.js",
+      "NormalModule.js",
+      "rules/BasicEffectRulePlugin.js",
+      "rules/BasicMatcherRulePlugin.js",
+      "rules/ObjectMatcherRulePlugin.js",
+      "rules/RuleSetCompiler.js",
+      "rules/UseEffectRulePlugin.js",
+      "util/LazySet.js",
+      "util/URLAbsoluteSpecifier.js",
+      "util/cleverMerge.js",
+      "util/fs.js",
+      "util/identifier.js"
+    ],
+    "body": {
+      "size": 32354,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "rules/BasicEffectRulePlugin.js": {
+    "id": "rules/BasicEffectRulePlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 876,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "rules/BasicMatcherRulePlugin.js": {
+    "id": "rules/BasicMatcherRulePlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1273,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "rules/ObjectMatcherRulePlugin.js": {
+    "id": "rules/ObjectMatcherRulePlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1324,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "rules/RuleSetCompiler.js": {
+    "id": "rules/RuleSetCompiler.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 8922,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "rules/UseEffectRulePlugin.js": {
+    "id": "rules/UseEffectRulePlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 5306,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "RequestShortener.js": {
+    "id": "RequestShortener.js",
+    "adjacentTo": ["util/identifier.js"],
+    "body": {
+      "size": 755,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ResolverFactory.js": {
+    "id": "ResolverFactory.js",
+    "adjacentTo": ["util/cleverMerge.js"],
+    "body": {
+      "size": 4947,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "Watching.js": {
+    "id": "Watching.js",
+    "adjacentTo": ["Stats.js"],
+    "body": {
+      "size": 12924,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "WebpackOptionsApply.js": {
+    "id": "WebpackOptionsApply.js",
+    "adjacentTo": [
+      "OptionsApply.js",
+      "asset/AssetModulesPlugin.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "json/JsonModulesPlugin.js",
+      "prefetch/ChunkPrefetchPreloadPlugin.js",
+      "EntryOptionPlugin.js",
+      "RecordIdsPlugin.js",
+      "RuntimePlugin.js",
+      "APIPlugin.js",
+      "CompatibilityPlugin.js",
+      "ConstPlugin.js",
+      "ExportsInfoApiPlugin.js",
+      "WebpackIsIncludedPlugin.js",
+      "TemplatedPathPlugin.js",
+      "UseStrictPlugin.js",
+      "WarnCaseSensitiveModulesPlugin.js",
+      "schemes/DataUriPlugin.js",
+      "schemes/FileUriPlugin.js",
+      "cache/ResolverCachePlugin.js",
+      "dependencies/CommonJsPlugin.js",
+      "dependencies/HarmonyModulesPlugin.js",
+      "dependencies/ImportMetaContextPlugin.js",
+      "dependencies/ImportMetaPlugin.js",
+      "dependencies/ImportPlugin.js",
+      "dependencies/LoaderPlugin.js",
+      "dependencies/RequireContextPlugin.js",
+      "dependencies/RequireEnsurePlugin.js",
+      "dependencies/RequireIncludePlugin.js",
+      "dependencies/SystemPlugin.js",
+      "dependencies/URLPlugin.js",
+      "dependencies/WorkerPlugin.js",
+      "async-modules/InferAsyncModulesPlugin.js",
+      "JavascriptMetaInfoPlugin.js",
+      "stats/DefaultStatsFactoryPlugin.js",
+      "stats/DefaultStatsPresetPlugin.js",
+      "stats/DefaultStatsPrinterPlugin.js",
+      "util/cleverMerge.js",
+      "ExternalsPlugin.js",
+      "node/NodeTargetPlugin.js",
+      "electron/ElectronTargetPlugin.js",
+      "javascript/ArrayPushCallbackChunkFormatPlugin.js",
+      "javascript/CommonJsChunkFormatPlugin.js",
+      "esm/ModuleChunkFormatPlugin.js",
+      "javascript/EnableChunkLoadingPlugin.js",
+      "wasm/EnableWasmLoadingPlugin.js",
+      "library/EnableLibraryPlugin.js",
+      "ModuleInfoHeaderPlugin.js",
+      "CleanPlugin.js",
+      "EvalSourceMapDevToolPlugin.js",
+      "SourceMapDevToolPlugin.js",
+      "EvalDevToolModulePlugin.js",
+      "wasm-sync/WebAssemblyModulesPlugin.js",
+      "wasm-async/AsyncWebAssemblyModulesPlugin.js",
+      "css/CssModulesPlugin.js",
+      "hmr/LazyCompilationPlugin.js",
+      "hmr/lazyCompilationBackend.js",
+      "schemes/HttpUriPlugin.js",
+      "dependencies/AMDPlugin.js",
+      "RequireJsStuffPlugin.js",
+      "NodeStuffPlugin.js",
+      "WarnNoModeSetPlugin.js",
+      "optimize/EnsureChunkConditionsPlugin.js",
+      "optimize/RemoveParentModulesPlugin.js",
+      "optimize/RemoveEmptyChunksPlugin.js",
+      "optimize/MergeDuplicateChunksPlugin.js",
+      "optimize/FlagIncludedChunksPlugin.js",
+      "optimize/SideEffectsFlagPlugin.js",
+      "FlagDependencyExportsPlugin.js",
+      "FlagDependencyUsagePlugin.js",
+      "optimize/InnerGraphPlugin.js",
+      "optimize/MangleExportsPlugin.js",
+      "optimize/ModuleConcatenationPlugin.js",
+      "optimize/SplitChunksPlugin.js",
+      "optimize/RuntimeChunkPlugin.js",
+      "NoEmitOnErrorsPlugin.js",
+      "optimize/RealContentHashPlugin.js",
+      "wasm-sync/WasmFinalizeExportsPlugin.js",
+      "ids/NaturalModuleIdsPlugin.js",
+      "ids/NamedModuleIdsPlugin.js",
+      "WarnDeprecatedOptionPlugin.js",
+      "ids/HashedModuleIdsPlugin.js",
+      "ids/DeterministicModuleIdsPlugin.js",
+      "ids/OccurrenceModuleIdsPlugin.js",
+      "ids/NaturalChunkIdsPlugin.js",
+      "ids/NamedChunkIdsPlugin.js",
+      "ids/DeterministicChunkIdsPlugin.js",
+      "ids/OccurrenceChunkIdsPlugin.js",
+      "DefinePlugin.js",
+      "performance/SizeLimitsPlugin.js",
+      "cache/AddManagedPathsPlugin.js",
+      "cache/MemoryWithGcCachePlugin.js",
+      "cache/MemoryCachePlugin.js",
+      "cache/AddBuildDependenciesPlugin.js",
+      "cache/IdleFileCachePlugin.js",
+      "cache/PackFileCacheStrategy.js",
+      "IgnoreWarningsPlugin.js"
+    ],
+    "body": {
+      "size": 26310,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "OptionsApply.js": {
+    "id": "OptionsApply.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 201,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "asset/AssetModulesPlugin.js": {
+    "id": "asset/AssetModulesPlugin.js",
+    "adjacentTo": [
+      "util/cleverMerge.js",
+      "util/comparators.js",
+      "util/create-schema-validation.js",
+      "util/memoize.js",
+      "../schemas/plugins/asset/AssetGeneratorOptions.check.js",
+      "../schemas/plugins/asset/AssetResourceGeneratorOptions.check.js",
+      "../schemas/plugins/asset/AssetInlineGeneratorOptions.check.js",
+      "../schemas/plugins/asset/AssetParserOptions.check.js",
+      "asset/AssetGenerator.js",
+      "asset/AssetParser.js",
+      "asset/AssetSourceParser.js",
+      "asset/AssetSourceGenerator.js"
+    ],
+    "body": {
+      "size": 6401,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/asset/AssetGeneratorOptions.check.js": {
+    "id": "../schemas/plugins/asset/AssetGeneratorOptions.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 3681,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/asset/AssetResourceGeneratorOptions.check.js": {
+    "id": "../schemas/plugins/asset/AssetResourceGeneratorOptions.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2501,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/asset/AssetInlineGeneratorOptions.check.js": {
+    "id": "../schemas/plugins/asset/AssetInlineGeneratorOptions.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1872,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/asset/AssetParserOptions.check.js": {
+    "id": "../schemas/plugins/asset/AssetParserOptions.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1442,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "asset/AssetGenerator.js": {
+    "id": "asset/AssetGenerator.js",
+    "adjacentTo": [
+      "ConcatenationScope.js",
+      "Generator.js",
+      "RuntimeGlobals.js",
+      "util/createHash.js",
+      "util/identifier.js",
+      "util/nonNumericOnlyHash.js"
+    ],
+    "body": {
+      "size": 14564,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "asset/AssetParser.js": {
+    "id": "asset/AssetParser.js",
+    "adjacentTo": ["Parser.js"],
+    "body": {
+      "size": 1753,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "asset/AssetSourceParser.js": {
+    "id": "asset/AssetSourceParser.js",
+    "adjacentTo": ["Parser.js"],
+    "body": {
+      "size": 869,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "asset/AssetSourceGenerator.js": {
+    "id": "asset/AssetSourceGenerator.js",
+    "adjacentTo": [
+      "ConcatenationScope.js",
+      "Generator.js",
+      "RuntimeGlobals.js"
+    ],
+    "body": {
+      "size": 2713,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "json/JsonModulesPlugin.js": {
+    "id": "json/JsonModulesPlugin.js",
+    "adjacentTo": [
+      "util/create-schema-validation.js",
+      "json/JsonGenerator.js",
+      "json/JsonParser.js",
+      "../schemas/plugins/JsonModulesPluginParser.check.js"
+    ],
+    "body": {
+      "size": 1230,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "json/JsonGenerator.js": {
+    "id": "json/JsonGenerator.js",
+    "adjacentTo": [
+      "ConcatenationScope.js",
+      "ExportsInfo.js",
+      "Generator.js",
+      "RuntimeGlobals.js"
+    ],
+    "body": {
+      "size": 5535,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "json/JsonParser.js": {
+    "id": "json/JsonParser.js",
+    "adjacentTo": [
+      "Parser.js",
+      "dependencies/JsonExportsDependency.js",
+      "json/JsonData.js"
+    ],
+    "body": {
+      "size": 1724,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/JsonModulesPluginParser.check.js": {
+    "id": "../schemas/plugins/JsonModulesPluginParser.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 557,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "prefetch/ChunkPrefetchPreloadPlugin.js": {
+    "id": "prefetch/ChunkPrefetchPreloadPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "prefetch/ChunkPrefetchFunctionRuntimeModule.js",
+      "prefetch/ChunkPrefetchStartupRuntimeModule.js",
+      "prefetch/ChunkPrefetchTriggerRuntimeModule.js",
+      "prefetch/ChunkPreloadTriggerRuntimeModule.js"
+    ],
+    "body": {
+      "size": 2937,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "prefetch/ChunkPrefetchFunctionRuntimeModule.js": {
+    "id": "prefetch/ChunkPrefetchFunctionRuntimeModule.js",
+    "adjacentTo": ["RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 1188,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "prefetch/ChunkPrefetchStartupRuntimeModule.js": {
+    "id": "prefetch/ChunkPrefetchStartupRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 1503,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "prefetch/ChunkPrefetchTriggerRuntimeModule.js": {
+    "id": "prefetch/ChunkPrefetchTriggerRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 1283,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "prefetch/ChunkPreloadTriggerRuntimeModule.js": {
+    "id": "prefetch/ChunkPreloadTriggerRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 1167,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "EntryOptionPlugin.js": {
+    "id": "EntryOptionPlugin.js",
+    "adjacentTo": [
+      "DynamicEntryPlugin.js",
+      "EntryPlugin.js",
+      "javascript/EnableChunkLoadingPlugin.js",
+      "wasm/EnableWasmLoadingPlugin.js",
+      "library/EnableLibraryPlugin.js"
+    ],
+    "body": {
+      "size": 2839,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DynamicEntryPlugin.js": {
+    "id": "DynamicEntryPlugin.js",
+    "adjacentTo": [
+      "EntryOptionPlugin.js",
+      "EntryPlugin.js",
+      "dependencies/EntryDependency.js"
+    ],
+    "body": {
+      "size": 2035,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "EntryPlugin.js": {
+    "id": "EntryPlugin.js",
+    "adjacentTo": ["dependencies/EntryDependency.js"],
+    "body": {
+      "size": 1737,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm/EnableWasmLoadingPlugin.js": {
+    "id": "wasm/EnableWasmLoadingPlugin.js",
+    "adjacentTo": [
+      "web/FetchCompileWasmPlugin.js",
+      "web/FetchCompileAsyncWasmPlugin.js",
+      "node/ReadFileCompileWasmPlugin.js",
+      "node/ReadFileCompileAsyncWasmPlugin.js"
+    ],
+    "body": {
+      "size": 3776,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "web/FetchCompileWasmPlugin.js": {
+    "id": "web/FetchCompileWasmPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "wasm-sync/WasmChunkLoadingRuntimeModule.js"
+    ],
+    "body": {
+      "size": 1872,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-sync/WasmChunkLoadingRuntimeModule.js": {
+    "id": "wasm-sync/WasmChunkLoadingRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "util/comparators.js",
+      "wasm-sync/WebAssemblyUtils.js"
+    ],
+    "body": {
+      "size": 11109,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-sync/WebAssemblyUtils.js": {
+    "id": "wasm-sync/WebAssemblyUtils.js",
+    "adjacentTo": [
+      "Template.js",
+      "dependencies/WebAssemblyImportDependency.js"
+    ],
+    "body": {
+      "size": 1861,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "web/FetchCompileAsyncWasmPlugin.js": {
+    "id": "web/FetchCompileAsyncWasmPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "wasm-async/AsyncWasmLoadingRuntimeModule.js"
+    ],
+    "body": {
+      "size": 1676,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-async/AsyncWasmLoadingRuntimeModule.js": {
+    "id": "wasm-async/AsyncWasmLoadingRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 2336,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/ReadFileCompileWasmPlugin.js": {
+    "id": "node/ReadFileCompileWasmPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "wasm-sync/WasmChunkLoadingRuntimeModule.js"
+    ],
+    "body": {
+      "size": 2464,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/ReadFileCompileAsyncWasmPlugin.js": {
+    "id": "node/ReadFileCompileAsyncWasmPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "wasm-async/AsyncWasmLoadingRuntimeModule.js"
+    ],
+    "body": {
+      "size": 3054,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "library/EnableLibraryPlugin.js": {
+    "id": "library/EnableLibraryPlugin.js",
+    "adjacentTo": [
+      "library/ExportPropertyLibraryPlugin.js",
+      "library/AssignLibraryPlugin.js",
+      "library/AmdLibraryPlugin.js",
+      "library/UmdLibraryPlugin.js",
+      "library/SystemLibraryPlugin.js",
+      "library/JsonpLibraryPlugin.js",
+      "library/ModuleLibraryPlugin.js"
+    ],
+    "body": {
+      "size": 6945,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "library/ExportPropertyLibraryPlugin.js": {
+    "id": "library/ExportPropertyLibraryPlugin.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "util/propertyAccess.js",
+      "util/runtime.js",
+      "library/AbstractLibraryPlugin.js"
+    ],
+    "body": {
+      "size": 3577,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "library/AbstractLibraryPlugin.js": {
+    "id": "library/AbstractLibraryPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "AbstractMethodError.js"
+    ],
+    "body": {
+      "size": 8790,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "library/AssignLibraryPlugin.js": {
+    "id": "library/AssignLibraryPlugin.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "Template.js",
+      "util/propertyAccess.js",
+      "util/runtime.js",
+      "library/AbstractLibraryPlugin.js"
+    ],
+    "body": {
+      "size": 11915,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "library/AmdLibraryPlugin.js": {
+    "id": "library/AmdLibraryPlugin.js",
+    "adjacentTo": [
+      "ExternalModule.js",
+      "Template.js",
+      "library/AbstractLibraryPlugin.js"
+    ],
+    "body": {
+      "size": 4505,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "library/UmdLibraryPlugin.js": {
+    "id": "library/UmdLibraryPlugin.js",
+    "adjacentTo": [
+      "ExternalModule.js",
+      "Template.js",
+      "library/AbstractLibraryPlugin.js"
+    ],
+    "body": {
+      "size": 9588,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "library/SystemLibraryPlugin.js": {
+    "id": "library/SystemLibraryPlugin.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "ExternalModule.js",
+      "Template.js",
+      "util/propertyAccess.js",
+      "library/AbstractLibraryPlugin.js"
+    ],
+    "body": {
+      "size": 7165,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "library/JsonpLibraryPlugin.js": {
+    "id": "library/JsonpLibraryPlugin.js",
+    "adjacentTo": ["library/AbstractLibraryPlugin.js"],
+    "body": {
+      "size": 2613,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "library/ModuleLibraryPlugin.js": {
+    "id": "library/ModuleLibraryPlugin.js",
+    "adjacentTo": [
+      "Template.js",
+      "util/propertyAccess.js",
+      "library/AbstractLibraryPlugin.js"
+    ],
+    "body": {
+      "size": 3081,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "RecordIdsPlugin.js": {
+    "id": "RecordIdsPlugin.js",
+    "adjacentTo": ["util/comparators.js", "util/identifier.js"],
+    "body": {
+      "size": 6821,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "RuntimePlugin.js": {
+    "id": "RuntimePlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "css/CssModulesPlugin.js",
+      "dependencies/RuntimeRequirementsDependency.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "runtime/AsyncModuleRuntimeModule.js",
+      "runtime/AutoPublicPathRuntimeModule.js",
+      "runtime/BaseUriRuntimeModule.js",
+      "runtime/CompatGetDefaultExportRuntimeModule.js",
+      "runtime/CompatRuntimeModule.js",
+      "runtime/CreateFakeNamespaceObjectRuntimeModule.js",
+      "runtime/CreateScriptRuntimeModule.js",
+      "runtime/CreateScriptUrlRuntimeModule.js",
+      "runtime/DefinePropertyGettersRuntimeModule.js",
+      "runtime/EnsureChunkRuntimeModule.js",
+      "runtime/GetChunkFilenameRuntimeModule.js",
+      "runtime/GetMainFilenameRuntimeModule.js",
+      "runtime/GetTrustedTypesPolicyRuntimeModule.js",
+      "runtime/GlobalRuntimeModule.js",
+      "runtime/HasOwnPropertyRuntimeModule.js",
+      "runtime/LoadScriptRuntimeModule.js",
+      "runtime/MakeNamespaceObjectRuntimeModule.js",
+      "runtime/NonceRuntimeModule.js",
+      "runtime/OnChunksLoadedRuntimeModule.js",
+      "runtime/PublicPathRuntimeModule.js",
+      "runtime/RelativeUrlRuntimeModule.js",
+      "runtime/RuntimeIdRuntimeModule.js",
+      "runtime/SystemContextRuntimeModule.js",
+      "sharing/ShareRuntimeModule.js",
+      "util/StringXor.js"
+    ],
+    "body": {
+      "size": 16003,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "css/CssModulesPlugin.js": {
+    "id": "css/CssModulesPlugin.js",
+    "adjacentTo": [
+      "HotUpdateChunk.js",
+      "RuntimeGlobals.js",
+      "SelfModuleFactory.js",
+      "dependencies/CssExportDependency.js",
+      "dependencies/CssImportDependency.js",
+      "dependencies/CssLocalIdentifierDependency.js",
+      "dependencies/CssSelfLocalIdentifierDependency.js",
+      "dependencies/CssUrlDependency.js",
+      "dependencies/StaticExportsDependency.js",
+      "util/comparators.js",
+      "util/create-schema-validation.js",
+      "util/createHash.js",
+      "util/memoize.js",
+      "util/nonNumericOnlyHash.js",
+      "css/CssExportsGenerator.js",
+      "css/CssGenerator.js",
+      "css/CssParser.js",
+      "css/CssLoadingRuntimeModule.js",
+      "../schemas/plugins/css/CssGeneratorOptions.check.js",
+      "../schemas/plugins/css/CssParserOptions.check.js"
+    ],
+    "body": {
+      "size": 13681,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "SelfModuleFactory.js": {
+    "id": "SelfModuleFactory.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 384,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "css/CssExportsGenerator.js": {
+    "id": "css/CssExportsGenerator.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "Generator.js",
+      "RuntimeGlobals.js",
+      "Template.js"
+    ],
+    "body": {
+      "size": 4214,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "css/CssGenerator.js": {
+    "id": "css/CssGenerator.js",
+    "adjacentTo": ["Generator.js", "InitFragment.js", "RuntimeGlobals.js"],
+    "body": {
+      "size": 3181,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "css/CssParser.js": {
+    "id": "css/CssParser.js",
+    "adjacentTo": [
+      "Parser.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/CssExportDependency.js",
+      "dependencies/CssImportDependency.js",
+      "dependencies/CssLocalIdentifierDependency.js",
+      "dependencies/CssSelfLocalIdentifierDependency.js",
+      "dependencies/CssUrlDependency.js",
+      "dependencies/StaticExportsDependency.js",
+      "css/walkCssTokens.js"
+    ],
+    "body": {
+      "size": 18476,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "css/walkCssTokens.js": {
+    "id": "css/walkCssTokens.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 16945,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "css/CssLoadingRuntimeModule.js": {
+    "id": "css/CssLoadingRuntimeModule.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "util/compileBooleanMatcher.js",
+      "css/CssModulesPlugin.js"
+    ],
+    "body": {
+      "size": 15398,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/css/CssGeneratorOptions.check.js": {
+    "id": "../schemas/plugins/css/CssGeneratorOptions.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 439,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/css/CssParserOptions.check.js": {
+    "id": "../schemas/plugins/css/CssParserOptions.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 439,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/AsyncModuleRuntimeModule.js": {
+    "id": "runtime/AsyncModuleRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 4045,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/AutoPublicPathRuntimeModule.js": {
+    "id": "runtime/AutoPublicPathRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "util/identifier.js"
+    ],
+    "body": {
+      "size": 2382,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/BaseUriRuntimeModule.js": {
+    "id": "runtime/BaseUriRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js"],
+    "body": {
+      "size": 653,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/CompatGetDefaultExportRuntimeModule.js": {
+    "id": "runtime/CompatGetDefaultExportRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 1066,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/CompatRuntimeModule.js": {
+    "id": "runtime/CompatRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js"],
+    "body": {
+      "size": 1853,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/CreateFakeNamespaceObjectRuntimeModule.js": {
+    "id": "runtime/CreateFakeNamespaceObjectRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 2327,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/CreateScriptRuntimeModule.js": {
+    "id": "runtime/CreateScriptRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 852,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/CreateScriptUrlRuntimeModule.js": {
+    "id": "runtime/CreateScriptUrlRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 859,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/DefinePropertyGettersRuntimeModule.js": {
+    "id": "runtime/DefinePropertyGettersRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 1073,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/EnsureChunkRuntimeModule.js": {
+    "id": "runtime/EnsureChunkRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 1738,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/GetChunkFilenameRuntimeModule.js": {
+    "id": "runtime/GetChunkFilenameRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "util/SetHelpers.js"
+    ],
+    "body": {
+      "size": 8457,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/GetMainFilenameRuntimeModule.js": {
+    "id": "runtime/GetMainFilenameRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 1176,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/GetTrustedTypesPolicyRuntimeModule.js": {
+    "id": "runtime/GetTrustedTypesPolicyRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 1968,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/GlobalRuntimeModule.js": {
+    "id": "runtime/GlobalRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 1160,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/HasOwnPropertyRuntimeModule.js": {
+    "id": "runtime/HasOwnPropertyRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 731,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/MakeNamespaceObjectRuntimeModule.js": {
+    "id": "runtime/MakeNamespaceObjectRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 972,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/NonceRuntimeModule.js": {
+    "id": "runtime/NonceRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js"],
+    "body": {
+      "size": 494,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/OnChunksLoadedRuntimeModule.js": {
+    "id": "runtime/OnChunksLoadedRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 2026,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/PublicPathRuntimeModule.js": {
+    "id": "runtime/PublicPathRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js"],
+    "body": {
+      "size": 663,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/RelativeUrlRuntimeModule.js": {
+    "id": "runtime/RelativeUrlRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "runtime/HelperRuntimeModule.js"
+    ],
+    "body": {
+      "size": 1178,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/RuntimeIdRuntimeModule.js": {
+    "id": "runtime/RuntimeIdRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js"],
+    "body": {
+      "size": 685,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/SystemContextRuntimeModule.js": {
+    "id": "runtime/SystemContextRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js"],
+    "body": {
+      "size": 532,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ShareRuntimeModule.js": {
+    "id": "sharing/ShareRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "util/comparators.js"
+    ],
+    "body": {
+      "size": 4637,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "APIPlugin.js": {
+    "id": "APIPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "WebpackError.js",
+      "dependencies/ConstDependency.js",
+      "javascript/BasicEvaluatedExpression.js",
+      "javascript/JavascriptParserHelpers.js",
+      "runtime/ChunkNameRuntimeModule.js",
+      "runtime/GetFullHashRuntimeModule.js"
+    ],
+    "body": {
+      "size": 6884,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/ChunkNameRuntimeModule.js": {
+    "id": "runtime/ChunkNameRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js"],
+    "body": {
+      "size": 566,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "runtime/GetFullHashRuntimeModule.js": {
+    "id": "runtime/GetFullHashRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js"],
+    "body": {
+      "size": 664,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "CompatibilityPlugin.js": {
+    "id": "CompatibilityPlugin.js",
+    "adjacentTo": ["dependencies/ConstDependency.js"],
+    "body": {
+      "size": 4645,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ConstPlugin.js": {
+    "id": "ConstPlugin.js",
+    "adjacentTo": [
+      "dependencies/CachedConstDependency.js",
+      "dependencies/ConstDependency.js",
+      "javascript/JavascriptParserHelpers.js",
+      "util/identifier.js"
+    ],
+    "body": {
+      "size": 14747,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ExportsInfoApiPlugin.js": {
+    "id": "ExportsInfoApiPlugin.js",
+    "adjacentTo": [
+      "dependencies/ConstDependency.js",
+      "dependencies/ExportsInfoDependency.js"
+    ],
+    "body": {
+      "size": 2072,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "WebpackIsIncludedPlugin.js": {
+    "id": "WebpackIsIncludedPlugin.js",
+    "adjacentTo": [
+      "IgnoreErrorModuleFactory.js",
+      "dependencies/WebpackIsIncludedDependency.js",
+      "javascript/JavascriptParserHelpers.js"
+    ],
+    "body": {
+      "size": 2420,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "IgnoreErrorModuleFactory.js": {
+    "id": "IgnoreErrorModuleFactory.js",
+    "adjacentTo": ["ModuleFactory.js"],
+    "body": {
+      "size": 1048,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "TemplatedPathPlugin.js": {
+    "id": "TemplatedPathPlugin.js",
+    "adjacentTo": ["Chunk.js", "Module.js", "util/identifier.js"],
+    "body": {
+      "size": 8790,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "UseStrictPlugin.js": {
+    "id": "UseStrictPlugin.js",
+    "adjacentTo": ["dependencies/ConstDependency.js"],
+    "body": {
+      "size": 1645,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "WarnCaseSensitiveModulesPlugin.js": {
+    "id": "WarnCaseSensitiveModulesPlugin.js",
+    "adjacentTo": ["CaseSensitiveModulesWarning.js"],
+    "body": {
+      "size": 1410,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "CaseSensitiveModulesWarning.js": {
+    "id": "CaseSensitiveModulesWarning.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 2106,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "schemes/DataUriPlugin.js": {
+    "id": "schemes/DataUriPlugin.js",
+    "adjacentTo": ["NormalModule.js"],
+    "body": {
+      "size": 1526,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "schemes/FileUriPlugin.js": {
+    "id": "schemes/FileUriPlugin.js",
+    "adjacentTo": ["index.js"],
+    "body": {
+      "size": 1334,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsPlugin.js": {
+    "id": "dependencies/CommonJsPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "SelfModuleFactory.js",
+      "Template.js",
+      "dependencies/CommonJsExportsDependency.js",
+      "dependencies/CommonJsFullRequireDependency.js",
+      "dependencies/CommonJsRequireContextDependency.js",
+      "dependencies/CommonJsRequireDependency.js",
+      "dependencies/CommonJsSelfReferenceDependency.js",
+      "dependencies/ModuleDecoratorDependency.js",
+      "dependencies/RequireHeaderDependency.js",
+      "dependencies/RequireResolveContextDependency.js",
+      "dependencies/RequireResolveDependency.js",
+      "dependencies/RequireResolveHeaderDependency.js",
+      "dependencies/RuntimeRequirementsDependency.js",
+      "dependencies/CommonJsExportsParserPlugin.js",
+      "dependencies/CommonJsImportsParserPlugin.js",
+      "javascript/JavascriptParserHelpers.js",
+      "dependencies/CommonJsExportRequireDependency.js"
+    ],
+    "body": {
+      "size": 8338,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsExportsParserPlugin.js": {
+    "id": "dependencies/CommonJsExportsParserPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "formatLocation.js",
+      "javascript/JavascriptParserHelpers.js",
+      "util/propertyAccess.js",
+      "dependencies/CommonJsExportRequireDependency.js",
+      "dependencies/CommonJsExportsDependency.js",
+      "dependencies/CommonJsSelfReferenceDependency.js",
+      "dependencies/DynamicExports.js",
+      "dependencies/HarmonyExports.js",
+      "dependencies/ModuleDecoratorDependency.js"
+    ],
+    "body": {
+      "size": 10434,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/DynamicExports.js": {
+    "id": "dependencies/DynamicExports.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1838,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyExports.js": {
+    "id": "dependencies/HarmonyExports.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1196,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/CommonJsImportsParserPlugin.js": {
+    "id": "dependencies/CommonJsImportsParserPlugin.js",
+    "adjacentTo": [
+      "CommentCompilationWarning.js",
+      "RuntimeGlobals.js",
+      "UnsupportedFeatureWarning.js",
+      "WebpackError.js",
+      "javascript/BasicEvaluatedExpression.js",
+      "javascript/JavascriptParserHelpers.js",
+      "dependencies/CommonJsFullRequireDependency.js",
+      "dependencies/CommonJsRequireContextDependency.js",
+      "dependencies/CommonJsRequireDependency.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/ContextDependencyHelpers.js",
+      "dependencies/LocalModuleDependency.js",
+      "dependencies/LocalModulesHelpers.js",
+      "dependencies/RequireHeaderDependency.js",
+      "dependencies/RequireResolveContextDependency.js",
+      "dependencies/RequireResolveDependency.js",
+      "dependencies/RequireResolveHeaderDependency.js"
+    ],
+    "body": {
+      "size": 20065,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ContextDependencyHelpers.js": {
+    "id": "dependencies/ContextDependencyHelpers.js",
+    "adjacentTo": ["util/identifier.js"],
+    "body": {
+      "size": 6903,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/LocalModulesHelpers.js": {
+    "id": "dependencies/LocalModulesHelpers.js",
+    "adjacentTo": ["dependencies/LocalModule.js"],
+    "body": {
+      "size": 1093,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyModulesPlugin.js": {
+    "id": "dependencies/HarmonyModulesPlugin.js",
+    "adjacentTo": [
+      "dependencies/HarmonyAcceptDependency.js",
+      "dependencies/HarmonyAcceptImportDependency.js",
+      "dependencies/HarmonyCompatibilityDependency.js",
+      "dependencies/HarmonyEvaluatedImportSpecifierDependency.js",
+      "dependencies/HarmonyExportExpressionDependency.js",
+      "dependencies/HarmonyExportHeaderDependency.js",
+      "dependencies/HarmonyExportImportedSpecifierDependency.js",
+      "dependencies/HarmonyExportSpecifierDependency.js",
+      "dependencies/HarmonyImportSideEffectDependency.js",
+      "dependencies/HarmonyImportSpecifierDependency.js",
+      "dependencies/HarmonyDetectionParserPlugin.js",
+      "dependencies/HarmonyExportDependencyParserPlugin.js",
+      "dependencies/HarmonyImportDependencyParserPlugin.js",
+      "dependencies/HarmonyTopLevelThisParserPlugin.js"
+    ],
+    "body": {
+      "size": 4457,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyDetectionParserPlugin.js": {
+    "id": "dependencies/HarmonyDetectionParserPlugin.js",
+    "adjacentTo": [
+      "dependencies/DynamicExports.js",
+      "dependencies/HarmonyCompatibilityDependency.js",
+      "dependencies/HarmonyExports.js"
+    ],
+    "body": {
+      "size": 2713,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyExportDependencyParserPlugin.js": {
+    "id": "dependencies/HarmonyExportDependencyParserPlugin.js",
+    "adjacentTo": [
+      "optimize/InnerGraph.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/HarmonyExportExpressionDependency.js",
+      "dependencies/HarmonyExportHeaderDependency.js",
+      "dependencies/HarmonyExportImportedSpecifierDependency.js",
+      "dependencies/HarmonyExportSpecifierDependency.js",
+      "dependencies/HarmonyImportDependency.js",
+      "dependencies/HarmonyImportDependencyParserPlugin.js",
+      "dependencies/HarmonyImportSideEffectDependency.js"
+    ],
+    "body": {
+      "size": 5807,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyImportDependencyParserPlugin.js": {
+    "id": "dependencies/HarmonyImportDependencyParserPlugin.js",
+    "adjacentTo": [
+      "HotModuleReplacementPlugin.js",
+      "optimize/InnerGraph.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/HarmonyAcceptDependency.js",
+      "dependencies/HarmonyAcceptImportDependency.js",
+      "dependencies/HarmonyEvaluatedImportSpecifierDependency.js",
+      "dependencies/HarmonyExports.js",
+      "dependencies/HarmonyImportDependency.js",
+      "dependencies/HarmonyImportSideEffectDependency.js",
+      "dependencies/HarmonyImportSpecifierDependency.js"
+    ],
+    "body": {
+      "size": 11003,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "HotModuleReplacementPlugin.js": {
+    "id": "HotModuleReplacementPlugin.js",
+    "adjacentTo": [
+      "ChunkGraph.js",
+      "Compilation.js",
+      "HotUpdateChunk.js",
+      "NormalModule.js",
+      "RuntimeGlobals.js",
+      "WebpackError.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/ImportMetaHotAcceptDependency.js",
+      "dependencies/ImportMetaHotDeclineDependency.js",
+      "dependencies/ModuleHotAcceptDependency.js",
+      "dependencies/ModuleHotDeclineDependency.js",
+      "hmr/HotModuleReplacementRuntimeModule.js",
+      "javascript/JavascriptParser.js",
+      "javascript/JavascriptParserHelpers.js",
+      "util/SetHelpers.js",
+      "util/TupleSet.js",
+      "util/comparators.js",
+      "util/runtime.js"
+    ],
+    "body": {
+      "size": 26338,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "hmr/HotModuleReplacementRuntimeModule.js": {
+    "id": "hmr/HotModuleReplacementRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "hmr/HotModuleReplacement.runtime.js"
+    ],
+    "body": {
+      "size": 1181,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "hmr/HotModuleReplacement.runtime.js": {
+    "id": "hmr/HotModuleReplacement.runtime.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 10231,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/TupleSet.js": {
+    "id": "util/TupleSet.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2909,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/HarmonyTopLevelThisParserPlugin.js": {
+    "id": "dependencies/HarmonyTopLevelThisParserPlugin.js",
+    "adjacentTo": [
+      "dependencies/ConstDependency.js",
+      "dependencies/HarmonyExports.js"
+    ],
+    "body": {
+      "size": 715,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportMetaContextPlugin.js": {
+    "id": "dependencies/ImportMetaContextPlugin.js",
+    "adjacentTo": [
+      "dependencies/ContextElementDependency.js",
+      "dependencies/ImportMetaContextDependency.js",
+      "dependencies/ImportMetaContextDependencyParserPlugin.js"
+    ],
+    "body": {
+      "size": 1671,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportMetaContextDependencyParserPlugin.js": {
+    "id": "dependencies/ImportMetaContextDependencyParserPlugin.js",
+    "adjacentTo": [
+      "WebpackError.js",
+      "javascript/JavascriptParserHelpers.js",
+      "dependencies/ImportMetaContextDependency.js"
+    ],
+    "body": {
+      "size": 7655,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportMetaPlugin.js": {
+    "id": "dependencies/ImportMetaPlugin.js",
+    "adjacentTo": [
+      "ModuleDependencyWarning.js",
+      "Template.js",
+      "javascript/BasicEvaluatedExpression.js",
+      "javascript/JavascriptParserHelpers.js",
+      "util/memoize.js",
+      "util/propertyAccess.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/CriticalDependencyWarning.js"
+    ],
+    "body": {
+      "size": 6395,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportPlugin.js": {
+    "id": "dependencies/ImportPlugin.js",
+    "adjacentTo": [
+      "dependencies/ImportContextDependency.js",
+      "dependencies/ImportDependency.js",
+      "dependencies/ImportEagerDependency.js",
+      "dependencies/ImportParserPlugin.js",
+      "dependencies/ImportWeakDependency.js"
+    ],
+    "body": {
+      "size": 2172,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/ImportParserPlugin.js": {
+    "id": "dependencies/ImportParserPlugin.js",
+    "adjacentTo": [
+      "AsyncDependenciesBlock.js",
+      "CommentCompilationWarning.js",
+      "UnsupportedFeatureWarning.js",
+      "dependencies/ContextDependencyHelpers.js",
+      "dependencies/ImportContextDependency.js",
+      "dependencies/ImportDependency.js",
+      "dependencies/ImportEagerDependency.js",
+      "dependencies/ImportWeakDependency.js"
+    ],
+    "body": {
+      "size": 8205,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/LoaderPlugin.js": {
+    "id": "dependencies/LoaderPlugin.js",
+    "adjacentTo": [
+      "NormalModule.js",
+      "util/LazySet.js",
+      "dependencies/LoaderDependency.js",
+      "dependencies/LoaderImportDependency.js"
+    ],
+    "body": {
+      "size": 7979,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/LoaderDependency.js": {
+    "id": "dependencies/LoaderDependency.js",
+    "adjacentTo": ["dependencies/ModuleDependency.js"],
+    "body": {
+      "size": 972,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/LoaderImportDependency.js": {
+    "id": "dependencies/LoaderImportDependency.js",
+    "adjacentTo": ["dependencies/ModuleDependency.js"],
+    "body": {
+      "size": 1017,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireContextPlugin.js": {
+    "id": "dependencies/RequireContextPlugin.js",
+    "adjacentTo": [
+      "util/cleverMerge.js",
+      "dependencies/ContextElementDependency.js",
+      "dependencies/RequireContextDependency.js",
+      "dependencies/RequireContextDependencyParserPlugin.js"
+    ],
+    "body": {
+      "size": 4177,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireContextDependencyParserPlugin.js": {
+    "id": "dependencies/RequireContextDependencyParserPlugin.js",
+    "adjacentTo": ["dependencies/RequireContextDependency.js"],
+    "body": {
+      "size": 1564,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireEnsurePlugin.js": {
+    "id": "dependencies/RequireEnsurePlugin.js",
+    "adjacentTo": [
+      "dependencies/RequireEnsureDependency.js",
+      "dependencies/RequireEnsureItemDependency.js",
+      "dependencies/RequireEnsureDependenciesBlockParserPlugin.js",
+      "javascript/JavascriptParserHelpers.js"
+    ],
+    "body": {
+      "size": 1807,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireEnsureDependenciesBlockParserPlugin.js": {
+    "id": "dependencies/RequireEnsureDependenciesBlockParserPlugin.js",
+    "adjacentTo": [
+      "dependencies/RequireEnsureDependenciesBlock.js",
+      "dependencies/RequireEnsureDependency.js",
+      "dependencies/RequireEnsureItemDependency.js",
+      "dependencies/getFunctionExpression.js"
+    ],
+    "body": {
+      "size": 3708,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/getFunctionExpression.js": {
+    "id": "dependencies/getFunctionExpression.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1377,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/RequireIncludePlugin.js": {
+    "id": "dependencies/RequireIncludePlugin.js",
+    "adjacentTo": [
+      "dependencies/RequireIncludeDependency.js",
+      "dependencies/RequireIncludeDependencyParserPlugin.js"
+    ],
+    "body": {
+      "size": 1191,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/URLPlugin.js": {
+    "id": "dependencies/URLPlugin.js",
+    "adjacentTo": [
+      "javascript/BasicEvaluatedExpression.js",
+      "javascript/JavascriptParserHelpers.js",
+      "optimize/InnerGraph.js",
+      "dependencies/URLDependency.js"
+    ],
+    "body": {
+      "size": 3897,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/WorkerPlugin.js": {
+    "id": "dependencies/WorkerPlugin.js",
+    "adjacentTo": [
+      "AsyncDependenciesBlock.js",
+      "CommentCompilationWarning.js",
+      "UnsupportedFeatureWarning.js",
+      "javascript/EnableChunkLoadingPlugin.js",
+      "util/ArrayHelpers.js",
+      "util/createHash.js",
+      "util/identifier.js",
+      "wasm/EnableWasmLoadingPlugin.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/CreateScriptUrlDependency.js",
+      "dependencies/HarmonyImportDependencyParserPlugin.js",
+      "dependencies/WorkerDependency.js"
+    ],
+    "body": {
+      "size": 13501,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "async-modules/InferAsyncModulesPlugin.js": {
+    "id": "async-modules/InferAsyncModulesPlugin.js",
+    "adjacentTo": ["dependencies/HarmonyImportDependency.js"],
+    "body": {
+      "size": 1348,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "JavascriptMetaInfoPlugin.js": {
+    "id": "JavascriptMetaInfoPlugin.js",
+    "adjacentTo": ["optimize/InnerGraph.js"],
+    "body": {
+      "size": 2079,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "stats/DefaultStatsFactoryPlugin.js": {
+    "id": "stats/DefaultStatsFactoryPlugin.js",
+    "adjacentTo": [
+      "dependencies/ModuleDependency.js",
+      "formatLocation.js",
+      "logging/Logger.js",
+      "optimize/AggressiveSplittingPlugin.js",
+      "performance/SizeLimitsPlugin.js",
+      "util/IterableHelpers.js",
+      "util/comparators.js",
+      "util/identifier.js"
+    ],
+    "body": {
+      "size": 71879,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/AggressiveSplittingPlugin.js": {
+    "id": "optimize/AggressiveSplittingPlugin.js",
+    "adjacentTo": [
+      "OptimizationStages.js",
+      "util/SetHelpers.js",
+      "util/comparators.js",
+      "util/create-schema-validation.js",
+      "util/identifier.js",
+      "../schemas/plugins/optimize/AggressiveSplittingPlugin.check.js"
+    ],
+    "body": {
+      "size": 10151,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "OptimizationStages.js": {
+    "id": "OptimizationStages.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 204,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/optimize/AggressiveSplittingPlugin.check.js": {
+    "id": "../schemas/plugins/optimize/AggressiveSplittingPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1120,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "performance/SizeLimitsPlugin.js": {
+    "id": "performance/SizeLimitsPlugin.js",
+    "adjacentTo": [
+      "util/SetHelpers.js",
+      "performance/AssetsOverSizeLimitWarning.js",
+      "performance/EntrypointsOverSizeLimitWarning.js",
+      "performance/NoAsyncChunksWarning.js"
+    ],
+    "body": {
+      "size": 4382,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "performance/AssetsOverSizeLimitWarning.js": {
+    "id": "performance/AssetsOverSizeLimitWarning.js",
+    "adjacentTo": ["SizeFormatHelpers.js", "WebpackError.js"],
+    "body": {
+      "size": 922,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "performance/EntrypointsOverSizeLimitWarning.js": {
+    "id": "performance/EntrypointsOverSizeLimitWarning.js",
+    "adjacentTo": ["SizeFormatHelpers.js", "WebpackError.js"],
+    "body": {
+      "size": 1084,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "performance/NoAsyncChunksWarning.js": {
+    "id": "performance/NoAsyncChunksWarning.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 560,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "stats/DefaultStatsPresetPlugin.js": {
+    "id": "stats/DefaultStatsPresetPlugin.js",
+    "adjacentTo": ["RequestShortener.js"],
+    "body": {
+      "size": 8807,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "stats/DefaultStatsPrinterPlugin.js": {
+    "id": "stats/DefaultStatsPrinterPlugin.js",
+    "adjacentTo": ["SizeFormatHelpers.js"],
+    "body": {
+      "size": 41074,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ExternalsPlugin.js": {
+    "id": "ExternalsPlugin.js",
+    "adjacentTo": ["ExternalModuleFactoryPlugin.js"],
+    "body": {
+      "size": 899,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ExternalModuleFactoryPlugin.js": {
+    "id": "ExternalModuleFactoryPlugin.js",
+    "adjacentTo": ["ExternalModule.js", "util/cleverMerge.js"],
+    "body": {
+      "size": 7224,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/NodeTargetPlugin.js": {
+    "id": "node/NodeTargetPlugin.js",
+    "adjacentTo": ["ExternalsPlugin.js"],
+    "body": {
+      "size": 1198,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "electron/ElectronTargetPlugin.js": {
+    "id": "electron/ElectronTargetPlugin.js",
+    "adjacentTo": ["ExternalsPlugin.js"],
+    "body": {
+      "size": 1363,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "javascript/CommonJsChunkFormatPlugin.js": {
+    "id": "javascript/CommonJsChunkFormatPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "Template.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "javascript/StartupHelpers.js"
+    ],
+    "body": {
+      "size": 4768,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "esm/ModuleChunkFormatPlugin.js": {
+    "id": "esm/ModuleChunkFormatPlugin.js",
+    "adjacentTo": [
+      "index.js",
+      "HotUpdateChunk.js",
+      "Template.js",
+      "javascript/ChunkHelpers.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "javascript/StartupHelpers.js"
+    ],
+    "body": {
+      "size": 6067,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleInfoHeaderPlugin.js": {
+    "id": "ModuleInfoHeaderPlugin.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "Template.js",
+      "javascript/JavascriptModulesPlugin.js"
+    ],
+    "body": {
+      "size": 7174,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "CleanPlugin.js": {
+    "id": "CleanPlugin.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "util/create-schema-validation.js",
+      "util/fs.js",
+      "util/processAsyncTree.js"
+    ],
+    "body": {
+      "size": 11507,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "EvalSourceMapDevToolPlugin.js": {
+    "id": "EvalSourceMapDevToolPlugin.js",
+    "adjacentTo": [
+      "ModuleFilenameHelpers.js",
+      "NormalModule.js",
+      "RuntimeGlobals.js",
+      "SourceMapDevToolModuleOptionsPlugin.js",
+      "javascript/JavascriptModulesPlugin.js",
+      "optimize/ConcatenatedModule.js",
+      "util/identifier.js"
+    ],
+    "body": {
+      "size": 6833,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ModuleFilenameHelpers.js": {
+    "id": "ModuleFilenameHelpers.js",
+    "adjacentTo": ["NormalModule.js", "util/createHash.js", "util/memoize.js"],
+    "body": {
+      "size": 8167,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "SourceMapDevToolModuleOptionsPlugin.js": {
+    "id": "SourceMapDevToolModuleOptionsPlugin.js",
+    "adjacentTo": ["javascript/JavascriptModulesPlugin.js"],
+    "body": {
+      "size": 1325,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "SourceMapDevToolPlugin.js": {
+    "id": "SourceMapDevToolPlugin.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "ModuleFilenameHelpers.js",
+      "ProgressPlugin.js",
+      "SourceMapDevToolModuleOptionsPlugin.js",
+      "util/create-schema-validation.js",
+      "util/createHash.js",
+      "util/fs.js",
+      "util/identifier.js",
+      "../schemas/plugins/SourceMapDevToolPlugin.check.js"
+    ],
+    "body": {
+      "size": 17012,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/SourceMapDevToolPlugin.check.js": {
+    "id": "../schemas/plugins/SourceMapDevToolPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 6752,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "EvalDevToolModulePlugin.js": {
+    "id": "EvalDevToolModulePlugin.js",
+    "adjacentTo": [
+      "ExternalModule.js",
+      "ModuleFilenameHelpers.js",
+      "RuntimeGlobals.js",
+      "javascript/JavascriptModulesPlugin.js"
+    ],
+    "body": {
+      "size": 3754,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-sync/WebAssemblyModulesPlugin.js": {
+    "id": "wasm-sync/WebAssemblyModulesPlugin.js",
+    "adjacentTo": [
+      "Generator.js",
+      "dependencies/WebAssemblyExportImportedDependency.js",
+      "dependencies/WebAssemblyImportDependency.js",
+      "util/comparators.js",
+      "util/memoize.js",
+      "wasm-sync/WebAssemblyInInitialChunkError.js",
+      "wasm-sync/WebAssemblyGenerator.js",
+      "wasm-sync/WebAssemblyJavascriptGenerator.js",
+      "wasm-sync/WebAssemblyParser.js"
+    ],
+    "body": {
+      "size": 4157,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-sync/WebAssemblyInInitialChunkError.js": {
+    "id": "wasm-sync/WebAssemblyInInitialChunkError.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 3198,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-sync/WebAssemblyGenerator.js": {
+    "id": "wasm-sync/WebAssemblyGenerator.js",
+    "adjacentTo": [
+      "Generator.js",
+      "wasm-sync/WebAssemblyUtils.js",
+      "dependencies/WebAssemblyExportImportedDependency.js"
+    ],
+    "body": {
+      "size": 12507,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-sync/WebAssemblyJavascriptGenerator.js": {
+    "id": "wasm-sync/WebAssemblyJavascriptGenerator.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "Generator.js",
+      "InitFragment.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "dependencies/ModuleDependency.js",
+      "dependencies/WebAssemblyExportImportedDependency.js",
+      "dependencies/WebAssemblyImportDependency.js"
+    ],
+    "body": {
+      "size": 6687,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-sync/WebAssemblyParser.js": {
+    "id": "wasm-sync/WebAssemblyParser.js",
+    "adjacentTo": [
+      "Parser.js",
+      "dependencies/StaticExportsDependency.js",
+      "dependencies/WebAssemblyExportImportedDependency.js",
+      "dependencies/WebAssemblyImportDependency.js"
+    ],
+    "body": {
+      "size": 5252,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-async/AsyncWebAssemblyModulesPlugin.js": {
+    "id": "wasm-async/AsyncWebAssemblyModulesPlugin.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "Generator.js",
+      "HookWebpackError.js",
+      "dependencies/WebAssemblyImportDependency.js",
+      "util/comparators.js",
+      "util/memoize.js",
+      "wasm-async/AsyncWebAssemblyGenerator.js",
+      "wasm-async/AsyncWebAssemblyJavascriptGenerator.js",
+      "wasm-async/AsyncWebAssemblyParser.js"
+    ],
+    "body": {
+      "size": 5898,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-async/AsyncWebAssemblyGenerator.js": {
+    "id": "wasm-async/AsyncWebAssemblyGenerator.js",
+    "adjacentTo": ["Generator.js"],
+    "body": {
+      "size": 1270,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-async/AsyncWebAssemblyJavascriptGenerator.js": {
+    "id": "wasm-async/AsyncWebAssemblyJavascriptGenerator.js",
+    "adjacentTo": [
+      "Generator.js",
+      "InitFragment.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "dependencies/WebAssemblyImportDependency.js"
+    ],
+    "body": {
+      "size": 5788,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-async/AsyncWebAssemblyParser.js": {
+    "id": "wasm-async/AsyncWebAssemblyParser.js",
+    "adjacentTo": [
+      "Parser.js",
+      "dependencies/StaticExportsDependency.js",
+      "dependencies/WebAssemblyImportDependency.js"
+    ],
+    "body": {
+      "size": 1877,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "hmr/LazyCompilationPlugin.js": {
+    "id": "hmr/LazyCompilationPlugin.js",
+    "adjacentTo": [
+      "AsyncDependenciesBlock.js",
+      "Dependency.js",
+      "Module.js",
+      "ModuleFactory.js",
+      "RuntimeGlobals.js",
+      "Template.js",
+      "dependencies/CommonJsRequireDependency.js",
+      "util/serialization.js"
+    ],
+    "body": {
+      "size": 12727,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "hmr/lazyCompilationBackend.js": {
+    "id": "hmr/lazyCompilationBackend.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 4520,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "schemes/HttpUriPlugin.js": {
+    "id": "schemes/HttpUriPlugin.js",
+    "adjacentTo": [
+      "NormalModule.js",
+      "util/create-schema-validation.js",
+      "util/createHash.js",
+      "util/fs.js",
+      "util/memoize.js",
+      "../schemas/plugins/schemes/HttpUriPlugin.check.js"
+    ],
+    "body": {
+      "size": 34937,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/schemes/HttpUriPlugin.check.js": {
+    "id": "../schemas/plugins/schemes/HttpUriPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 3129,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDPlugin.js": {
+    "id": "dependencies/AMDPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "javascript/JavascriptParserHelpers.js",
+      "dependencies/AMDDefineDependency.js",
+      "dependencies/AMDDefineDependencyParserPlugin.js",
+      "dependencies/AMDRequireArrayDependency.js",
+      "dependencies/AMDRequireContextDependency.js",
+      "dependencies/AMDRequireDependenciesBlockParserPlugin.js",
+      "dependencies/AMDRequireDependency.js",
+      "dependencies/AMDRequireItemDependency.js",
+      "dependencies/AMDRuntimeModules.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/LocalModuleDependency.js",
+      "dependencies/UnsupportedDependency.js"
+    ],
+    "body": {
+      "size": 6306,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDDefineDependencyParserPlugin.js": {
+    "id": "dependencies/AMDDefineDependencyParserPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "dependencies/AMDDefineDependency.js",
+      "dependencies/AMDRequireArrayDependency.js",
+      "dependencies/AMDRequireContextDependency.js",
+      "dependencies/AMDRequireItemDependency.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/ContextDependencyHelpers.js",
+      "dependencies/DynamicExports.js",
+      "dependencies/LocalModuleDependency.js",
+      "dependencies/LocalModulesHelpers.js"
+    ],
+    "body": {
+      "size": 10159,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDRequireDependenciesBlockParserPlugin.js": {
+    "id": "dependencies/AMDRequireDependenciesBlockParserPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "UnsupportedFeatureWarning.js",
+      "dependencies/AMDRequireArrayDependency.js",
+      "dependencies/AMDRequireContextDependency.js",
+      "dependencies/AMDRequireDependenciesBlock.js",
+      "dependencies/AMDRequireDependency.js",
+      "dependencies/AMDRequireItemDependency.js",
+      "dependencies/ConstDependency.js",
+      "dependencies/ContextDependencyHelpers.js",
+      "dependencies/LocalModuleDependency.js",
+      "dependencies/LocalModulesHelpers.js",
+      "dependencies/UnsupportedDependency.js",
+      "dependencies/getFunctionExpression.js"
+    ],
+    "body": {
+      "size": 7777,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/AMDRuntimeModules.js": {
+    "id": "dependencies/AMDRuntimeModules.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 1067,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "RequireJsStuffPlugin.js": {
+    "id": "RequireJsStuffPlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "dependencies/ConstDependency.js",
+      "javascript/JavascriptParserHelpers.js"
+    ],
+    "body": {
+      "size": 1904,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "NodeStuffPlugin.js": {
+    "id": "NodeStuffPlugin.js",
+    "adjacentTo": [
+      "NodeStuffInWebError.js",
+      "RuntimeGlobals.js",
+      "dependencies/CachedConstDependency.js",
+      "dependencies/ConstDependency.js",
+      "javascript/JavascriptParserHelpers.js",
+      "util/fs.js",
+      "util/identifier.js"
+    ],
+    "body": {
+      "size": 5397,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "WarnNoModeSetPlugin.js": {
+    "id": "WarnNoModeSetPlugin.js",
+    "adjacentTo": ["NoModeWarning.js"],
+    "body": {
+      "size": 545,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "NoModeWarning.js": {
+    "id": "NoModeWarning.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 663,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/EnsureChunkConditionsPlugin.js": {
+    "id": "optimize/EnsureChunkConditionsPlugin.js",
+    "adjacentTo": ["OptimizationStages.js"],
+    "body": {
+      "size": 2536,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/RemoveParentModulesPlugin.js": {
+    "id": "optimize/RemoveParentModulesPlugin.js",
+    "adjacentTo": [
+      "OptimizationStages.js",
+      "util/Queue.js",
+      "util/SetHelpers.js"
+    ],
+    "body": {
+      "size": 3798,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/Queue.js": {
+    "id": "util/Queue.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1048,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/RemoveEmptyChunksPlugin.js": {
+    "id": "optimize/RemoveEmptyChunksPlugin.js",
+    "adjacentTo": ["OptimizationStages.js"],
+    "body": {
+      "size": 1337,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/MergeDuplicateChunksPlugin.js": {
+    "id": "optimize/MergeDuplicateChunksPlugin.js",
+    "adjacentTo": ["OptimizationStages.js", "util/runtime.js"],
+    "body": {
+      "size": 3600,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/FlagIncludedChunksPlugin.js": {
+    "id": "optimize/FlagIncludedChunksPlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 3782,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/SideEffectsFlagPlugin.js": {
+    "id": "optimize/SideEffectsFlagPlugin.js",
+    "adjacentTo": [
+      "OptimizationStages.js",
+      "dependencies/HarmonyExportImportedSpecifierDependency.js",
+      "dependencies/HarmonyImportSpecifierDependency.js",
+      "formatLocation.js"
+    ],
+    "body": {
+      "size": 10302,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "FlagDependencyExportsPlugin.js": {
+    "id": "FlagDependencyExportsPlugin.js",
+    "adjacentTo": ["util/Queue.js"],
+    "body": {
+      "size": 13222,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "FlagDependencyUsagePlugin.js": {
+    "id": "FlagDependencyUsagePlugin.js",
+    "adjacentTo": [
+      "Dependency.js",
+      "ExportsInfo.js",
+      "ModuleGraphConnection.js",
+      "OptimizationStages.js",
+      "util/ArrayQueue.js",
+      "util/TupleQueue.js",
+      "util/runtime.js"
+    ],
+    "body": {
+      "size": 10998,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/TupleQueue.js": {
+    "id": "util/TupleQueue.js",
+    "adjacentTo": ["util/TupleSet.js"],
+    "body": {
+      "size": 1317,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/InnerGraphPlugin.js": {
+    "id": "optimize/InnerGraphPlugin.js",
+    "adjacentTo": [
+      "dependencies/PureExpressionDependency.js",
+      "optimize/InnerGraph.js"
+    ],
+    "body": {
+      "size": 12046,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/MangleExportsPlugin.js": {
+    "id": "optimize/MangleExportsPlugin.js",
+    "adjacentTo": [
+      "ExportsInfo.js",
+      "Template.js",
+      "ids/IdHelpers.js",
+      "util/comparators.js"
+    ],
+    "body": {
+      "size": 5149,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/IdHelpers.js": {
+    "id": "ids/IdHelpers.js",
+    "adjacentTo": [
+      "util/createHash.js",
+      "util/identifier.js",
+      "util/numberHash.js"
+    ],
+    "body": {
+      "size": 12875,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/numberHash.js": {
+    "id": "util/numberHash.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1060,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/ModuleConcatenationPlugin.js": {
+    "id": "optimize/ModuleConcatenationPlugin.js",
+    "adjacentTo": [
+      "ChunkGraph.js",
+      "ModuleGraph.js",
+      "OptimizationStages.js",
+      "dependencies/HarmonyImportDependency.js",
+      "util/comparators.js",
+      "util/runtime.js",
+      "optimize/ConcatenatedModule.js"
+    ],
+    "body": {
+      "size": 27241,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/SplitChunksPlugin.js": {
+    "id": "optimize/SplitChunksPlugin.js",
+    "adjacentTo": [
+      "Chunk.js",
+      "OptimizationStages.js",
+      "WebpackError.js",
+      "ids/IdHelpers.js",
+      "util/SetHelpers.js",
+      "util/SortableSet.js",
+      "util/comparators.js",
+      "util/createHash.js",
+      "util/deterministicGrouping.js",
+      "util/identifier.js",
+      "util/memoize.js",
+      "optimize/MinMaxSizeWarning.js"
+    ],
+    "body": {
+      "size": 54598,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/deterministicGrouping.js": {
+    "id": "util/deterministicGrouping.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 13767,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/MinMaxSizeWarning.js": {
+    "id": "optimize/MinMaxSizeWarning.js",
+    "adjacentTo": ["SizeFormatHelpers.js", "WebpackError.js"],
+    "body": {
+      "size": 819,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/RuntimeChunkPlugin.js": {
+    "id": "optimize/RuntimeChunkPlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1041,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "NoEmitOnErrorsPlugin.js": {
+    "id": "NoEmitOnErrorsPlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 713,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/RealContentHashPlugin.js": {
+    "id": "optimize/RealContentHashPlugin.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "WebpackError.js",
+      "util/comparators.js",
+      "util/createHash.js"
+    ],
+    "body": {
+      "size": 12276,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "wasm-sync/WasmFinalizeExportsPlugin.js": {
+    "id": "wasm-sync/WasmFinalizeExportsPlugin.js",
+    "adjacentTo": [
+      "formatLocation.js",
+      "wasm-sync/UnsupportedWebAssemblyFeatureError.js"
+    ],
+    "body": {
+      "size": 2487,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/NaturalModuleIdsPlugin.js": {
+    "id": "ids/NaturalModuleIdsPlugin.js",
+    "adjacentTo": ["util/comparators.js", "ids/IdHelpers.js"],
+    "body": {
+      "size": 1036,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/NamedModuleIdsPlugin.js": {
+    "id": "ids/NamedModuleIdsPlugin.js",
+    "adjacentTo": ["util/comparators.js", "ids/IdHelpers.js"],
+    "body": {
+      "size": 1547,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "WarnDeprecatedOptionPlugin.js": {
+    "id": "WarnDeprecatedOptionPlugin.js",
+    "adjacentTo": ["WebpackError.js"],
+    "body": {
+      "size": 1275,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/HashedModuleIdsPlugin.js": {
+    "id": "ids/HashedModuleIdsPlugin.js",
+    "adjacentTo": [
+      "util/comparators.js",
+      "util/create-schema-validation.js",
+      "util/createHash.js",
+      "ids/IdHelpers.js",
+      "../schemas/plugins/HashedModuleIdsPlugin.check.js"
+    ],
+    "body": {
+      "size": 2240,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/HashedModuleIdsPlugin.check.js": {
+    "id": "../schemas/plugins/HashedModuleIdsPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1875,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/DeterministicModuleIdsPlugin.js": {
+    "id": "ids/DeterministicModuleIdsPlugin.js",
+    "adjacentTo": ["util/comparators.js", "ids/IdHelpers.js"],
+    "body": {
+      "size": 3029,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/OccurrenceModuleIdsPlugin.js": {
+    "id": "ids/OccurrenceModuleIdsPlugin.js",
+    "adjacentTo": [
+      "util/comparators.js",
+      "util/create-schema-validation.js",
+      "ids/IdHelpers.js",
+      "../schemas/plugins/ids/OccurrenceModuleIdsPlugin.check.js"
+    ],
+    "body": {
+      "size": 4627,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/ids/OccurrenceModuleIdsPlugin.check.js": {
+    "id": "../schemas/plugins/ids/OccurrenceModuleIdsPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 602,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/NaturalChunkIdsPlugin.js": {
+    "id": "ids/NaturalChunkIdsPlugin.js",
+    "adjacentTo": ["util/comparators.js", "ids/IdHelpers.js"],
+    "body": {
+      "size": 984,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/NamedChunkIdsPlugin.js": {
+    "id": "ids/NamedChunkIdsPlugin.js",
+    "adjacentTo": ["util/comparators.js", "ids/IdHelpers.js"],
+    "body": {
+      "size": 1933,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/DeterministicChunkIdsPlugin.js": {
+    "id": "ids/DeterministicChunkIdsPlugin.js",
+    "adjacentTo": ["util/comparators.js", "ids/IdHelpers.js"],
+    "body": {
+      "size": 1689,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/OccurrenceChunkIdsPlugin.js": {
+    "id": "ids/OccurrenceChunkIdsPlugin.js",
+    "adjacentTo": [
+      "util/comparators.js",
+      "util/create-schema-validation.js",
+      "ids/IdHelpers.js",
+      "../schemas/plugins/ids/OccurrenceChunkIdsPlugin.check.js"
+    ],
+    "body": {
+      "size": 2529,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/ids/OccurrenceChunkIdsPlugin.check.js": {
+    "id": "../schemas/plugins/ids/OccurrenceChunkIdsPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 602,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DefinePlugin.js": {
+    "id": "DefinePlugin.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "WebpackError.js",
+      "dependencies/ConstDependency.js",
+      "javascript/BasicEvaluatedExpression.js",
+      "javascript/JavascriptParserHelpers.js",
+      "util/createHash.js"
+    ],
+    "body": {
+      "size": 16671,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cache/AddManagedPathsPlugin.js": {
+    "id": "cache/AddManagedPathsPlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 870,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cache/MemoryWithGcCachePlugin.js": {
+    "id": "cache/MemoryWithGcCachePlugin.js",
+    "adjacentTo": ["Cache.js"],
+    "body": {
+      "size": 3863,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cache/MemoryCachePlugin.js": {
+    "id": "cache/MemoryCachePlugin.js",
+    "adjacentTo": ["Cache.js"],
+    "body": {
+      "size": 1520,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cache/AddBuildDependenciesPlugin.js": {
+    "id": "cache/AddBuildDependenciesPlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 716,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cache/IdleFileCachePlugin.js": {
+    "id": "cache/IdleFileCachePlugin.js",
+    "adjacentTo": ["Cache.js", "ProgressPlugin.js"],
+    "body": {
+      "size": 6834,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "IgnoreWarningsPlugin.js": {
+    "id": "IgnoreWarningsPlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 964,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "config/defaults.js": {
+    "id": "config/defaults.js",
+    "adjacentTo": ["Template.js", "util/cleverMerge.js", "config/target.js"],
+    "body": {
+      "size": 38917,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "config/target.js": {
+    "id": "config/target.js",
+    "adjacentTo": ["util/memoize.js", "config/browserslistTargetHandler.js"],
+    "body": {
+      "size": 10872,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "config/browserslistTargetHandler.js": {
+    "id": "config/browserslistTargetHandler.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 8414,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "config/normalization.js": {
+    "id": "config/normalization.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 16427,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/NodeEnvironmentPlugin.js": {
+    "id": "node/NodeEnvironmentPlugin.js",
+    "adjacentTo": [
+      "logging/createConsoleLogger.js",
+      "node/NodeWatchFileSystem.js",
+      "node/nodeConsole.js"
+    ],
+    "body": {
+      "size": 1870,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "logging/createConsoleLogger.js": {
+    "id": "logging/createConsoleLogger.js",
+    "adjacentTo": ["logging/Logger.js"],
+    "body": {
+      "size": 6859,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/NodeWatchFileSystem.js": {
+    "id": "node/NodeWatchFileSystem.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 5885,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/nodeConsole.js": {
+    "id": "node/nodeConsole.js",
+    "adjacentTo": ["logging/truncateArgs.js"],
+    "body": {
+      "size": 3881,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "logging/truncateArgs.js": {
+    "id": "logging/truncateArgs.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2249,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "validateSchema.js": {
+    "id": "validateSchema.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 6395,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "cli.js": {
+    "id": "cli.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 16589,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "AutomaticPrefetchPlugin.js": {
+    "id": "AutomaticPrefetchPlugin.js",
+    "adjacentTo": ["NormalModule.js", "dependencies/PrefetchDependency.js"],
+    "body": {
+      "size": 1491,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "dependencies/PrefetchDependency.js": {
+    "id": "dependencies/PrefetchDependency.js",
+    "adjacentTo": ["dependencies/ModuleDependency.js"],
+    "body": {
+      "size": 387,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "BannerPlugin.js": {
+    "id": "BannerPlugin.js",
+    "adjacentTo": [
+      "Compilation.js",
+      "ModuleFilenameHelpers.js",
+      "Template.js",
+      "util/create-schema-validation.js",
+      "../schemas/plugins/BannerPlugin.check.js"
+    ],
+    "body": {
+      "size": 3073,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/BannerPlugin.check.js": {
+    "id": "../schemas/plugins/BannerPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 4607,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ContextExclusionPlugin.js": {
+    "id": "ContextExclusionPlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 797,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ContextReplacementPlugin.js": {
+    "id": "ContextReplacementPlugin.js",
+    "adjacentTo": ["dependencies/ContextElementDependency.js", "util/fs.js"],
+    "body": {
+      "size": 4720,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DelegatedPlugin.js": {
+    "id": "DelegatedPlugin.js",
+    "adjacentTo": [
+      "DelegatedModuleFactoryPlugin.js",
+      "dependencies/DelegatedSourceDependency.js"
+    ],
+    "body": {
+      "size": 1015,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DelegatedModuleFactoryPlugin.js": {
+    "id": "DelegatedModuleFactoryPlugin.js",
+    "adjacentTo": ["DelegatedModule.js"],
+    "body": {
+      "size": 2336,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DllPlugin.js": {
+    "id": "DllPlugin.js",
+    "adjacentTo": [
+      "DllEntryPlugin.js",
+      "FlagAllModulesAsUsedPlugin.js",
+      "LibManifestPlugin.js",
+      "util/create-schema-validation.js",
+      "../schemas/plugins/DllPlugin.check.js"
+    ],
+    "body": {
+      "size": 1702,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DllEntryPlugin.js": {
+    "id": "DllEntryPlugin.js",
+    "adjacentTo": [
+      "DllModuleFactory.js",
+      "dependencies/DllEntryDependency.js",
+      "dependencies/EntryDependency.js"
+    ],
+    "body": {
+      "size": 1277,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DllModuleFactory.js": {
+    "id": "DllModuleFactory.js",
+    "adjacentTo": ["DllModule.js", "ModuleFactory.js"],
+    "body": {
+      "size": 1008,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "FlagAllModulesAsUsedPlugin.js": {
+    "id": "FlagAllModulesAsUsedPlugin.js",
+    "adjacentTo": ["util/runtime.js"],
+    "body": {
+      "size": 1451,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "LibManifestPlugin.js": {
+    "id": "LibManifestPlugin.js",
+    "adjacentTo": [
+      "dependencies/EntryDependency.js",
+      "util/IterableHelpers.js",
+      "util/comparators.js",
+      "util/fs.js"
+    ],
+    "body": {
+      "size": 3116,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/DllPlugin.check.js": {
+    "id": "../schemas/plugins/DllPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1681,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "DllReferencePlugin.js": {
+    "id": "DllReferencePlugin.js",
+    "adjacentTo": [
+      "DelegatedModuleFactoryPlugin.js",
+      "ExternalModuleFactoryPlugin.js",
+      "WebpackError.js",
+      "dependencies/DelegatedSourceDependency.js",
+      "util/create-schema-validation.js",
+      "util/identifier.js",
+      "../schemas/plugins/DllReferencePlugin.check.js"
+    ],
+    "body": {
+      "size": 5137,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/DllReferencePlugin.check.js": {
+    "id": "../schemas/plugins/DllReferencePlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 10921,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "EnvironmentPlugin.js": {
+    "id": "EnvironmentPlugin.js",
+    "adjacentTo": ["DefinePlugin.js", "WebpackError.js"],
+    "body": {
+      "size": 1743,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "IgnorePlugin.js": {
+    "id": "IgnorePlugin.js",
+    "adjacentTo": [
+      "util/create-schema-validation.js",
+      "../schemas/plugins/IgnorePlugin.check.js"
+    ],
+    "body": {
+      "size": 2253,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/IgnorePlugin.check.js": {
+    "id": "../schemas/plugins/IgnorePlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1703,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "LibraryTemplatePlugin.js": {
+    "id": "LibraryTemplatePlugin.js",
+    "adjacentTo": ["library/EnableLibraryPlugin.js"],
+    "body": {
+      "size": 1588,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "LoaderOptionsPlugin.js": {
+    "id": "LoaderOptionsPlugin.js",
+    "adjacentTo": [
+      "ModuleFilenameHelpers.js",
+      "NormalModule.js",
+      "util/create-schema-validation.js",
+      "../schemas/plugins/LoaderOptionsPlugin.check.js"
+    ],
+    "body": {
+      "size": 1856,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/LoaderOptionsPlugin.check.js": {
+    "id": "../schemas/plugins/LoaderOptionsPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1008,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "LoaderTargetPlugin.js": {
+    "id": "LoaderTargetPlugin.js",
+    "adjacentTo": ["NormalModule.js"],
+    "body": {
+      "size": 747,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "NormalModuleReplacementPlugin.js": {
+    "id": "NormalModuleReplacementPlugin.js",
+    "adjacentTo": ["util/fs.js"],
+    "body": {
+      "size": 1883,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "PrefetchPlugin.js": {
+    "id": "PrefetchPlugin.js",
+    "adjacentTo": ["dependencies/PrefetchDependency.js"],
+    "body": {
+      "size": 1048,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ProvidePlugin.js": {
+    "id": "ProvidePlugin.js",
+    "adjacentTo": [
+      "dependencies/ConstDependency.js",
+      "dependencies/ProvidedDependency.js",
+      "javascript/JavascriptParserHelpers.js"
+    ],
+    "body": {
+      "size": 2890,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "WatchIgnorePlugin.js": {
+    "id": "WatchIgnorePlugin.js",
+    "adjacentTo": [
+      "util/ArrayHelpers.js",
+      "util/create-schema-validation.js",
+      "../schemas/plugins/WatchIgnorePlugin.check.js"
+    ],
+    "body": {
+      "size": 3345,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/WatchIgnorePlugin.check.js": {
+    "id": "../schemas/plugins/WatchIgnorePlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1180,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "WebpackOptionsDefaulter.js": {
+    "id": "WebpackOptionsDefaulter.js",
+    "adjacentTo": ["config/defaults.js", "config/normalization.js"],
+    "body": {
+      "size": 470,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/ChunkModuleIdRangePlugin.js": {
+    "id": "ids/ChunkModuleIdRangePlugin.js",
+    "adjacentTo": ["util/SetHelpers.js", "util/comparators.js"],
+    "body": {
+      "size": 2193,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/AggressiveMergingPlugin.js": {
+    "id": "optimize/AggressiveMergingPlugin.js",
+    "adjacentTo": ["OptimizationStages.js"],
+    "body": {
+      "size": 2300,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/LimitChunkCountPlugin.js": {
+    "id": "optimize/LimitChunkCountPlugin.js",
+    "adjacentTo": [
+      "OptimizationStages.js",
+      "util/LazyBucketSortedSet.js",
+      "util/comparators.js",
+      "util/create-schema-validation.js",
+      "../schemas/plugins/optimize/LimitChunkCountPlugin.check.js"
+    ],
+    "body": {
+      "size": 8392,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "util/LazyBucketSortedSet.js": {
+    "id": "util/LazyBucketSortedSet.js",
+    "adjacentTo": ["util/SetHelpers.js", "util/SortableSet.js"],
+    "body": {
+      "size": 5732,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/optimize/LimitChunkCountPlugin.check.js": {
+    "id": "../schemas/plugins/optimize/LimitChunkCountPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1167,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "optimize/MinChunkSizePlugin.js": {
+    "id": "optimize/MinChunkSizePlugin.js",
+    "adjacentTo": [
+      "OptimizationStages.js",
+      "util/create-schema-validation.js",
+      "../schemas/plugins/optimize/MinChunkSizePlugin.check.js"
+    ],
+    "body": {
+      "size": 3335,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/optimize/MinChunkSizePlugin.check.js": {
+    "id": "../schemas/plugins/optimize/MinChunkSizePlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 1091,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "webworker/WebWorkerTemplatePlugin.js": {
+    "id": "webworker/WebWorkerTemplatePlugin.js",
+    "adjacentTo": [
+      "javascript/ArrayPushCallbackChunkFormatPlugin.js",
+      "javascript/EnableChunkLoadingPlugin.js"
+    ],
+    "body": {
+      "size": 742,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/NodeSourcePlugin.js": {
+    "id": "node/NodeSourcePlugin.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 353,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "node/NodeTemplatePlugin.js": {
+    "id": "node/NodeTemplatePlugin.js",
+    "adjacentTo": [
+      "javascript/CommonJsChunkFormatPlugin.js",
+      "javascript/EnableChunkLoadingPlugin.js"
+    ],
+    "body": {
+      "size": 848,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/ContainerPlugin.js": {
+    "id": "container/ContainerPlugin.js",
+    "adjacentTo": [
+      "util/create-schema-validation.js",
+      "container/ContainerEntryDependency.js",
+      "container/ContainerEntryModuleFactory.js",
+      "container/ContainerExposedDependency.js",
+      "container/options.js",
+      "../schemas/plugins/container/ContainerPlugin.check.js"
+    ],
+    "body": {
+      "size": 2691,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/ContainerEntryModuleFactory.js": {
+    "id": "container/ContainerEntryModuleFactory.js",
+    "adjacentTo": ["ModuleFactory.js", "container/ContainerEntryModule.js"],
+    "body": {
+      "size": 1011,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/options.js": {
+    "id": "container/options.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 2641,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/container/ContainerPlugin.check.js": {
+    "id": "../schemas/plugins/container/ContainerPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 12004,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/ContainerReferencePlugin.js": {
+    "id": "container/ContainerReferencePlugin.js",
+    "adjacentTo": [
+      "ExternalsPlugin.js",
+      "RuntimeGlobals.js",
+      "util/create-schema-validation.js",
+      "container/FallbackDependency.js",
+      "container/FallbackItemDependency.js",
+      "container/FallbackModuleFactory.js",
+      "container/RemoteModule.js",
+      "container/RemoteRuntimeModule.js",
+      "container/RemoteToExternalDependency.js",
+      "container/options.js",
+      "../schemas/plugins/container/ContainerReferencePlugin.check.js"
+    ],
+    "body": {
+      "size": 4296,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/FallbackModuleFactory.js": {
+    "id": "container/FallbackModuleFactory.js",
+    "adjacentTo": ["ModuleFactory.js", "container/FallbackModule.js"],
+    "body": {
+      "size": 944,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/RemoteRuntimeModule.js": {
+    "id": "container/RemoteRuntimeModule.js",
+    "adjacentTo": ["RuntimeGlobals.js", "RuntimeModule.js", "Template.js"],
+    "body": {
+      "size": 4187,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/container/ContainerReferencePlugin.check.js": {
+    "id": "../schemas/plugins/container/ContainerReferencePlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 5341,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "container/ModuleFederationPlugin.js": {
+    "id": "container/ModuleFederationPlugin.js",
+    "adjacentTo": [
+      "../schemas/plugins/container/ExternalsType.check.js",
+      "sharing/SharePlugin.js",
+      "util/create-schema-validation.js",
+      "container/ContainerPlugin.js",
+      "container/ContainerReferencePlugin.js",
+      "../schemas/plugins/container/ModuleFederationPlugin.check.js"
+    ],
+    "body": {
+      "size": 2906,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/container/ExternalsType.check.js": {
+    "id": "../schemas/plugins/container/ExternalsType.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 621,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/SharePlugin.js": {
+    "id": "sharing/SharePlugin.js",
+    "adjacentTo": [
+      "container/options.js",
+      "sharing/ConsumeSharedPlugin.js",
+      "sharing/ProvideSharedPlugin.js",
+      "sharing/utils.js"
+    ],
+    "body": {
+      "size": 2966,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ConsumeSharedPlugin.js": {
+    "id": "sharing/ConsumeSharedPlugin.js",
+    "adjacentTo": [
+      "ModuleNotFoundError.js",
+      "RuntimeGlobals.js",
+      "WebpackError.js",
+      "container/options.js",
+      "util/LazySet.js",
+      "util/create-schema-validation.js",
+      "util/semver.js",
+      "sharing/ConsumeSharedFallbackDependency.js",
+      "sharing/ConsumeSharedModule.js",
+      "sharing/ConsumeSharedRuntimeModule.js",
+      "sharing/ProvideForSharedDependency.js",
+      "sharing/resolveMatchedConfigs.js",
+      "sharing/utils.js",
+      "../schemas/plugins/sharing/ConsumeSharedPlugin.check.js"
+    ],
+    "body": {
+      "size": 10290,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ConsumeSharedRuntimeModule.js": {
+    "id": "sharing/ConsumeSharedRuntimeModule.js",
+    "adjacentTo": [
+      "RuntimeGlobals.js",
+      "RuntimeModule.js",
+      "Template.js",
+      "util/semver.js"
+    ],
+    "body": {
+      "size": 13134,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/resolveMatchedConfigs.js": {
+    "id": "sharing/resolveMatchedConfigs.js",
+    "adjacentTo": ["ModuleNotFoundError.js", "util/LazySet.js"],
+    "body": {
+      "size": 2690,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/utils.js": {
+    "id": "sharing/utils.js",
+    "adjacentTo": ["util/fs.js"],
+    "body": {
+      "size": 2402,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/sharing/ConsumeSharedPlugin.check.js": {
+    "id": "../schemas/plugins/sharing/ConsumeSharedPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 5278,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ProvideSharedPlugin.js": {
+    "id": "sharing/ProvideSharedPlugin.js",
+    "adjacentTo": [
+      "WebpackError.js",
+      "container/options.js",
+      "util/create-schema-validation.js",
+      "sharing/ProvideForSharedDependency.js",
+      "sharing/ProvideSharedDependency.js",
+      "sharing/ProvideSharedModuleFactory.js",
+      "../schemas/plugins/sharing/ProvideSharedPlugin.check.js"
+    ],
+    "body": {
+      "size": 6851,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "sharing/ProvideSharedModuleFactory.js": {
+    "id": "sharing/ProvideSharedModuleFactory.js",
+    "adjacentTo": ["ModuleFactory.js", "sharing/ProvideSharedModule.js"],
+    "body": {
+      "size": 1043,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/sharing/ProvideSharedPlugin.check.js": {
+    "id": "../schemas/plugins/sharing/ProvideSharedPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 4036,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/container/ModuleFederationPlugin.check.js": {
+    "id": "../schemas/plugins/container/ModuleFederationPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 21663,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "debug/ProfilingPlugin.js": {
+    "id": "debug/ProfilingPlugin.js",
+    "adjacentTo": [
+      "util/create-schema-validation.js",
+      "util/fs.js",
+      "../schemas/plugins/debug/ProfilingPlugin.check.js",
+      "javascript/JavascriptModulesPlugin.js"
+    ],
+    "body": {
+      "size": 10715,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "../schemas/plugins/debug/ProfilingPlugin.check.js": {
+    "id": "../schemas/plugins/debug/ProfilingPlugin.check.js",
+    "adjacentTo": [],
+    "body": {
+      "size": 684,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  },
+  "ids/SyncModuleIdsPlugin.js": {
+    "id": "ids/SyncModuleIdsPlugin.js",
+    "adjacentTo": ["index.js", "ids/IdHelpers.js"],
+    "body": {
+      "size": 4063,
+      "thirdPartyDependencies": [],
+      "builtinDependencies": []
+    }
+  }
+}

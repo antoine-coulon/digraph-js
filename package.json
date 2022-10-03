@@ -46,6 +46,7 @@
     "start": "node dist/index.js",
     "build": "rimraf ./dist && tsc --project tsconfig.build.json",
     "test": "mocha --parallel",
+    "benchmarks:webpack": "npm run build && cd benchmarks/webpack && node find-cycles.js",
     "prepublishOnly": "npm run test && npm run build"
   },
   "devDependencies": {

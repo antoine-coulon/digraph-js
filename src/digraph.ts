@@ -371,9 +371,9 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
      * In order for paths to be compared by values, arrays must be sorted e.g:
      * [a, b] !== [b, a] when strictly comparing values.
      */
-    const sortedPaths = paths.map((path) => path.sort());
-
-    return uniqWith(sortedPaths, isEqual);
+    return uniqWith(paths, (pathA, pathB) =>
+      isEqual([...pathA].sort(), [...pathB].sort())
+    );
   }
 
   /**

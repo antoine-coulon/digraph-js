@@ -545,7 +545,7 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexB.id, to: vertexA.id });
 
             expect(digraph.hasCycles()).to.equal(true);
-            expect(digraph.findCycles()).to.deep.equal([["a", "b"]]);
+            expect(digraph.findCycles()).to.deep.equal([["b", "a"]]);
           });
 
           it("should detect a cycle of depth 2 with indirect edges pointing to each other", () => {
@@ -753,7 +753,7 @@ describe("Directed Graph Implementation", () => {
 
             const cycles = digraph.findCycles();
             expect(digraph.hasCycles()).to.equal(true);
-            expect(cycles).to.deep.equal([["c", "f"]]);
+            expect(cycles).to.deep.equal([["f", "c"]]);
           });
 
           it("scenario n°3: should only keep vertices involved", () => {
@@ -774,7 +774,7 @@ describe("Directed Graph Implementation", () => {
             digraph.addEdge({ from: vertexX.id, to: vertexA.id });
             expect(digraph.findCycles()).to.deep.equal([
               ["a", "b", "d", "x"],
-              ["a", "d", "p", "x"]
+              ["a", "p", "d", "x"]
             ]);
           });
         });

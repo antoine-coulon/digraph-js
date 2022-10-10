@@ -367,13 +367,18 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   }
 
   private keepUniqueVerticesPaths(paths: VertexId[][]): VertexId[][] {
-    /**
-     * In order for paths to be compared by values, arrays must be sorted e.g:
-     * [a, b] !== [b, a] when strictly comparing values.
-     */
-    return uniqWith(paths, (pathA, pathB) =>
-      isEqual([...pathA].sort(), [...pathB].sort())
-    );
+    return uniqWith(paths, (pathA, pathB) => {
+      // Narrow down the comparison to avoid unnecessary operations
+      if (pathA.length !== pathB.length) {
+        return false;
+      }
+
+      /**
+       * In order for paths to be compared by values, arrays must be sorted e.g:
+       * [a, b] !== [b, a] when strictly comparing values.
+       */
+      return isEqual(pathA.slice().sort(), pathB.slice().sort());
+    });
   }
 
   /**

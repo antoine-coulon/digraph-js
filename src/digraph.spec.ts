@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable max-depth */
 /* eslint-disable no-inline-comments */
 /* eslint-disable line-comment-position */
@@ -833,6 +834,40 @@ describe("Directed Graph Implementation", () => {
             ["d", "e"]
           ]);
         });
+      });
+    });
+  });
+
+  describe("When constructing DiGraph instances from a raw record", () => {
+    it("should construct a DiGraph instance with vertices linked by edges", () => {
+      const rawGraph = {
+        a: {
+          id: "a",
+          adjacentTo: [],
+          body: {
+            someProperty: "someValue"
+          }
+        },
+        b: {
+          id: "b",
+          adjacentTo: ["a"],
+          body: {
+            dependencies: []
+          }
+        },
+        c: {
+          id: "c",
+          adjacentTo: ["b"],
+          body: {}
+        }
+      };
+
+      const digraph = DiGraph.fromRaw(rawGraph);
+
+      expect(digraph.toDict()).to.deep.equal({
+        a: { id: "a", adjacentTo: [], body: { someProperty: "someValue" } },
+        b: { id: "b", adjacentTo: ["a"], body: { dependencies: [] } },
+        c: { id: "c", adjacentTo: ["b"], body: {} }
       });
     });
   });

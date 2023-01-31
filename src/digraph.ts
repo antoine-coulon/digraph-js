@@ -1,12 +1,28 @@
 import isEqual from "lodash.isequal";
 import uniqWith from "lodash.uniqwith";
 
-import { VertexDefinition, VertexId, VertexBody } from "./vertex.js";
+import { VertexBody, VertexDefinition, VertexId } from "./vertex.js";
 export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   #vertices: Map<VertexId, Vertex>;
 
   constructor() {
     this.#vertices = new Map();
+  }
+
+  static fromRaw(
+    raw: Record<VertexId, VertexDefinition<VertexBody>>
+  ): DiGraph<VertexDefinition<VertexBody>> {
+    const digraph = new DiGraph();
+
+    for (const vertex of Object.values(raw)) {
+      digraph.addVertex({
+        id: vertex.id,
+        adjacentTo: vertex.adjacentTo,
+        body: vertex.body
+      });
+    }
+
+    return digraph;
   }
 
   public get isAcyclic(): boolean {

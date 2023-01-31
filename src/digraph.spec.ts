@@ -3,7 +3,7 @@
 /* eslint-disable line-comment-position */
 /* eslint-disable max-nested-callbacks */
 
-import { expect } from "chai";
+import { describe, expect, it } from "vitest";
 
 import { DiGraph } from "./digraph.js";
 import { VertexDefinition, VertexId } from "./vertex.js";

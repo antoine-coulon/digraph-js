@@ -33,6 +33,30 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     return Object.fromEntries(this.#vertices.entries());
   }
 
+  public *traverse(rootVertexId?: VertexId): Generator<Vertex, void, void> {
+    if (rootVertexId) {
+      const rootVertex = this.#vertices.get(rootVertexId);
+
+      if (!rootVertex) {
+        return;
+      }
+
+      yield rootVertex;
+
+      for (const vertexId of rootVertex.adjacentTo) {
+        yield* this.traverse(vertexId);
+      }
+    } else {
+      for (const vertex of this.#vertices.values()) {
+        yield vertex;
+
+        for (const vertexId of vertex.adjacentTo) {
+          yield* this.traverse(vertexId);
+        }
+      }
+    }
+  }
+
   public hasVertex(vertexId: VertexId): boolean {
     return this.#vertices.has(vertexId);
   }

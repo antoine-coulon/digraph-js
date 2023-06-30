@@ -36,32 +36,6 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     return Object.fromEntries(this.#vertices.entries());
   }
 
-  /**
-   * Providing `rootVertexId` will force the traversal to start from it. If no
-   * `rootVertexId` is provided, the traversal will start from the first vertex
-   * found in the graph, which will most likely be the first entry that was added
-   * in it.
-   */
-  public *traverse(options?: {
-    rootVertexId?: VertexId;
-    traversal?: Traversal;
-  }): Generator<Vertex, void, void> {
-    const { rootVertexId, traversal } = {
-      traversal: options?.traversal ?? "bfs",
-      rootVertexId: options?.rootVertexId
-    };
-
-    if (rootVertexId) {
-      if (traversal === "bfs") {
-        return yield* this.breadthFirstTraversalFrom(rootVertexId);
-      }
-
-      return yield* this.depthFirstTraversalFrom(rootVertexId);
-    }
-
-    return yield* this.traverseAll(traversal);
-  }
-
   public hasVertex(vertexId: VertexId): boolean {
     return this.#vertices.has(vertexId);
   }
@@ -166,6 +140,40 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   }
 
   /**
+   * Base API to traverse walk through a DiGraph instance either in a DFS or BFS
+   * manner. Providing `rootVertexId` will force the traversal to start from it.
+   * If no `rootVertexId` is provided, the traversal will start from the first vertex
+   * found in the graph, which will most likely be the first entry that was added
+   * in it.
+   */
+  public *traverse(options?: {
+    rootVertexId?: VertexId;
+    traversal?: Traversal;
+  }): Generator<Vertex, void, void> {
+    const { rootVertexId, traversal } = {
+      traversal: options?.traversal ?? "bfs",
+      rootVertexId: options?.rootVertexId
+    };
+
+    if (rootVertexId) {
+      if (traversal === "bfs") {
+        return yield* this.breadthFirstTraversalFrom(rootVertexId);
+      }
+
+      return yield* this.depthFirstTraversalFrom(rootVertexId);
+    }
+
+    return yield* this.traverseAll(traversal);
+  }
+
+  public traverseEager(options?: {
+    rootVertexId?: VertexId;
+    traversal?: Traversal;
+  }): Vertex[] {
+    return Array.from(this.traverse(options));
+  }
+
+  /**
    * Allows top-to-bottom traversals by finding only the first relationship level
    * of children dependencies of the provided vertex.
    * @example
@@ -180,11 +188,14 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
 
   /**
    * Same as `getChildren()`, but doesn't stop at the first level hence deeply
-   * collects all children dependencies in  a Depth-First Search manner.
+   * collects all children dependencies in a Depth-First Search manner.
    * Allows top-to-bottom traversals i.e: which nodes are dependencies of
    * the provided rootVertexId.
    */
-  public *getDeepChildren(rootVertexId: VertexId): Generator<VertexId> {
+  public *getDeepChildren(
+    rootVertexId: VertexId,
+    depthLimit?: number
+  ): Generator<VertexId> {
     const rootVertex = this.#vertices.get(rootVertexId);
     if (!rootVertex) {
       return;
@@ -197,7 +208,12 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
         continue;
       }
 
-      yield* this.findDeepDependencies("lower", rootVertex, adjacentVertex);
+      yield* this.findDeepDependencies(
+        "top-to-bottom",
+        rootVertex,
+        adjacentVertex,
+        depthLimit
+      );
     }
   }
 
@@ -220,16 +236,22 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    * Allows bottom-to-top traversals i.e: which nodes are depending on
    * the provided rootVertexId.
    */
-  public *getDeepParents(rootVertexId: VertexId): Generator<VertexId> {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-
+  public *getDeepParents(
+    rootVertexId: VertexId,
+    depthLimit?: number
+  ): Generator<VertexId> {
     const rootVertex = this.#vertices.get(rootVertexId);
     if (!rootVertex) {
       return;
     }
 
     for (const adjacentVertex of this.getParents(rootVertex.id)) {
-      yield* this.findDeepDependencies("upper", rootVertex, adjacentVertex);
+      yield* this.findDeepDependencies(
+        "bottom-to-top",
+        rootVertex,
+        adjacentVertex,
+        depthLimit
+      );
     }
   }
 
@@ -258,7 +280,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
       }
       const adjacencyList = new Set<VertexId>();
       for (const deepAdjacentVertexId of this.findDeepDependencies(
-        "lower",
+        "top-to-bottom",
         rootVertex,
         rootAdjacentVertex,
         maxDepth
@@ -294,7 +316,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
       const adjacencyList = new Set<VertexId>();
 
       for (const deepAdjacentVertexId of this.findDeepDependencies(
-        "lower",
+        "top-to-bottom",
         rootVertex,
         rootAdjacentVertex,
         maxDepth
@@ -371,7 +393,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
    */
   // eslint-disable-next-line max-params
   private *findDeepDependencies(
-    dependencyTraversal: "upper" | "lower",
+    dependencyTraversal: "bottom-to-top" | "top-to-bottom",
     rootVertex: Vertex,
     traversedVertex: Vertex,
     depthLimit: number = Number.POSITIVE_INFINITY,
@@ -390,7 +412,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     }
 
     const nextDependencies =
-      dependencyTraversal === "lower"
+      dependencyTraversal === "top-to-bottom"
         ? traversedVertex.adjacentTo
         : this.getParents(traversedVertex.id).map(({ id }) => id);
 

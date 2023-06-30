@@ -2,6 +2,9 @@ import isEqual from "lodash.isequal";
 import uniqWith from "lodash.uniqwith";
 
 import { VertexBody, VertexDefinition, VertexId } from "./vertex.js";
+
+export type Traversal = "bfs" | "dfs";
+
 export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   #vertices: Map<VertexId, Vertex>;
 
@@ -33,28 +36,30 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
     return Object.fromEntries(this.#vertices.entries());
   }
 
-  public *traverse(rootVertexId?: VertexId): Generator<Vertex, void, void> {
+  /**
+   * Providing `rootVertexId` will force the traversal to start from it. If no
+   * `rootVertexId` is provided, the traversal will start from the first vertex
+   * found in the graph, which will most likely be the first entry that was added
+   * in it.
+   */
+  public *traverse(options?: {
+    rootVertexId?: VertexId;
+    traversal?: Traversal;
+  }): Generator<Vertex, void, void> {
+    const { rootVertexId, traversal } = {
+      traversal: options?.traversal ?? "bfs",
+      rootVertexId: options?.rootVertexId
+    };
+
     if (rootVertexId) {
-      const rootVertex = this.#vertices.get(rootVertexId);
-
-      if (!rootVertex) {
-        return;
+      if (traversal === "bfs") {
+        return yield* this.breadthFirstTraversalFrom(rootVertexId);
       }
 
-      yield rootVertex;
-
-      for (const vertexId of rootVertex.adjacentTo) {
-        yield* this.traverse(vertexId);
-      }
-    } else {
-      for (const vertex of this.#vertices.values()) {
-        yield vertex;
-
-        for (const vertexId of vertex.adjacentTo) {
-          yield* this.traverse(vertexId);
-        }
-      }
+      return yield* this.depthFirstTraversalFrom(rootVertexId);
     }
+
+    return yield* this.traverseAll(traversal);
   }
 
   public hasVertex(vertexId: VertexId): boolean {
@@ -457,6 +462,79 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
         uniqueVerticesIds.add(vertex.id);
 
         yield vertex;
+      }
+    }
+  }
+
+  private *depthFirstTraversalFrom(
+    rootVertexId: VertexId,
+    traversedVertices = new Set<VertexId>()
+  ): Generator<Vertex, void, void> {
+    if (traversedVertices.has(rootVertexId)) {
+      return;
+    }
+
+    const rootVertex = this.#vertices.get(rootVertexId);
+
+    if (!rootVertex) {
+      return;
+    }
+
+    yield rootVertex;
+    traversedVertices.add(rootVertexId);
+
+    for (const vertexId of rootVertex.adjacentTo) {
+      yield* this.depthFirstTraversalFrom(vertexId, traversedVertices);
+    }
+  }
+
+  private *breadthFirstTraversalFrom(
+    rootVertexId: VertexId,
+    visitedVerticesIds = new Set<VertexId>()
+  ): Generator<Vertex, void, void> {
+    const vertex = this.#vertices.get(rootVertexId);
+
+    if (!vertex || visitedVerticesIds.has(rootVertexId)) {
+      return;
+    }
+
+    yield vertex;
+    visitedVerticesIds.add(rootVertexId);
+
+    const nextVerticesToVisit = [];
+
+    for (const adjacentVertexId of vertex.adjacentTo) {
+      if (visitedVerticesIds.has(adjacentVertexId)) {
+        continue;
+      }
+
+      const adjacentVertex = this.#vertices.get(adjacentVertexId);
+
+      if (!adjacentVertex) {
+        continue;
+      }
+
+      yield adjacentVertex;
+      visitedVerticesIds.add(adjacentVertexId);
+      nextVerticesToVisit.push(
+        ...adjacentVertex.adjacentTo.filter((id) => !visitedVerticesIds.has(id))
+      );
+    }
+
+    while (nextVerticesToVisit.length > 0) {
+      const nextVertexId = nextVerticesToVisit.shift() as string;
+      yield* this.breadthFirstTraversalFrom(nextVertexId, visitedVerticesIds);
+    }
+  }
+
+  private *traverseAll(traversal: Traversal) {
+    const visitedVertices = new Set<VertexId>();
+
+    for (const vertexId of this.#vertices.keys()) {
+      if (traversal === "dfs") {
+        yield* this.depthFirstTraversalFrom(vertexId, visitedVertices);
+      } else {
+        yield* this.breadthFirstTraversalFrom(vertexId, visitedVertices);
       }
     }
   }

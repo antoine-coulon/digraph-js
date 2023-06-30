@@ -9,9 +9,13 @@ It can be used to model complex dependencies systems based on graphs.
 
 ✅ Create a graph structure including edges and vertices seamlessly
 
+✅ Traverse graph, using Depth-first or Breadth-first searchs
+
 ✅ Deeply find direct/indirect children and parent dependencies of each vertex in the graph (top-to-bottom or bottom-to-top traversals)
 
 ✅ Ensure that a given graph is Acyclic by deeply detecting circular dependencies while having the possibility to limit the search depth
+
+✅ Find precisely all vertices involved in cycles and sub-cycles
 
 ## Installation
 
@@ -50,6 +54,25 @@ myGraph.addEdge({ from: myDependencyB.id, to: myDependencyA.id });
 assert.equal(myGraph.isAcyclic, false);
 assert.equal(myGraph.hasCycles(), true);
 assert.deepEqual(myGraph.findCycles().cycles, [["dependencyA", "dependencyB"]]);
+
+// Limit cycles search or dependency depth
+// Imagine a case where the cycle is created at depth 6
+assert.equal(myGraph.hasCycles({ maxDepth: 5 }), false);
+// Or that you want to get all children of a vertex but with a max depth of 5
+// meaning that you don't want dependencies going over 5 generations
+assert.equal(myGraph.getDeepChildren("dependencyA"), 5);
+
+
+// Traversals
+
+// Lazily pull vertices from the graph 
+for(const vertex of myGraph.traverse({ traversal: "dfs" })) {
+  console.log(vertex.id);
+}
+
+// Eagerly pull all the graph vertices at once
+const graphVertices = myGraph.traverseEager({ traversal: "dfs" });
+console.log(graphVertices.length);
 ```
 
 ## You already manipulate Directed Graphs without knowing it

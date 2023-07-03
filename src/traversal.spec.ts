@@ -90,7 +90,7 @@ describe("Graph traversal", () => {
       expect(it.next().done).toBeTruthy();
     });
 
-    test("Should expose a graph BFS traversal method starting from an existing root vertex", () => {
+    test("Should expose a graph BFS traversal method starting from an existing root vertex with multiple children", () => {
       const graph = new DiGraph();
       const vertexA = makeVertex("a").adjacentTo("d", "c").raw();
       const vertexB = makeVertex("b").raw();
@@ -108,6 +108,24 @@ describe("Graph traversal", () => {
       expect(it.next().value?.id).toEqual(vertexE.id);
 
       expect(it.next().done).toBeTruthy();
+    });
+
+    test("Should expose a graph BFS traversal method starting from an existing root vertex with one child", () => {
+      const graph = new DiGraph();
+      const vertexA = makeVertex("a").adjacentTo("b").raw();
+      const vertexB = makeVertex("b").adjacentTo("d", "c").raw();
+      const vertexC = makeVertex("c").raw();
+      const vertexD = makeVertex("d").adjacentTo("e").raw();
+      const vertexE = makeVertex("e").raw();
+
+      graph.addVertices(vertexB, vertexA, vertexC, vertexD, vertexE);
+
+      const it = graph.traverse({ rootVertexId: "a", traversal: "bfs" });
+      expect(it.next().value?.id).toEqual("a");
+      expect(it.next().value?.id).toEqual("b");
+      expect(it.next().value?.id).toEqual("d");
+      expect(it.next().value?.id).toEqual("c");
+      expect(it.next().value?.id).toEqual("e");
     });
   });
 

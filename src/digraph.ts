@@ -516,36 +516,27 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
   ): Generator<Vertex, void, void> {
     const vertex = this.#vertices.get(rootVertexId);
 
-    if (!vertex || visitedVerticesIds.has(rootVertexId)) {
-      return;
+    if (!vertex) return;
+
+    if (!visitedVerticesIds.has(rootVertexId)) {
+      visitedVerticesIds.add(rootVertexId);
+      yield vertex;
     }
 
-    yield vertex;
-    visitedVerticesIds.add(rootVertexId);
+    const nextVerticesToVisit: Vertex[] = [];
+    for (const vertexId of vertex.adjacentTo) {
+      const adjacentVertex = this.#vertices.get(vertexId);
 
-    const nextVerticesToVisit = [];
-
-    for (const adjacentVertexId of vertex.adjacentTo) {
-      if (visitedVerticesIds.has(adjacentVertexId)) {
+      if (!adjacentVertex || visitedVerticesIds.has(adjacentVertex.id))
         continue;
-      }
 
-      const adjacentVertex = this.#vertices.get(adjacentVertexId);
-
-      if (!adjacentVertex) {
-        continue;
-      }
-
+      visitedVerticesIds.add(adjacentVertex.id);
+      nextVerticesToVisit.push(adjacentVertex);
       yield adjacentVertex;
-      visitedVerticesIds.add(adjacentVertexId);
-      nextVerticesToVisit.push(
-        ...adjacentVertex.adjacentTo.filter((id) => !visitedVerticesIds.has(id))
-      );
     }
 
-    while (nextVerticesToVisit.length > 0) {
-      const nextVertexId = nextVerticesToVisit.shift() as string;
-      yield* this.breadthFirstTraversalFrom(nextVertexId, visitedVerticesIds);
+    for (const nextVertex of nextVerticesToVisit) {
+      yield* this.breadthFirstTraversalFrom(nextVertex.id, visitedVerticesIds);
     }
   }
 

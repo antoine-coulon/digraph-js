@@ -201,6 +201,8 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
       return;
     }
 
+    const visitedVertices: VertexId[] = [];
+
     for (const adjacentVertexId of rootVertex.adjacentTo) {
       const adjacentVertex = this.#vertices.get(adjacentVertexId);
 
@@ -212,7 +214,8 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
         "top-to-bottom",
         rootVertex,
         adjacentVertex,
-        depthLimit
+        depthLimit,
+        visitedVertices
       );
     }
   }
@@ -245,12 +248,15 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
       return;
     }
 
+    const visitedVertices: VertexId[] = [];
+
     for (const adjacentVertex of this.getParents(rootVertex.id)) {
       yield* this.findDeepDependencies(
         "bottom-to-top",
         rootVertex,
         adjacentVertex,
-        depthLimit
+        depthLimit,
+        visitedVertices
       );
     }
   }

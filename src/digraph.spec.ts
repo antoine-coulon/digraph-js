@@ -292,7 +292,7 @@ describe("Directed Graph Implementation", () => {
       it("should find direct adjacent vertices", () => {
         const digraph = new DiGraph();
         const [vertexA, vertexB, vertexC] = [
-          ...createRawVertices("a", "b", "c", "d")
+          ...createRawVertices("a", "b", "c")
         ];
 
         digraph.addVertices(vertexA, vertexB, vertexC);
@@ -310,9 +310,8 @@ describe("Directed Graph Implementation", () => {
 
       it("should find and deeply collect all vertices", () => {
         const digraph = new DiGraph();
-        const [vertexA, vertexB, vertexC, vertexD, vertexE, vertexF] = [
-          ...createRawVertices("a", "b", "c", "d", "e", "f", "g")
-        ];
+        const [vertexA, vertexB, vertexC, vertexD, vertexE, vertexF, vertexG] =
+          [...createRawVertices("a", "b", "c", "d", "e", "f", "g")];
 
         digraph.addVertices(
           vertexF,
@@ -320,18 +319,22 @@ describe("Directed Graph Implementation", () => {
           vertexD,
           vertexA,
           vertexB,
-          vertexE
+          vertexE,
+          vertexG
         );
         digraph.addEdge({ from: vertexF.id, to: vertexA.id });
         digraph.addEdge({ from: vertexB.id, to: vertexA.id });
         digraph.addEdge({ from: vertexD.id, to: vertexA.id });
         digraph.addEdge({ from: vertexC.id, to: vertexB.id });
         digraph.addEdge({ from: vertexE.id, to: vertexD.id });
+        digraph.addEdge({ from: vertexG.id, to: vertexD.id });
+        digraph.addEdge({ from: vertexG.id, to: vertexA.id });
 
         expect([...digraph.getDeepParents(vertexA.id)]).deep.equal([
           "f",
           "d",
           "e",
+          "g",
           "b",
           "c"
         ]);
@@ -362,15 +365,7 @@ describe("Directed Graph Implementation", () => {
           digraph.addEdge({ from: vertexC.id, to: vertexF.id });
           digraph.addEdge({ from: vertexF.id, to: vertexC.id });
 
-          /**
-           * When there is a cycle, multiple occurrences of a same vertex
-           * can be found. Here, we just want to check that there is atleast
-           * one occurrence of a given set of vertices.
-           */
-          const uniqueSetOfVertices = new Set([
-            ...digraph.getDeepParents(vertexA.id)
-          ]);
-          expect([...uniqueSetOfVertices]).deep.equal([
+          expect([...digraph.getDeepParents(vertexA.id)]).deep.equal([
             "f",
             "c",
             "d",
@@ -452,15 +447,7 @@ describe("Directed Graph Implementation", () => {
           digraph.addEdge({ from: vertexE.id, to: vertexF.id });
           digraph.addEdge({ from: vertexF.id, to: vertexE.id });
 
-          /**
-           * When there is a cycle, multiple occurrences of a same vertex
-           * can be found. Here, we just want to check that there is atleast
-           * one occurrence of a given set of vertices.
-           */
-          const uniqueSetOfVertices = new Set([
-            ...digraph.getDeepChildren(vertexA.id)
-          ]);
-          expect([...uniqueSetOfVertices]).deep.equal([
+          expect([...digraph.getDeepChildren(vertexA.id)]).deep.equal([
             "b",
             "c",
             "d",
@@ -493,15 +480,7 @@ describe("Directed Graph Implementation", () => {
           digraph.addEdge({ from: vertexC.id, to: vertexF.id });
           digraph.addEdge({ from: vertexF.id, to: vertexC.id });
 
-          /**
-           * When there is a cycle, multiple occurrences of a same vertex
-           * can be found. Here, we just want to check that there is atleast
-           * one occurrence of a given set of vertices.
-           */
-          const uniqueSetOfVertices = new Set([
-            ...digraph.getDeepChildren(vertexA.id)
-          ]);
-          expect([...uniqueSetOfVertices]).deep.equal([
+          expect([...digraph.getDeepChildren(vertexA.id)]).deep.equal([
             "f",
             "c",
             "b",

@@ -70,7 +70,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
 
   public addEdge({ from, to }: { from: VertexId; to: VertexId }): void {
     if (from === to) {
-      return;
+      throw new Error('Cannot create a self-referencing edge: "A -> A"');
     }
 
     const [fromVertex, toVertex] = [

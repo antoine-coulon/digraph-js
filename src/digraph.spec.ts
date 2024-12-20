@@ -280,7 +280,9 @@ describe("Directed Graph Implementation", () => {
         const vertexA: Vertex = { id: "a", adjacentTo: [], body: {} };
 
         digraph.addVertices(vertexA);
-        digraph.addEdge({ from: vertexA.id, to: vertexA.id });
+        expect(() => {
+          digraph.addEdge({ from: vertexA.id, to: vertexA.id });
+        }).to.throw(Error, 'Cannot create a self-referencing edge: "A -> A"');
 
         expect(vertexA.adjacentTo).to.deep.equal([]);
       });

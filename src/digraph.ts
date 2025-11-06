@@ -1,4 +1,5 @@
-import isEqual from "lodash.isequal";
+import { isDeepStrictEqual } from "node:util";
+
 import uniqWith from "lodash.uniqwith";
 
 import { VertexBody, VertexDefinition, VertexId } from "./vertex.js";
@@ -450,7 +451,7 @@ export class DiGraph<Vertex extends VertexDefinition<VertexBody>> {
        * In order for paths to be compared by values, arrays must be sorted e.g:
        * [a, b] !== [b, a] when strictly comparing values.
        */
-      return isEqual(pathA.slice().sort(), pathB.slice().sort());
+      return isDeepStrictEqual(pathA.slice().sort(), pathB.slice().sort());
     });
   }
 
